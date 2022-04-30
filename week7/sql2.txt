@@ -1,0 +1,2637 @@
+\l
+create database test;
+\l
+\c test
+\d
+\dt
+\c postgres
+\dt
+\d
+\l
+drop database test;
+\l
+\du
+create user test_user with password '1';
+ \du
+alter role test_user with superuser
+\du
+;
+\du
+create database test_user;
+\l
+\du
+\l
+\c postgres
+\c postgres
+\c test_user
+\l
+grant all privilages on database test_user to test_user
+\l
+\du
+grant all privilages on database test_user to test_user;
+grant all privileges on database test_user to test_user;
+\l
+\du
+\q
+drop user test_user
+;
+drop user 
+drop user 'test_user';
+drop user test_user
+;
+\du
+revoke all privileges on test_user from test_user
+;
+alter role test_user NOSUPERUSER;
+\l
+\du
+drop test_user
+;
+drop user test_user;
+drop test_user
+;
+drop database test_user;
+drop user test_user;
+\du
+\du
+\l
+\l
+create database test with owner user_test
+;
+create user user_test;
+\l
+\du
+create database test with owner user_test
+;
+\l
+drop user test;
+drop user user_test;
+\c test
+alter role user_test with superuser;
+grant all privilages on test to user_test;
+grant all privileges on test to user_test;
+drop user user_test;
+drop database test;
+drop user user_test;
+\du
+create user test_user with password '1';
+create database db;
+\du
+\l
+\du
+alter role test_user with superuser;
+grant all privileges on db to test_user
+;
+\du
+\c db
+grant all privilages on db to test_user;
+grant all privileges on db to test_user;
+\c postgres
+create database test_user
+;
+\l
+grant all privileges on db to test_user;
+drop user test_user
+;
+drop db;
+drop database db;
+drop database test_user;
+\l
+create user aika with password '1';
+\du
+\l
+create database aika;
+\l
+alter role aika with superuser;
+grant all privileges on database aika to aika
+;
+\l
+\du
+\du
+\l
+\c aika
+\c aika
+\du
+\l
+\c postgres
+drop database aika
+;
+drop user aika
+;
+drop user aika
+;
+\k
+\l
+create user aika;
+alter role aika with superuser;
+create database db with owner aika;
+\l
+grant all privileges on db to aika
+;
+drop database db;
+drop user aika;
+\du
+\l
+create user aika with password '1'
+;
+alter role aika with superuser;
+grant all privileges on aika to aika
+;
+grant all privileges on database aika to aika
+;
+\l
+create database aika;
+grant all privileges on database aika to aika
+;
+\l
+create database kfc_menu
+;
+create type detail as enum('food', 'beverage', 'dessert');
+create type topping as enum('ketchup', 'ranch', 'bbq', 'mayo', 'mustard');
+\c kfc_menu
+create type detail as enum('food', 'beverage', 'dessert');
+create type topping as enum('ketchup', 'ranch', 'bbq', 'mayo', 'mustard');
+create table Dish(
+id serial primary key,
+title varchar(155) not null;
+price money,
+type detail,
+sauce topping,
+is_vegeterian bool default False;
+comment varchar(255));
+create table Dish(
+id serial primary key,
+title varchar(155) not null;
+price money,
+type detail,
+sauce topping,
+is_vegeterian bool default False,
+comment varchar(255));
+create table Dish(
+id serial primary key,
+title varchar(155) not null,
+price money,
+type detail,
+sauce topping,
+is_vegeterian bool default False,
+comment varchar(255));
+alter table dish alter price type decimal;
+\dt
+\d
+\d
+\d dish
+\i lesson2_inserts.txt
+\l
+\c postgres;
+\c aika
+create database db;
+\l
+create table Person{
+;
+create table Person(
+id serial primary key,
+name varchar(50) NOT NULL,
+last_name varchar(100),
+country varchar(50) NOT NULL);
+\dt
+\dt person
+\d person
+\du
+\l
+create database mydb;
+\d
+\l
+\c mydb
+create type language as enum('Python', 'JavaScript');
+create table info(
+id serial primary key,
+name varchar(50) NOT NULL,
+lastname varchar(100),
+country varchar(60),
+email varchar(50) unique,
+age int,
+programming_language language not null,
+experience int);
+\d
+\dt
+\d info
+insert into info (name, lastname, country, email, age, programming_language, experience) values ('Aigerim', "Kubanychbek kyzy", "Kyrgyzstan", "aikamusiconly@gmail.com", 21, "Python", 0), ('Zalkar', 'Omurzhanov', 'Kyrgyzstan', 'zo@gmail.com', 21, 'Python', 5);
+insert into info (name, lastname, country, email, age, programming_language, experience) values ('Aigerim', 'Kubanychbek kyzy', 'Kyrgyzstan', 'aikamusiconly@gmail.com', 21, 'Python', 0), ('Zalkar', 'Omurzhanov', 'Kyrgyzstan', 'zo@gmail.com', 21, 'Python', 5);
+insert into info (name, lastname, country, email, age, programming_language, experience) values ('Anastasia', 'Tuzikova', 'Kyrgyzstan', 'at@gmail.com', 19, 'Python', 0), ('Adilet', 'Nasirov', 'Kyrgyzstan', 'adiletnasirov@gmail.com', 20, 'Python', 2);
+\d info
+\dt info
+select * from info
+;
+\i info.txt
+\c mydb
+\i info.txt
+\d mydb
+\dt mydb
+\dt
+\l
+\u
+\d info
+select * from info
+;
+\i info.txt
+\i info.txt
+select * from info
+;
+drop info
+;
+drop table info;
+\d info
+create table info;
+create table info
+;
+create table Person(
+aika(# id serial primary key,
+aika(# name varchar(50) NOT NULL,
+aika(# last_name varchar(100),
+ country varchar(50) NOT NULL);
+)
+)
+;
+)
+);
+create table info(
+mydb(# id serial primary key,
+mydb(# name varchar(50) NOT NULL,
+mydb(# lastname varchar(100),
+mydb(# country varchar(60),
+mydb(# email varchar(50) unique,
+mydb(# age int,
+mydb(# programming_language language not null,
+mydb(# experience int);
+;
+)
+;
+)
+)
+);
+)
+);
+)
+;
+dsa
+)
+;
+create table info(
+ id serial primary key,
+ name varchar(50) NOT NULL,
+ lastname varchar(100),
+ country varchar(60),
+ email varchar(50) unique,
+ age int,
+ programming_language language not null,
+ experience int);
+\d
+\dt
+\d info
+\i info.txt
+\d info
+select * from info
+;
+delete info
+;
+delete from info
+;
+select * from info
+;
+\i info.txt
+select * from info;
+select name, last_name, email from info;
+select name, lastname, email from info;
+select name ||' ' || lastname from info;
+select name ||' ' || lastname AS "Full name" from info;
+select name ||' ' || lastname AS "Full name",email from info;
+select * from info order by lastname;
+select * from info order by id asc;
+select * from info order by country asc;
+\d info
+insert into info (name, country, programming_language, email, experience) values ('Cathrine', 'England','Python', 'cat@gmail.com', 2); 
+select * from info
+;
+select * from info order by lastname asc nulls first;
+select disctinct country from info;
+select distinct country from info;
+select distinct on(country) country, lastname from info order by country, lastname;
+select * from info where country='Kyrgyzstan';
+select name || ' ' || lastname as "Full Name", experience from info where experience>1;
+select name, lastname, country from info where not country in ('Kyrgyzstan', 'Kazakshtan);
+');
+select name, lastname, country from info where not country in ('Kyrgyzstan', 'Kazakshtan);
+');
+select name, lastname, country from info where not country in ('Kyrgyzstan', 'Kazakhtan);
+');
+select name, lastname, country from info where not country in ('Kyrgyzstan', 'Kazakhstan);
+');
+select name, lastname, country from info where not country in ('Kyrgyzstan', 'Kazakhstan');
+select * from info where age between 20 and 30;
+select * from info where country='Kyrgyzstan' and age<25;
+select * from info where email like '%a';
+select * from info where email like '%a%';
+select name from info like 'A%';
+select name like 'A%' from info;
+select * from info where name 'A%';
+select * from info where name like 'A%';
+select name from info where name like 'A%';
+select * from info where not lastname is null;
+select * from info limit 10;
+select * from info order by id limit 10;
+select * from info order by experience desc limit 10;
+select * from info order by experience desc limit 10 offset 5;
+select * from info fetch first(5) row only;
+select * from info oder by experience desc offset 5 fetch first(5) row only;
+select * from info order by experience desc offset 5 fetch first(5) row only;
+select sum(age) as age_sum from info where country = 'Kyrgyzstan';
+select count(id) from info where email like '%gmail.com';
+select email from info where email like '%gmail.com';
+select count(id) from info;
+select count(id) from info where country = 'Kyrgyzstan';
+select avg(age) from info;
+select max(age) from info;
+select country, count(id) from info group by country;
+select name, count(id) from info group by age;
+select name, age, count(id) from info group by age;
+select age, name, count(id) from info group by age;
+select age, count(id) from info group by age;
+select country, sum(experience) from info group by country;
+select country, avg(age) from info group by country;
+delete from info where country = 'Oman';
+select * from info;
+alter table info alter column name type varchar(80);
+\d info
+alter table info alter column last_name set not null;
+alter table info alter column lastname set not null;
+alter table info alter column lastname set not null;
+delete from info where name = 'Cathrine';
+alter table info alter column lastname set not null;
+\d info
+alter table info rename column lastname to 'Last Name';
+alter table info rename column lastname to "Last Name";
+\d info
+alter table info add constraint unique(name);
+alter table info add constraint name_of_constraint unique(name);
+select * from info;
+delete from info where email = 'aikamusiconly@gmail.com';
+alter table info add constraint name_of_constraint unique(name);
+\d info
+alter table info drop experience;
+select * from info;
+\s sql2.txt
+
+
+
+
+Last login: Mon Mar 15 22:20:42 on console
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ brew install postgresql
+Updating Homebrew...
+==> Auto-updated Homebrew!
+Updated 1 tap (homebrew/core).
+==> Updated Formulae
+Updated 40 formulae.
+
+==> Downloading https://homebrew.bintray.com/bottles/readline-8.1.catalina.bottl
+==> Downloading from https://d29vzk4ow07wi7.cloudfront.net/fe4de019cf549376a7743
+######################################################################## 100.0%
+==> Downloading https://homebrew.bintray.com/bottles/postgresql-13.2_1.catalina.
+==> Downloading from https://d29vzk4ow07wi7.cloudfront.net/02af915cc2b5291c5a15b
+######################################################################## 100.0%
+==> Installing dependencies for postgresql: readline
+==> Installing postgresql dependency: readline
+==> Pouring readline-8.1.catalina.bottle.tar.gz
+==> Caveats
+readline is keg-only, which means it was not symlinked into /usr/local,
+because macOS provides BSD libedit.
+
+For compilers to find readline you may need to set:
+  export LDFLAGS="-L/usr/local/opt/readline/lib"
+  export CPPFLAGS="-I/usr/local/opt/readline/include"
+
+==> Summary
+🍺  /usr/local/Cellar/readline/8.1: 48 files, 1.6MB
+==> Installing postgresql
+==> Pouring postgresql-13.2_1.catalina.bottle.tar.gz
+==> /usr/local/Cellar/postgresql/13.2_1/bin/initdb --locale=C -E UTF-8 /usr/loca
+==> Caveats
+To migrate existing data from a previous major version of PostgreSQL run:
+  brew postgresql-upgrade-database
+
+This formula has created a default database cluster with:
+  initdb --locale=C -E UTF-8 /usr/local/var/postgres
+For more details, read:
+  https://www.postgresql.org/docs/13/app-initdb.html
+
+To have launchd start postgresql now and restart at login:
+  brew services start postgresql
+Or, if you don't want/need a background service you can just run:
+  pg_ctl -D /usr/local/var/postgres start
+==> Summary
+🍺  /usr/local/Cellar/postgresql/13.2_1: 3,218 files, 42.6MB
+==> Caveats
+==> readline
+readline is keg-only, which means it was not symlinked into /usr/local,
+because macOS provides BSD libedit.
+
+For compilers to find readline you may need to set:
+  export LDFLAGS="-L/usr/local/opt/readline/lib"
+  export CPPFLAGS="-I/usr/local/opt/readline/include"
+
+==> postgresql
+To migrate existing data from a previous major version of PostgreSQL run:
+  brew postgresql-upgrade-database
+
+This formula has created a default database cluster with:
+  initdb --locale=C -E UTF-8 /usr/local/var/postgres
+For more details, read:
+  https://www.postgresql.org/docs/13/app-initdb.html
+
+To have launchd start postgresql now and restart at login:
+  brew services start postgresql
+Or, if you don't want/need a background service you can just run:
+  pg_ctl -D /usr/local/var/postgres start
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ postgresql help
+-bash: postgresql: command not found
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ postgres -V
+postgres (PostgreSQL) 13.2
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ psql postgres
+psql: error: could not connect to server: No such file or directory
+	Is the server running locally and accepting
+	connections on Unix domain socket "/tmp/.s.PGSQL.5432"?
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ brew services start postgresql
+==> Tapping homebrew/services
+Cloning into '/usr/local/Homebrew/Library/Taps/homebrew/homebrew-services'...
+remote: Enumerating objects: 20, done.
+remote: Counting objects: 100% (20/20), done.
+remote: Compressing objects: 100% (20/20), done.
+remote: Total 1141 (delta 8), reused 0 (delta 0), pack-reused 1121
+Receiving objects: 100% (1141/1141), 331.40 KiB | 1.14 MiB/s, done.
+Resolving deltas: 100% (485/485), done.
+Tapped 1 command (39 files, 417.2KB).
+==> Successfully started `postgresql` (label: homebrew.mxcl.postgresql)
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ psql postgres
+psql (13.2)
+Type "help" for help.
+
+postgres=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(3 rows)
+
+postgres=# create database test;
+CREATE DATABASE
+postgres=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ test      | aigerimkubanychbekova | UTF8     | C       | C     | 
+(4 rows)
+
+postgres=# \c test
+You are now connected to database "test" as user "aigerimkubanychbekova".
+test=# \d
+Did not find any relations.
+test=# \dt
+Did not find any relations.
+test=# \c postgres
+You are now connected to database "postgres" as user "aigerimkubanychbekova".
+postgres=# \dt
+Did not find any relations.
+postgres=# \d
+Did not find any relations.
+postgres=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ test      | aigerimkubanychbekova | UTF8     | C       | C     | 
+(4 rows)
+
+postgres=# drop database test;
+DROP DATABASE
+postgres=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(3 rows)
+
+postgres=# \du
+                                         List of roles
+       Role name       |                         Attributes                         | Member of 
+-----------------------+------------------------------------------------------------+-----------
+ aigerimkubanychbekova | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+
+postgres=# create user test_user with password '1';
+CREATE ROLE
+postgres=#  \du
+                                         List of roles
+       Role name       |                         Attributes                         | Member of 
+-----------------------+------------------------------------------------------------+-----------
+ aigerimkubanychbekova | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ test_user             |                                                            | {}
+
+postgres=# alter role test_user with superuser
+postgres-# \du
+                                         List of roles
+       Role name       |                         Attributes                         | Member of 
+-----------------------+------------------------------------------------------------+-----------
+ aigerimkubanychbekova | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ test_user             |                                                            | {}
+
+postgres-# ;
+ALTER ROLE
+postgres=# \du
+                                         List of roles
+       Role name       |                         Attributes                         | Member of 
+-----------------------+------------------------------------------------------------+-----------
+ aigerimkubanychbekova | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ test_user             | Superuser                                                  | {}
+
+postgres=# exit
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ psql postgres
+psql (13.2)
+Type "help" for help.
+
+postgres=# create database test_user;
+CREATE DATABASE
+postgres=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ test_user | aigerimkubanychbekova | UTF8     | C       | C     | 
+(4 rows)
+
+postgres=# \du
+                                         List of roles
+       Role name       |                         Attributes                         | Member of 
+-----------------------+------------------------------------------------------------+-----------
+ aigerimkubanychbekova | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ test_user             | Superuser                                                  | {}
+
+postgres=# exit
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ psql test_user
+psql (13.2)
+Type "help" for help.
+
+test_user=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ test_user | aigerimkubanychbekova | UTF8     | C       | C     | 
+(4 rows)
+
+test_user=# \c postgres
+You are now connected to database "postgres" as user "aigerimkubanychbekova".
+postgres=# exit
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ psql -U test_user
+psql (13.2)
+Type "help" for help.
+
+test_user=# \c postgres
+You are now connected to database "postgres" as user "test_user".
+postgres=# \c test_user
+You are now connected to database "test_user" as user "test_user".
+test_user=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ test_user | aigerimkubanychbekova | UTF8     | C       | C     | 
+(4 rows)
+
+test_user=# grant all privilages on database test_user to test_user
+test_user-# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ test_user | aigerimkubanychbekova | UTF8     | C       | C     | 
+(4 rows)
+
+test_user-# \du
+                                         List of roles
+       Role name       |                         Attributes                         | Member of 
+-----------------------+------------------------------------------------------------+-----------
+ aigerimkubanychbekova | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ test_user             | Superuser                                                  | {}
+
+test_user-# grant all privilages on database test_user to test_user;
+ERROR:  syntax error at or near "privilages"
+LINE 1: grant all privilages on database test_user to test_user
+                  ^
+test_user=# grant all privileges on database test_user to test_user;
+GRANT
+test_user=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ test_user | aigerimkubanychbekova | UTF8     | C       | C     | =Tc/aigerimkubanychbekova                      +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova+
+           |                       |          |         |       | test_user=CTc/aigerimkubanychbekova
+(4 rows)
+
+test_user=# \du
+                                         List of roles
+       Role name       |                         Attributes                         | Member of 
+-----------------------+------------------------------------------------------------+-----------
+ aigerimkubanychbekova | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ test_user             | Superuser                                                  | {}
+
+test_user=# \q
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ psql postgres
+psql (13.2)
+Type "help" for help.
+
+postgres=# drop user test_user
+postgres-# ;
+ERROR:  role "test_user" cannot be dropped because some objects depend on it
+DETAIL:  privileges for database test_user
+postgres=# drop user 
+postgres-# drop user 'test_user';
+ERROR:  syntax error at or near "user"
+LINE 2: drop user 'test_user';
+             ^
+postgres=# drop user test_user
+postgres-# ;
+ERROR:  role "test_user" cannot be dropped because some objects depend on it
+DETAIL:  privileges for database test_user
+postgres=# \du
+                                         List of roles
+       Role name       |                         Attributes                         | Member of 
+-----------------------+------------------------------------------------------------+-----------
+ aigerimkubanychbekova | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ test_user             | Superuser                                                  | {}
+
+postgres=# revoke all privileges on test_user from test_user
+postgres-# ;
+ERROR:  relation "test_user" does not exist
+postgres=# alter role test_user NOSUPERUSER;
+ALTER ROLE
+postgres=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ test_user | aigerimkubanychbekova | UTF8     | C       | C     | =Tc/aigerimkubanychbekova                      +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova+
+           |                       |          |         |       | test_user=CTc/aigerimkubanychbekova
+(4 rows)
+
+postgres=# \du
+                                         List of roles
+       Role name       |                         Attributes                         | Member of 
+-----------------------+------------------------------------------------------------+-----------
+ aigerimkubanychbekova | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ test_user             |                                                            | {}
+
+postgres=# drop test_user
+postgres-# ;
+ERROR:  syntax error at or near "test_user"
+LINE 1: drop test_user
+             ^
+postgres=# drop user test_user;
+ERROR:  role "test_user" cannot be dropped because some objects depend on it
+DETAIL:  privileges for database test_user
+postgres=# drop test_user
+postgres-# ;
+ERROR:  syntax error at or near "test_user"
+LINE 1: drop test_user
+             ^
+postgres=# drop database test_user;
+DROP DATABASE
+postgres=# drop user test_user;
+DROP ROLE
+postgres=# \du
+                                         List of roles
+       Role name       |                         Attributes                         | Member of 
+-----------------------+------------------------------------------------------------+-----------
+ aigerimkubanychbekova | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+
+postgres=# \du
+                                         List of roles
+       Role name       |                         Attributes                         | Member of 
+-----------------------+------------------------------------------------------------+-----------
+ aigerimkubanychbekova | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+
+postgres=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(3 rows)
+
+postgres=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(3 rows)
+
+postgres=# create database test with owner user_test
+postgres-# ;
+ERROR:  role "user_test" does not exist
+postgres=# create user user_test;
+CREATE ROLE
+postgres=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(3 rows)
+
+postgres=# \du
+                                         List of roles
+       Role name       |                         Attributes                         | Member of 
+-----------------------+------------------------------------------------------------+-----------
+ aigerimkubanychbekova | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ user_test             |                                                            | {}
+
+postgres=# create database test with owner user_test
+;
+CREATE DATABASE
+postgres=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ test      | user_test             | UTF8     | C       | C     | 
+(4 rows)
+
+postgres=# drop user test;
+ERROR:  role "test" does not exist
+postgres=# drop user user_test;
+ERROR:  role "user_test" cannot be dropped because some objects depend on it
+DETAIL:  owner of database test
+postgres=# \c test
+You are now connected to database "test" as user "aigerimkubanychbekova".
+test=# exit
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ psql -U user_test;
+psql: error: FATAL:  database "user_test" does not exist
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ psql -U user_test
+psql: error: FATAL:  database "user_test" does not exist
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ psql -U test
+psql: error: FATAL:  role "test" does not exist
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ psql postgres
+psql (13.2)
+Type "help" for help.
+
+postgres=# alter role user_test with superuser;
+ALTER ROLE
+postgres=# grant all privilages on test to user_test;
+ERROR:  syntax error at or near "privilages"
+LINE 1: grant all privilages on test to user_test;
+                  ^
+postgres=# grant all privileges on test to user_test;
+ERROR:  relation "test" does not exist
+postgres=# drop user user_test;
+ERROR:  role "user_test" cannot be dropped because some objects depend on it
+DETAIL:  owner of database test
+postgres=# drop database test;
+DROP DATABASE
+postgres=# drop user user_test;
+DROP ROLE
+postgres=# \du
+                                         List of roles
+       Role name       |                         Attributes                         | Member of 
+-----------------------+------------------------------------------------------------+-----------
+ aigerimkubanychbekova | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+
+postgres=# create user test_user with password '1';
+CREATE ROLE
+postgres=# create database db;
+CREATE DATABASE
+postgres=# \du
+                                         List of roles
+       Role name       |                         Attributes                         | Member of 
+-----------------------+------------------------------------------------------------+-----------
+ aigerimkubanychbekova | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ test_user             |                                                            | {}
+
+postgres=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ db        | aigerimkubanychbekova | UTF8     | C       | C     | 
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(4 rows)
+
+postgres=# \du
+                                         List of roles
+       Role name       |                         Attributes                         | Member of 
+-----------------------+------------------------------------------------------------+-----------
+ aigerimkubanychbekova | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ test_user             |                                                            | {}
+
+postgres=# alter role test_user with superuser;
+ALTER ROLE
+postgres=# grant all privileges on db to test_user
+postgres-# ;
+ERROR:  relation "db" does not exist
+postgres=# \du
+                                         List of roles
+       Role name       |                         Attributes                         | Member of 
+-----------------------+------------------------------------------------------------+-----------
+ aigerimkubanychbekova | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ test_user             | Superuser                                                  | {}
+
+postgres=# \c db
+You are now connected to database "db" as user "aigerimkubanychbekova".
+db=# grant all privilages on db to test_user;
+ERROR:  syntax error at or near "privilages"
+LINE 1: grant all privilages on db to test_user;
+                  ^
+db=# grant all privileges on db to test_user;
+ERROR:  relation "db" does not exist
+db=# \c postgres
+You are now connected to database "postgres" as user "aigerimkubanychbekova".
+postgres=# exit 
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ psql -U test_user;
+psql: error: FATAL:  database "test_user" does not exist
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ psql postgres
+psql (13.2)
+Type "help" for help.
+
+postgres=# create database test_user
+postgres-# ;
+CREATE DATABASE
+postgres=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ db        | aigerimkubanychbekova | UTF8     | C       | C     | 
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ test_user | aigerimkubanychbekova | UTF8     | C       | C     | 
+(5 rows)
+
+postgres=# grant all privileges on db to test_user;
+ERROR:  relation "db" does not exist
+postgres=# drop user test_user
+postgres-# ;
+DROP ROLE
+postgres=# drop db;
+ERROR:  syntax error at or near "db"
+LINE 1: drop db;
+             ^
+postgres=# drop database db;
+DROP DATABASE
+postgres=# drop database test_user;
+DROP DATABASE
+postgres=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(3 rows)
+
+postgres=# create user aika with password '1';
+CREATE ROLE
+postgres=# \du
+                                         List of roles
+       Role name       |                         Attributes                         | Member of 
+-----------------------+------------------------------------------------------------+-----------
+ aigerimkubanychbekova | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ aika                  |                                                            | {}
+
+postgres=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(3 rows)
+
+postgres=# create database aika;
+CREATE DATABASE
+postgres=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ aika      | aigerimkubanychbekova | UTF8     | C       | C     | 
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(4 rows)
+
+postgres=# alter role aika with superuser;
+ALTER ROLE
+postgres=# grant all privileges on database aika to aika
+postgres-# ;
+GRANT
+postgres=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ aika      | aigerimkubanychbekova | UTF8     | C       | C     | =Tc/aigerimkubanychbekova                      +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova+
+           |                       |          |         |       | aika=CTc/aigerimkubanychbekova
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(4 rows)
+
+postgres=# \du
+                                         List of roles
+       Role name       |                         Attributes                         | Member of 
+-----------------------+------------------------------------------------------------+-----------
+ aigerimkubanychbekova | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ aika                  | Superuser                                                  | {}
+
+postgres=# \du
+                                         List of roles
+       Role name       |                         Attributes                         | Member of 
+-----------------------+------------------------------------------------------------+-----------
+ aigerimkubanychbekova | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ aika                  | Superuser                                                  | {}
+
+postgres=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ aika      | aigerimkubanychbekova | UTF8     | C       | C     | =Tc/aigerimkubanychbekova                      +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova+
+           |                       |          |         |       | aika=CTc/aigerimkubanychbekova
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(4 rows)
+
+postgres=# \c aika
+You are now connected to database "aika" as user "aigerimkubanychbekova".
+aika=# exit
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ psql -U aika
+psql (13.2)
+Type "help" for help.
+
+aika=# \c aika
+You are now connected to database "aika" as user "aika".
+aika=# \du
+                                         List of roles
+       Role name       |                         Attributes                         | Member of 
+-----------------------+------------------------------------------------------------+-----------
+ aigerimkubanychbekova | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ aika                  | Superuser                                                  | {}
+
+aika=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ aika      | aigerimkubanychbekova | UTF8     | C       | C     | =Tc/aigerimkubanychbekova                      +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova+
+           |                       |          |         |       | aika=CTc/aigerimkubanychbekova
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(4 rows)
+
+aika=# \c postgres
+You are now connected to database "postgres" as user "aika".
+postgres=# drop database aika
+postgres-# ;
+DROP DATABASE
+postgres=# drop user aika
+postgres-# ;
+ERROR:  current user cannot be dropped
+postgres=# exit
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ psql postgres
+psql (13.2)
+Type "help" for help.
+
+postgres=# drop user aika
+postgres-# ;
+DROP ROLE
+postgres=# \k
+invalid command \k
+Try \? for help.
+postgres=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(3 rows)
+
+postgres=# create user aika;
+CREATE ROLE
+postgres=# alter role aika with superuser;
+ALTER ROLE
+postgres=# create database db with owner aika;
+CREATE DATABASE
+postgres=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ db        | aika                  | UTF8     | C       | C     | 
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(4 rows)
+
+postgres=# 
+postgres=# grant all privileges on db to aika
+postgres-# ;
+ERROR:  relation "db" does not exist
+postgres=# exit
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ psql -U aika
+psql: error: FATAL:  database "aika" does not exist
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ psql -U db;
+psql: error: FATAL:  role "db" does not exist
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ psql -U db
+psql: error: FATAL:  role "db" does not exist
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ drop db
+-bash: drop: command not found
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ drop database db;
+-bash: drop: command not found
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ psql postgres
+psql (13.2)
+Type "help" for help.
+
+postgres=# drop database db;
+DROP DATABASE
+postgres=# drop user aika;
+DROP ROLE
+postgres=# \du
+                                         List of roles
+       Role name       |                         Attributes                         | Member of 
+-----------------------+------------------------------------------------------------+-----------
+ aigerimkubanychbekova | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+
+postgres=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(3 rows)
+
+postgres=# create user aika with password '1'
+postgres-# ;
+CREATE ROLE
+postgres=# alter role aika with superuser;
+ALTER ROLE
+postgres=# grant all privileges on aika to aika
+postgres-# ;
+ERROR:  relation "aika" does not exist
+postgres=# 
+postgres=# grant all privileges on database aika to aika
+;
+ERROR:  database "aika" does not exist
+postgres=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(3 rows)
+
+postgres=# create database aika;
+CREATE DATABASE
+postgres=# grant all privileges on database aika to aika
+;
+GRANT
+postgres=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ aika      | aigerimkubanychbekova | UTF8     | C       | C     | =Tc/aigerimkubanychbekova                      +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova+
+           |                       |          |         |       | aika=CTc/aigerimkubanychbekova
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(4 rows)
+
+postgres=# exit
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ psql -U aika;
+psql (13.2)
+Type "help" for help.
+
+aika=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ aika      | aigerimkubanychbekova | UTF8     | C       | C     | =Tc/aigerimkubanychbekova                      +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova+
+           |                       |          |         |       | aika=CTc/aigerimkubanychbekova
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(4 rows)
+
+aika=# \c postgres;
+You are now connected to database "postgres" as user "aika".
+postgres=# \c aika
+You are now connected to database "aika" as user "aika".
+aika=# create database db;
+CREATE DATABASE
+aika=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ aika      | aigerimkubanychbekova | UTF8     | C       | C     | =Tc/aigerimkubanychbekova                      +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova+
+           |                       |          |         |       | aika=CTc/aigerimkubanychbekova
+ db        | aika                  | UTF8     | C       | C     | 
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(5 rows)
+
+aika=# create table Person{
+aika-# ;
+ERROR:  syntax error at or near "{"
+LINE 1: create table Person{
+                           ^
+aika=# create table Person(
+aika(# id serial primary key,
+aika(# name varchar(50) NOT NULL,
+aika(# last_name varchar(100),
+aika(# country varchar(50) NOT NULL);
+CREATE TABLE
+aika=# \dt
+        List of relations
+ Schema |  Name  | Type  | Owner 
+--------+--------+-------+-------
+ public | person | table | aika
+(1 row)
+
+aika=# \dt person
+        List of relations
+ Schema |  Name  | Type  | Owner 
+--------+--------+-------+-------
+ public | person | table | aika
+(1 row)
+
+aika=# \d person
+                                     Table "public.person"
+  Column   |          Type          | Collation | Nullable |              Default               
+-----------+------------------------+-----------+----------+------------------------------------
+ id        | integer                |           | not null | nextval('person_id_seq'::regclass)
+ name      | character varying(50)  |           | not null | 
+ last_name | character varying(100) |           |          | 
+ country   | character varying(50)  |           | not null | 
+Indexes:
+    "person_pkey" PRIMARY KEY, btree (id)
+
+aika=# \du
+                                         List of roles
+       Role name       |                         Attributes                         | Member of 
+-----------------------+------------------------------------------------------------+-----------
+ aigerimkubanychbekova | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ aika                  | Superuser                                                  | {}
+
+aika=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ aika      | aigerimkubanychbekova | UTF8     | C       | C     | =Tc/aigerimkubanychbekova                      +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova+
+           |                       |          |         |       | aika=CTc/aigerimkubanychbekova
+ db        | aika                  | UTF8     | C       | C     | 
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(5 rows)
+
+aika=# create database mydb;
+CREATE DATABASE
+aika=# \d
+             List of relations
+ Schema |     Name      |   Type   | Owner 
+--------+---------------+----------+-------
+ public | person        | table    | aika
+ public | person_id_seq | sequence | aika
+(2 rows)
+
+aika=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ aika      | aigerimkubanychbekova | UTF8     | C       | C     | =Tc/aigerimkubanychbekova                      +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova+
+           |                       |          |         |       | aika=CTc/aigerimkubanychbekova
+ db        | aika                  | UTF8     | C       | C     | 
+ mydb      | aika                  | UTF8     | C       | C     | 
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(6 rows)
+
+aika=# \c mydb
+You are now connected to database "mydb" as user "aika".
+mydb=# create type language as enum('Python', 'JavaScript');
+CREATE TYPE
+mydb=# create table info(
+mydb(# id serial primary key,
+mydb(# name varchar(50) NOT NULL,
+mydb(# lastname varchar(100),
+mydb(# country varchar(60),
+mydb(# email varchar(50) unique,
+mydb(# age int,
+mydb(# programming_language language not null,
+mydb(# experience int);
+CREATE TABLE
+mydb=# \d
+            List of relations
+ Schema |    Name     |   Type   | Owner 
+--------+-------------+----------+-------
+ public | info        | table    | aika
+ public | info_id_seq | sequence | aika
+(2 rows)
+
+mydb=# \dt
+       List of relations
+ Schema | Name | Type  | Owner 
+--------+------+-------+-------
+ public | info | table | aika
+(1 row)
+
+mydb=# \d info
+                                           Table "public.info"
+        Column        |          Type          | Collation | Nullable |             Default              
+----------------------+------------------------+-----------+----------+----------------------------------
+ id                   | integer                |           | not null | nextval('info_id_seq'::regclass)
+ name                 | character varying(50)  |           | not null | 
+ lastname             | character varying(100) |           |          | 
+ country              | character varying(60)  |           |          | 
+ email                | character varying(50)  |           |          | 
+ age                  | integer                |           |          | 
+ programming_language | language               |           | not null | 
+ experience           | integer                |           |          | 
+Indexes:
+    "info_pkey" PRIMARY KEY, btree (id)
+    "info_email_key" UNIQUE CONSTRAINT, btree (email)
+
+mydb=# insert into info (name, lastname, country, email, age, programming_language, experience) values ('Aigerim', "Kubanychbek kyzy", "Kyrgyzstan", "aikamusiconly@gmail.com", 21, "Python", 0), ('Zalkar', 'Omurzhanov', 'Kyrgyzstan', 'zo@gmail.com', 21, 'Python', 5);
+ERROR:  column "Kubanychbek kyzy" does not exist
+LINE 1: ...gramming_language, experience) values ('Aigerim', "Kubanychb...
+                                                             ^
+mydb=# insert into info (name, lastname, country, email, age, programming_language, experience) values ('Aigerim', 'Kubanychbek kyzy', 'Kyrgyzstan', 'aikamusiconly@gmail.com', 21, 'Python', 0), ('Zalkar', 'Omurzhanov', 'Kyrgyzstan', 'zo@gmail.com', 21, 'Python', 5);
+INSERT 0 2
+mydb=# insert into info (name, lastname, country, email, age, programming_language, experience) values ('Anastasia', 'Tuzikova', 'Kyrgyzstan', 'at@gmail.com', 19, 'Python', 0), ('Adilet', 'Nasirov', 'Kyrgyzstan', 'adiletnasirov@gmail.com', 20, 'Python', 2);
+INSERT 0 2
+mydb=# \d info
+                                           Table "public.info"
+        Column        |          Type          | Collation | Nullable |             Default              
+----------------------+------------------------+-----------+----------+----------------------------------
+ id                   | integer                |           | not null | nextval('info_id_seq'::regclass)
+ name                 | character varying(50)  |           | not null | 
+ lastname             | character varying(100) |           |          | 
+ country              | character varying(60)  |           |          | 
+ email                | character varying(50)  |           |          | 
+ age                  | integer                |           |          | 
+ programming_language | language               |           | not null | 
+ experience           | integer                |           |          | 
+Indexes:
+    "info_pkey" PRIMARY KEY, btree (id)
+    "info_email_key" UNIQUE CONSTRAINT, btree (email)
+
+mydb=# \dt info
+       List of relations
+ Schema | Name | Type  | Owner 
+--------+------+-------+-------
+ public | info | table | aika
+(1 row)
+
+mydb=# select * from info
+mydb-# ;
+ id |   name    |     lastname     |  country   |          email          | age | programming_language | experience 
+----+-----------+------------------+------------+-------------------------+-----+----------------------+------------
+  1 | Aigerim   | Kubanychbek kyzy | Kyrgyzstan | aikamusiconly@gmail.com |  21 | Python               |          0
+  2 | Zalkar    | Omurzhanov       | Kyrgyzstan | zo@gmail.com            |  21 | Python               |          5
+  3 | Anastasia | Tuzikova         | Kyrgyzstan | at@gmail.com            |  19 | Python               |          0
+  4 | Adilet    | Nasirov          | Kyrgyzstan | adiletnasirov@gmail.com |  20 | Python               |          2
+(4 rows)
+
+mydb=# \i info.txt
+info.txt: No such file or directory
+mydb=# exit
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ cd Desktop
+MacBook-Air-Aigerim:Desktop aigerimkubanychbekova$ psql aika
+psql (13.2)
+Type "help" for help.
+
+aika=# \c mydb
+You are now connected to database "mydb" as user "aigerimkubanychbekova".
+mydb=# \i info.txt
+psql:info.txt:2: ERROR:  VALUES lists must all be the same length
+LINE 1: ...ev', 'Uganda', 'is@gmail.com', 21, 'Python', 1), ('Jannat', ...
+                                                             ^
+mydb=# \d mydb
+Did not find any relation named "mydb".
+mydb=# \dt mydb
+Did not find any relation named "mydb".
+mydb=# \dt
+       List of relations
+ Schema | Name | Type  | Owner 
+--------+------+-------+-------
+ public | info | table | aika
+(1 row)
+
+mydb=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ aika      | aigerimkubanychbekova | UTF8     | C       | C     | =Tc/aigerimkubanychbekova                      +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova+
+           |                       |          |         |       | aika=CTc/aigerimkubanychbekova
+ db        | aika                  | UTF8     | C       | C     | 
+ kfc_menu  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ mydb      | aika                  | UTF8     | C       | C     | 
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(7 rows)
+
+mydb=# \u
+invalid command \u
+Try \? for help.
+mydb=# \d info
+                                           Table "public.info"
+        Column        |          Type          | Collation | Nullable |             Default              
+----------------------+------------------------+-----------+----------+----------------------------------
+ id                   | integer                |           | not null | nextval('info_id_seq'::regclass)
+ name                 | character varying(50)  |           | not null | 
+ lastname             | character varying(100) |           |          | 
+ country              | character varying(60)  |           |          | 
+ email                | character varying(50)  |           |          | 
+ age                  | integer                |           |          | 
+ programming_language | language               |           | not null | 
+ experience           | integer                |           |          | 
+Indexes:
+    "info_pkey" PRIMARY KEY, btree (id)
+    "info_email_key" UNIQUE CONSTRAINT, btree (email)
+
+mydb=# select * from info
+mydb-# ;
+ id |   name    |     lastname     |  country   |          email          | age | programming_language | experience 
+----+-----------+------------------+------------+-------------------------+-----+----------------------+------------
+  1 | Aigerim   | Kubanychbek kyzy | Kyrgyzstan | aikamusiconly@gmail.com |  21 | Python               |          0
+  2 | Zalkar    | Omurzhanov       | Kyrgyzstan | zo@gmail.com            |  21 | Python               |          5
+  3 | Anastasia | Tuzikova         | Kyrgyzstan | at@gmail.com            |  19 | Python               |          0
+  4 | Adilet    | Nasirov          | Kyrgyzstan | adiletnasirov@gmail.com |  20 | Python               |          2
+(4 rows)
+
+mydb=# \i info.txt
+psql:info.txt:2: ERROR:  duplicate key value violates unique constraint "info_email_key"
+DETAIL:  Key (email)=(zo@gmail.com) already exists.
+mydb=# \i info.txt
+INSERT 0 11
+mydb=# select * from info
+mydb-# ;
+ id |   name    |     lastname     |  country   |          email          | age | programming_language | experience 
+----+-----------+------------------+------------+-------------------------+-----+----------------------+------------
+  1 | Aigerim   | Kubanychbek kyzy | Kyrgyzstan | aikamusiconly@gmail.com |  21 | Python               |          0
+  2 | Zalkar    | Omurzhanov       | Kyrgyzstan | zo@gmail.com            |  21 | Python               |          5
+  3 | Anastasia | Tuzikova         | Kyrgyzstan | at@gmail.com            |  19 | Python               |          0
+  4 | Adilet    | Nasirov          | Kyrgyzstan | adiletnasirov@gmail.com |  20 | Python               |          2
+ 16 | Begimai   | Dosieva          | Kyrgyzstan | db@gmail.com            |  21 | Python               |          1
+ 17 | Marsel    | Ysakov           | Kyrgyzstan | my@gmail.com            |  23 | Python               |          2
+ 18 | Azat      | Maksatbekov      | Macedonia  | am@gmail.com            |  26 | Python               |          1
+ 19 | Eles      | Ysakov           | Yemen      | ey@gmail.com            |  24 | Python               |          1
+ 20 | Sharip    | Khoshanlo        | Kazakhstan | sh@gmail.com            |  20 | Python               |          3
+ 21 | Shamil    | Kalmatov         | Kuwait     | sk@gmail.com            |  17 | Python               |          1
+ 22 | Insan     | Usupbaev         | Uganda     | is@gmail.com            |  21 | Python               |          1
+ 23 | Jannat    | Turdumbayeva     | Thailand   | jt@gmail.com            |  28 | Python               |          1
+ 24 | Aidar     | Jumakadyrov      | Jamaica    | aj@gmail.com            |  21 | Python               |          3
+ 25 | Aigerim   | Sultanalieva     | Spain      | as@gmail.com            |  22 | Python               |          5
+ 26 | Zalkar    | Omurzhanov       | Oman       | lovely@gmail.com        |  21 | Python               |         10
+(15 rows)
+
+mydb=# drop info
+mydb-# ;
+ERROR:  syntax error at or near "info"
+LINE 1: drop info
+             ^
+mydb=# drop table info;
+DROP TABLE
+mydb=# \d info
+Did not find any relation named "info".
+mydb=# create table info;
+ERROR:  syntax error at or near ";"
+LINE 1: create table info;
+                         ^
+mydb=# create table info
+mydb-# ;
+ERROR:  syntax error at or near ";"
+LINE 2: ;
+        ^
+mydb=# create table Person(
+aika(# id serial primary key,
+aika(# name varchar(50) NOT NULL,
+aika(# last_name varchar(100),
+ country varchar(50) NOT NULL);
+mydb(# )
+mydb(# )
+mydb(# ;
+mydb(# )
+mydb-# );
+ERROR:  syntax error at or near "("
+LINE 2: aika(# id serial primary key,
+            ^
+mydb=# create table info(
+mydb(# id serial primary key,
+mydb(# name varchar(50) NOT NULL,
+mydb(# lastname varchar(100),
+mydb(# country varchar(60),
+mydb(# email varchar(50) unique,
+mydb(# age int,
+mydb(# programming_language language not null,
+mydb(# experience int);
+mydb(# ;
+mydb(# )
+mydb(# ;
+mydb(# )
+mydb(# )
+mydb(# );
+mydb(# )
+mydb(# );
+mydb(# )
+mydb(# ;
+mydb(# dsa
+mydb(# )
+mydb-# ;
+ERROR:  syntax error at or near "("
+LINE 2: mydb(# id serial primary key,
+            ^
+mydb=# create table info(
+ id serial primary key,
+ name varchar(50) NOT NULL,
+ lastname varchar(100),
+ country varchar(60),
+ email varchar(50) unique,
+ age int,
+ programming_language language not null,
+ experience int);
+CREATE TABLE
+mydb=# \d
+                    List of relations
+ Schema |    Name     |   Type   |         Owner         
+--------+-------------+----------+-----------------------
+ public | info        | table    | aigerimkubanychbekova
+ public | info_id_seq | sequence | aigerimkubanychbekova
+(2 rows)
+
+mydb=# \dt
+               List of relations
+ Schema | Name | Type  |         Owner         
+--------+------+-------+-----------------------
+ public | info | table | aigerimkubanychbekova
+(1 row)
+
+mydb=# \d info
+                                           Table "public.info"
+        Column        |          Type          | Collation | Nullable |             Default              
+----------------------+------------------------+-----------+----------+----------------------------------
+ id                   | integer                |           | not null | nextval('info_id_seq'::regclass)
+ name                 | character varying(50)  |           | not null | 
+ lastname             | character varying(100) |           |          | 
+ country              | character varying(60)  |           |          | 
+ email                | character varying(50)  |           |          | 
+ age                  | integer                |           |          | 
+ programming_language | language               |           | not null | 
+ experience           | integer                |           |          | 
+Indexes:
+    "info_pkey" PRIMARY KEY, btree (id)
+    "info_email_key" UNIQUE CONSTRAINT, btree (email)
+
+mydb=# \i info.txt
+INSERT 0 5
+psql:info.txt:2: ERROR:  syntax error at or near "'Marsel'"
+LINE 1: ('Marsel', 'Ysakov', 'Kyrgyzstan', 'my@gmail.com', 23, 'Pyth...
+         ^
+mydb=# \d info
+                                           Table "public.info"
+        Column        |          Type          | Collation | Nullable |             Default              
+----------------------+------------------------+-----------+----------+----------------------------------
+ id                   | integer                |           | not null | nextval('info_id_seq'::regclass)
+ name                 | character varying(50)  |           | not null | 
+ lastname             | character varying(100) |           |          | 
+ country              | character varying(60)  |           |          | 
+ email                | character varying(50)  |           |          | 
+ age                  | integer                |           |          | 
+ programming_language | language               |           | not null | 
+ experience           | integer                |           |          | 
+Indexes:
+    "info_pkey" PRIMARY KEY, btree (id)
+    "info_email_key" UNIQUE CONSTRAINT, btree (email)
+
+mydb=# select * from info
+mydb-# ;
+ id |   name    |     lastname     |  country   |          email          | age | programming_language | experience 
+----+-----------+------------------+------------+-------------------------+-----+----------------------+------------
+  1 | Begimai   | Dosieva          | Kyrgyzstan | db@gmail.com            |  21 | Python               |          1
+  2 | Anastasia | Tuzikova         | Kyrgyzstan | at@gmail.com            |  19 | Python               |          0
+  3 | Adilet    | Nasirov          | Kyrgyzstan | adiletnasirov@gmail.com |  20 | Python               |          2
+  4 | Aigerim   | Kubanychbek kyzy | Kyrgyzstan | aikamusiconly@gmail.com |  21 | Python               |          0
+  5 | Zalkar    | Omurzhanov       | Kyrgyzstan | zo@gmail.com            |  21 | Python               |          5
+(5 rows)
+
+mydb=# delete info
+mydb-# ;
+ERROR:  syntax error at or near "info"
+LINE 1: delete info
+               ^
+mydb=# delete from info
+mydb-# ;
+DELETE 5
+mydb=# select * from info
+mydb-# ;
+ id | name | lastname | country | email | age | programming_language | experience 
+----+------+----------+---------+-------+-----+----------------------+------------
+(0 rows)
+
+mydb=# \i info.txt
+INSERT 0 15
+mydb=# select * from info;
+ id |   name    |     lastname     |  country   |          email          | age | programming_language | experience 
+----+-----------+------------------+------------+-------------------------+-----+----------------------+------------
+  6 | Begimai   | Dosieva          | Kyrgyzstan | db@gmail.com            |  21 | Python               |          1
+  7 | Anastasia | Tuzikova         | Kyrgyzstan | at@gmail.com            |  19 | Python               |          0
+  8 | Adilet    | Nasirov          | Kyrgyzstan | adiletnasirov@gmail.com |  20 | Python               |          2
+  9 | Aigerim   | Kubanychbek kyzy | Kyrgyzstan | aikamusiconly@gmail.com |  21 | Python               |          0
+ 10 | Zalkar    | Omurzhanov       | Kyrgyzstan | zo@gmail.com            |  21 | Python               |          5
+ 11 | Marsel    | Ysakov           | Kyrgyzstan | my@gmail.com            |  23 | Python               |          2
+ 12 | Azat      | Maksatbekov      | Macedonia  | am@gmail.com            |  26 | Python               |          1
+ 13 | Eles      | Ysakov           | Yemen      | ey@gmail.com            |  24 | Python               |          1
+ 14 | Sharip    | Khoshanlo        | Kazakhstan | sh@gmail.com            |  20 | Python               |          3
+ 15 | Shamil    | Kalmatov         | Kuwait     | sk@gmail.com            |  17 | Python               |          1
+ 16 | Insan     | Usupbaev         | Uganda     | is@gmail.com            |  21 | Python               |          1
+ 17 | Jannat    | Turdumbayeva     | Thailand   | jt@gmail.com            |  28 | Python               |          1
+ 18 | Aidar     | Jumakadyrov      | Jamaica    | aj@gmail.com            |  21 | Python               |          3
+ 19 | Aigerim   | Sultanalieva     | Spain      | as@gmail.com            |  22 | Python               |          5
+ 20 | Zalkar    | Omurzhanov       | Oman       | lovely@gmail.com        |  21 | Python               |         10
+(15 rows)
+
+mydb=# select name, last_name, email from info;
+ERROR:  column "last_name" does not exist
+LINE 1: select name, last_name, email from info;
+                     ^
+HINT:  Perhaps you meant to reference the column "info.lastname".
+mydb=# select name, lastname, email from info;
+   name    |     lastname     |          email          
+-----------+------------------+-------------------------
+ Begimai   | Dosieva          | db@gmail.com
+ Anastasia | Tuzikova         | at@gmail.com
+ Adilet    | Nasirov          | adiletnasirov@gmail.com
+ Aigerim   | Kubanychbek kyzy | aikamusiconly@gmail.com
+ Zalkar    | Omurzhanov       | zo@gmail.com
+ Marsel    | Ysakov           | my@gmail.com
+ Azat      | Maksatbekov      | am@gmail.com
+ Eles      | Ysakov           | ey@gmail.com
+ Sharip    | Khoshanlo        | sh@gmail.com
+ Shamil    | Kalmatov         | sk@gmail.com
+ Insan     | Usupbaev         | is@gmail.com
+ Jannat    | Turdumbayeva     | jt@gmail.com
+ Aidar     | Jumakadyrov      | aj@gmail.com
+ Aigerim   | Sultanalieva     | as@gmail.com
+ Zalkar    | Omurzhanov       | lovely@gmail.com
+(15 rows)
+
+mydb=# select name ||' ' || lastname from info;
+         ?column?         
+--------------------------
+ Begimai Dosieva
+ Anastasia Tuzikova
+ Adilet Nasirov
+ Aigerim Kubanychbek kyzy
+ Zalkar Omurzhanov
+ Marsel Ysakov
+ Azat Maksatbekov
+ Eles Ysakov
+ Sharip Khoshanlo
+ Shamil Kalmatov
+ Insan Usupbaev
+ Jannat Turdumbayeva
+ Aidar Jumakadyrov
+ Aigerim Sultanalieva
+ Zalkar Omurzhanov
+(15 rows)
+
+mydb=# select name ||' ' || lastname AS "Full name" from info;
+        Full name         
+--------------------------
+ Begimai Dosieva
+ Anastasia Tuzikova
+ Adilet Nasirov
+ Aigerim Kubanychbek kyzy
+ Zalkar Omurzhanov
+ Marsel Ysakov
+ Azat Maksatbekov
+ Eles Ysakov
+ Sharip Khoshanlo
+ Shamil Kalmatov
+ Insan Usupbaev
+ Jannat Turdumbayeva
+ Aidar Jumakadyrov
+ Aigerim Sultanalieva
+ Zalkar Omurzhanov
+(15 rows)
+
+mydb=# select name ||' ' || lastname AS "Full name",email from info;
+        Full name         |          email          
+--------------------------+-------------------------
+ Begimai Dosieva          | db@gmail.com
+ Anastasia Tuzikova       | at@gmail.com
+ Adilet Nasirov           | adiletnasirov@gmail.com
+ Aigerim Kubanychbek kyzy | aikamusiconly@gmail.com
+ Zalkar Omurzhanov        | zo@gmail.com
+ Marsel Ysakov            | my@gmail.com
+ Azat Maksatbekov         | am@gmail.com
+ Eles Ysakov              | ey@gmail.com
+ Sharip Khoshanlo         | sh@gmail.com
+ Shamil Kalmatov          | sk@gmail.com
+ Insan Usupbaev           | is@gmail.com
+ Jannat Turdumbayeva      | jt@gmail.com
+ Aidar Jumakadyrov        | aj@gmail.com
+ Aigerim Sultanalieva     | as@gmail.com
+ Zalkar Omurzhanov        | lovely@gmail.com
+(15 rows)
+
+mydb=# select * from info order by lastname;
+ id |   name    |     lastname     |  country   |          email          | age | programming_language | experience 
+----+-----------+------------------+------------+-------------------------+-----+----------------------+------------
+  6 | Begimai   | Dosieva          | Kyrgyzstan | db@gmail.com            |  21 | Python               |          1
+ 18 | Aidar     | Jumakadyrov      | Jamaica    | aj@gmail.com            |  21 | Python               |          3
+ 15 | Shamil    | Kalmatov         | Kuwait     | sk@gmail.com            |  17 | Python               |          1
+ 14 | Sharip    | Khoshanlo        | Kazakhstan | sh@gmail.com            |  20 | Python               |          3
+  9 | Aigerim   | Kubanychbek kyzy | Kyrgyzstan | aikamusiconly@gmail.com |  21 | Python               |          0
+ 12 | Azat      | Maksatbekov      | Macedonia  | am@gmail.com            |  26 | Python               |          1
+  8 | Adilet    | Nasirov          | Kyrgyzstan | adiletnasirov@gmail.com |  20 | Python               |          2
+ 20 | Zalkar    | Omurzhanov       | Oman       | lovely@gmail.com        |  21 | Python               |         10
+ 10 | Zalkar    | Omurzhanov       | Kyrgyzstan | zo@gmail.com            |  21 | Python               |          5
+ 19 | Aigerim   | Sultanalieva     | Spain      | as@gmail.com            |  22 | Python               |          5
+ 17 | Jannat    | Turdumbayeva     | Thailand   | jt@gmail.com            |  28 | Python               |          1
+  7 | Anastasia | Tuzikova         | Kyrgyzstan | at@gmail.com            |  19 | Python               |          0
+ 16 | Insan     | Usupbaev         | Uganda     | is@gmail.com            |  21 | Python               |          1
+ 13 | Eles      | Ysakov           | Yemen      | ey@gmail.com            |  24 | Python               |          1
+ 11 | Marsel    | Ysakov           | Kyrgyzstan | my@gmail.com            |  23 | Python               |          2
+(15 rows)
+
+mydb=# select * from info order by id asc;
+ id |   name    |     lastname     |  country   |          email          | age | programming_language | experience 
+----+-----------+------------------+------------+-------------------------+-----+----------------------+------------
+  6 | Begimai   | Dosieva          | Kyrgyzstan | db@gmail.com            |  21 | Python               |          1
+  7 | Anastasia | Tuzikova         | Kyrgyzstan | at@gmail.com            |  19 | Python               |          0
+  8 | Adilet    | Nasirov          | Kyrgyzstan | adiletnasirov@gmail.com |  20 | Python               |          2
+  9 | Aigerim   | Kubanychbek kyzy | Kyrgyzstan | aikamusiconly@gmail.com |  21 | Python               |          0
+ 10 | Zalkar    | Omurzhanov       | Kyrgyzstan | zo@gmail.com            |  21 | Python               |          5
+ 11 | Marsel    | Ysakov           | Kyrgyzstan | my@gmail.com            |  23 | Python               |          2
+ 12 | Azat      | Maksatbekov      | Macedonia  | am@gmail.com            |  26 | Python               |          1
+ 13 | Eles      | Ysakov           | Yemen      | ey@gmail.com            |  24 | Python               |          1
+ 14 | Sharip    | Khoshanlo        | Kazakhstan | sh@gmail.com            |  20 | Python               |          3
+ 15 | Shamil    | Kalmatov         | Kuwait     | sk@gmail.com            |  17 | Python               |          1
+ 16 | Insan     | Usupbaev         | Uganda     | is@gmail.com            |  21 | Python               |          1
+ 17 | Jannat    | Turdumbayeva     | Thailand   | jt@gmail.com            |  28 | Python               |          1
+ 18 | Aidar     | Jumakadyrov      | Jamaica    | aj@gmail.com            |  21 | Python               |          3
+ 19 | Aigerim   | Sultanalieva     | Spain      | as@gmail.com            |  22 | Python               |          5
+ 20 | Zalkar    | Omurzhanov       | Oman       | lovely@gmail.com        |  21 | Python               |         10
+(15 rows)
+
+mydb=# select * from info order by country asc;
+ id |   name    |     lastname     |  country   |          email          | age | programming_language | experience 
+----+-----------+------------------+------------+-------------------------+-----+----------------------+------------
+ 18 | Aidar     | Jumakadyrov      | Jamaica    | aj@gmail.com            |  21 | Python               |          3
+ 14 | Sharip    | Khoshanlo        | Kazakhstan | sh@gmail.com            |  20 | Python               |          3
+ 15 | Shamil    | Kalmatov         | Kuwait     | sk@gmail.com            |  17 | Python               |          1
+  7 | Anastasia | Tuzikova         | Kyrgyzstan | at@gmail.com            |  19 | Python               |          0
+ 10 | Zalkar    | Omurzhanov       | Kyrgyzstan | zo@gmail.com            |  21 | Python               |          5
+ 11 | Marsel    | Ysakov           | Kyrgyzstan | my@gmail.com            |  23 | Python               |          2
+  9 | Aigerim   | Kubanychbek kyzy | Kyrgyzstan | aikamusiconly@gmail.com |  21 | Python               |          0
+  6 | Begimai   | Dosieva          | Kyrgyzstan | db@gmail.com            |  21 | Python               |          1
+  8 | Adilet    | Nasirov          | Kyrgyzstan | adiletnasirov@gmail.com |  20 | Python               |          2
+ 12 | Azat      | Maksatbekov      | Macedonia  | am@gmail.com            |  26 | Python               |          1
+ 20 | Zalkar    | Omurzhanov       | Oman       | lovely@gmail.com        |  21 | Python               |         10
+ 19 | Aigerim   | Sultanalieva     | Spain      | as@gmail.com            |  22 | Python               |          5
+ 17 | Jannat    | Turdumbayeva     | Thailand   | jt@gmail.com            |  28 | Python               |          1
+ 16 | Insan     | Usupbaev         | Uganda     | is@gmail.com            |  21 | Python               |          1
+ 13 | Eles      | Ysakov           | Yemen      | ey@gmail.com            |  24 | Python               |          1
+(15 rows)
+
+mydb=# \d info
+                                           Table "public.info"
+        Column        |          Type          | Collation | Nullable |             Default              
+----------------------+------------------------+-----------+----------+----------------------------------
+ id                   | integer                |           | not null | nextval('info_id_seq'::regclass)
+ name                 | character varying(50)  |           | not null | 
+ lastname             | character varying(100) |           |          | 
+ country              | character varying(60)  |           |          | 
+ email                | character varying(50)  |           |          | 
+ age                  | integer                |           |          | 
+ programming_language | language               |           | not null | 
+ experience           | integer                |           |          | 
+Indexes:
+    "info_pkey" PRIMARY KEY, btree (id)
+    "info_email_key" UNIQUE CONSTRAINT, btree (email)
+
+mydb=# insert into info (name, country, programming_language, email, experience) values ('Cathrine', 'England','Python', 'cat@gmail.com', 2); 
+INSERT 0 1
+mydb=# select * from info
+mydb-# ;
+ id |   name    |     lastname     |  country   |          email          | age | programming_language | experience 
+----+-----------+------------------+------------+-------------------------+-----+----------------------+------------
+  6 | Begimai   | Dosieva          | Kyrgyzstan | db@gmail.com            |  21 | Python               |          1
+  7 | Anastasia | Tuzikova         | Kyrgyzstan | at@gmail.com            |  19 | Python               |          0
+  8 | Adilet    | Nasirov          | Kyrgyzstan | adiletnasirov@gmail.com |  20 | Python               |          2
+  9 | Aigerim   | Kubanychbek kyzy | Kyrgyzstan | aikamusiconly@gmail.com |  21 | Python               |          0
+ 10 | Zalkar    | Omurzhanov       | Kyrgyzstan | zo@gmail.com            |  21 | Python               |          5
+ 11 | Marsel    | Ysakov           | Kyrgyzstan | my@gmail.com            |  23 | Python               |          2
+ 12 | Azat      | Maksatbekov      | Macedonia  | am@gmail.com            |  26 | Python               |          1
+ 13 | Eles      | Ysakov           | Yemen      | ey@gmail.com            |  24 | Python               |          1
+ 14 | Sharip    | Khoshanlo        | Kazakhstan | sh@gmail.com            |  20 | Python               |          3
+ 15 | Shamil    | Kalmatov         | Kuwait     | sk@gmail.com            |  17 | Python               |          1
+ 16 | Insan     | Usupbaev         | Uganda     | is@gmail.com            |  21 | Python               |          1
+ 17 | Jannat    | Turdumbayeva     | Thailand   | jt@gmail.com            |  28 | Python               |          1
+ 18 | Aidar     | Jumakadyrov      | Jamaica    | aj@gmail.com            |  21 | Python               |          3
+ 19 | Aigerim   | Sultanalieva     | Spain      | as@gmail.com            |  22 | Python               |          5
+ 20 | Zalkar    | Omurzhanov       | Oman       | lovely@gmail.com        |  21 | Python               |         10
+ 21 | Cathrine  |                  | England    | cat@gmail.com           |     | Python               |          2
+(16 rows)
+
+mydb=# select * from info order by lastname asc nulls first;
+ id |   name    |     lastname     |  country   |          email          | age | programming_language | experience 
+----+-----------+------------------+------------+-------------------------+-----+----------------------+------------
+ 21 | Cathrine  |                  | England    | cat@gmail.com           |     | Python               |          2
+  6 | Begimai   | Dosieva          | Kyrgyzstan | db@gmail.com            |  21 | Python               |          1
+ 18 | Aidar     | Jumakadyrov      | Jamaica    | aj@gmail.com            |  21 | Python               |          3
+ 15 | Shamil    | Kalmatov         | Kuwait     | sk@gmail.com            |  17 | Python               |          1
+ 14 | Sharip    | Khoshanlo        | Kazakhstan | sh@gmail.com            |  20 | Python               |          3
+  9 | Aigerim   | Kubanychbek kyzy | Kyrgyzstan | aikamusiconly@gmail.com |  21 | Python               |          0
+ 12 | Azat      | Maksatbekov      | Macedonia  | am@gmail.com            |  26 | Python               |          1
+  8 | Adilet    | Nasirov          | Kyrgyzstan | adiletnasirov@gmail.com |  20 | Python               |          2
+ 10 | Zalkar    | Omurzhanov       | Kyrgyzstan | zo@gmail.com            |  21 | Python               |          5
+ 20 | Zalkar    | Omurzhanov       | Oman       | lovely@gmail.com        |  21 | Python               |         10
+ 19 | Aigerim   | Sultanalieva     | Spain      | as@gmail.com            |  22 | Python               |          5
+ 17 | Jannat    | Turdumbayeva     | Thailand   | jt@gmail.com            |  28 | Python               |          1
+  7 | Anastasia | Tuzikova         | Kyrgyzstan | at@gmail.com            |  19 | Python               |          0
+ 16 | Insan     | Usupbaev         | Uganda     | is@gmail.com            |  21 | Python               |          1
+ 11 | Marsel    | Ysakov           | Kyrgyzstan | my@gmail.com            |  23 | Python               |          2
+ 13 | Eles      | Ysakov           | Yemen      | ey@gmail.com            |  24 | Python               |          1
+(16 rows)
+
+mydb=# select disctinct country from info;
+ERROR:  column "disctinct" does not exist
+LINE 1: select disctinct country from info;
+               ^
+mydb=# select distinct country from info;
+  country   
+------------
+ Uganda
+ Macedonia
+ Kyrgyzstan
+ Kuwait
+ Spain
+ Thailand
+ Oman
+ England
+ Kazakhstan
+ Jamaica
+ Yemen
+(11 rows)
+
+mydb=# select distinct on(country) country, lastname from info order by country, lastname;
+  country   |   lastname   
+------------+--------------
+ England    | 
+ Jamaica    | Jumakadyrov
+ Kazakhstan | Khoshanlo
+ Kuwait     | Kalmatov
+ Kyrgyzstan | Dosieva
+ Macedonia  | Maksatbekov
+ Oman       | Omurzhanov
+ Spain      | Sultanalieva
+ Thailand   | Turdumbayeva
+ Uganda     | Usupbaev
+ Yemen      | Ysakov
+(11 rows)
+
+mydb=# select * from info where country='Kyrgyzstan';
+ id |   name    |     lastname     |  country   |          email          | age | programming_language | experience 
+----+-----------+------------------+------------+-------------------------+-----+----------------------+------------
+  6 | Begimai   | Dosieva          | Kyrgyzstan | db@gmail.com            |  21 | Python               |          1
+  7 | Anastasia | Tuzikova         | Kyrgyzstan | at@gmail.com            |  19 | Python               |          0
+  8 | Adilet    | Nasirov          | Kyrgyzstan | adiletnasirov@gmail.com |  20 | Python               |          2
+  9 | Aigerim   | Kubanychbek kyzy | Kyrgyzstan | aikamusiconly@gmail.com |  21 | Python               |          0
+ 10 | Zalkar    | Omurzhanov       | Kyrgyzstan | zo@gmail.com            |  21 | Python               |          5
+ 11 | Marsel    | Ysakov           | Kyrgyzstan | my@gmail.com            |  23 | Python               |          2
+(6 rows)
+
+mydb=# select name || ' ' || lastname as "Full Name", experience from info where experience>1;
+      Full Name       | experience 
+----------------------+------------
+ Adilet Nasirov       |          2
+ Zalkar Omurzhanov    |          5
+ Marsel Ysakov        |          2
+ Sharip Khoshanlo     |          3
+ Aidar Jumakadyrov    |          3
+ Aigerim Sultanalieva |          5
+ Zalkar Omurzhanov    |         10
+                      |          2
+(8 rows)
+
+mydb=# select name, lastname, country from info where not country in ('Kyrgyzstan', 'Kazakshtan);
+mydb'# ');
+   name   |   lastname   |  country   
+----------+--------------+------------
+ Azat     | Maksatbekov  | Macedonia
+ Eles     | Ysakov       | Yemen
+ Sharip   | Khoshanlo    | Kazakhstan
+ Shamil   | Kalmatov     | Kuwait
+ Insan    | Usupbaev     | Uganda
+ Jannat   | Turdumbayeva | Thailand
+ Aidar    | Jumakadyrov  | Jamaica
+ Aigerim  | Sultanalieva | Spain
+ Zalkar   | Omurzhanov   | Oman
+ Cathrine |              | England
+(10 rows)
+
+mydb=# select name, lastname, country from info where not country in ('Kyrgyzstan', 'Kazakshtan);
+');
+   name   |   lastname   |  country   
+----------+--------------+------------
+ Azat     | Maksatbekov  | Macedonia
+ Eles     | Ysakov       | Yemen
+ Sharip   | Khoshanlo    | Kazakhstan
+ Shamil   | Kalmatov     | Kuwait
+ Insan    | Usupbaev     | Uganda
+ Jannat   | Turdumbayeva | Thailand
+ Aidar    | Jumakadyrov  | Jamaica
+ Aigerim  | Sultanalieva | Spain
+ Zalkar   | Omurzhanov   | Oman
+ Cathrine |              | England
+(10 rows)
+
+mydb=# select name, lastname, country from info where not country in ('Kyrgyzstan', 'Kazakhtan);
+');
+   name   |   lastname   |  country   
+----------+--------------+------------
+ Azat     | Maksatbekov  | Macedonia
+ Eles     | Ysakov       | Yemen
+ Sharip   | Khoshanlo    | Kazakhstan
+ Shamil   | Kalmatov     | Kuwait
+ Insan    | Usupbaev     | Uganda
+ Jannat   | Turdumbayeva | Thailand
+ Aidar    | Jumakadyrov  | Jamaica
+ Aigerim  | Sultanalieva | Spain
+ Zalkar   | Omurzhanov   | Oman
+ Cathrine |              | England
+(10 rows)
+
+mydb=# select name, lastname, country from info where not country in ('Kyrgyzstan', 'Kazakhstan);
+');
+   name   |   lastname   |  country   
+----------+--------------+------------
+ Azat     | Maksatbekov  | Macedonia
+ Eles     | Ysakov       | Yemen
+ Sharip   | Khoshanlo    | Kazakhstan
+ Shamil   | Kalmatov     | Kuwait
+ Insan    | Usupbaev     | Uganda
+ Jannat   | Turdumbayeva | Thailand
+ Aidar    | Jumakadyrov  | Jamaica
+ Aigerim  | Sultanalieva | Spain
+ Zalkar   | Omurzhanov   | Oman
+ Cathrine |              | England
+(10 rows)
+
+mydb=# select name, lastname, country from info where not country in ('Kyrgyzstan', 'Kazakhstan');
+   name   |   lastname   |  country  
+----------+--------------+-----------
+ Azat     | Maksatbekov  | Macedonia
+ Eles     | Ysakov       | Yemen
+ Shamil   | Kalmatov     | Kuwait
+ Insan    | Usupbaev     | Uganda
+ Jannat   | Turdumbayeva | Thailand
+ Aidar    | Jumakadyrov  | Jamaica
+ Aigerim  | Sultanalieva | Spain
+ Zalkar   | Omurzhanov   | Oman
+ Cathrine |              | England
+(9 rows)
+
+mydb=# select * from info where age between 20 and 30;
+ id |  name   |     lastname     |  country   |          email          | age | programming_language | experience 
+----+---------+------------------+------------+-------------------------+-----+----------------------+------------
+  6 | Begimai | Dosieva          | Kyrgyzstan | db@gmail.com            |  21 | Python               |          1
+  8 | Adilet  | Nasirov          | Kyrgyzstan | adiletnasirov@gmail.com |  20 | Python               |          2
+  9 | Aigerim | Kubanychbek kyzy | Kyrgyzstan | aikamusiconly@gmail.com |  21 | Python               |          0
+ 10 | Zalkar  | Omurzhanov       | Kyrgyzstan | zo@gmail.com            |  21 | Python               |          5
+ 11 | Marsel  | Ysakov           | Kyrgyzstan | my@gmail.com            |  23 | Python               |          2
+ 12 | Azat    | Maksatbekov      | Macedonia  | am@gmail.com            |  26 | Python               |          1
+ 13 | Eles    | Ysakov           | Yemen      | ey@gmail.com            |  24 | Python               |          1
+ 14 | Sharip  | Khoshanlo        | Kazakhstan | sh@gmail.com            |  20 | Python               |          3
+ 16 | Insan   | Usupbaev         | Uganda     | is@gmail.com            |  21 | Python               |          1
+ 17 | Jannat  | Turdumbayeva     | Thailand   | jt@gmail.com            |  28 | Python               |          1
+ 18 | Aidar   | Jumakadyrov      | Jamaica    | aj@gmail.com            |  21 | Python               |          3
+ 19 | Aigerim | Sultanalieva     | Spain      | as@gmail.com            |  22 | Python               |          5
+ 20 | Zalkar  | Omurzhanov       | Oman       | lovely@gmail.com        |  21 | Python               |         10
+(13 rows)
+
+mydb=# select * from info where country='Kyrgyzstan' and age<25;
+ id |   name    |     lastname     |  country   |          email          | age | programming_language | experience 
+----+-----------+------------------+------------+-------------------------+-----+----------------------+------------
+  6 | Begimai   | Dosieva          | Kyrgyzstan | db@gmail.com            |  21 | Python               |          1
+  7 | Anastasia | Tuzikova         | Kyrgyzstan | at@gmail.com            |  19 | Python               |          0
+  8 | Adilet    | Nasirov          | Kyrgyzstan | adiletnasirov@gmail.com |  20 | Python               |          2
+  9 | Aigerim   | Kubanychbek kyzy | Kyrgyzstan | aikamusiconly@gmail.com |  21 | Python               |          0
+ 10 | Zalkar    | Omurzhanov       | Kyrgyzstan | zo@gmail.com            |  21 | Python               |          5
+ 11 | Marsel    | Ysakov           | Kyrgyzstan | my@gmail.com            |  23 | Python               |          2
+(6 rows)
+
+mydb=# select * from info where email like '%a';
+ id | name | lastname | country | email | age | programming_language | experience 
+----+------+----------+---------+-------+-----+----------------------+------------
+(0 rows)
+
+...skipping...
+ id | name | lastname | country | email | age | programming_language | experience 
+----+------+----------+---------+-------+-----+----------------------+------------
+(0 rows)
+
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+mydb=# select * from info where email like '%a%';
+ id |   name    |     lastname     |  country   |          email          | age | programming_language | experience 
+----+-----------+------------------+------------+-------------------------+-----+----------------------+------------
+  6 | Begimai   | Dosieva          | Kyrgyzstan | db@gmail.com            |  21 | Python               |          1
+  7 | Anastasia | Tuzikova         | Kyrgyzstan | at@gmail.com            |  19 | Python               |          0
+  8 | Adilet    | Nasirov          | Kyrgyzstan | adiletnasirov@gmail.com |  20 | Python               |          2
+  9 | Aigerim   | Kubanychbek kyzy | Kyrgyzstan | aikamusiconly@gmail.com |  21 | Python               |          0
+ 10 | Zalkar    | Omurzhanov       | Kyrgyzstan | zo@gmail.com            |  21 | Python               |          5
+ 11 | Marsel    | Ysakov           | Kyrgyzstan | my@gmail.com            |  23 | Python               |          2
+ 12 | Azat      | Maksatbekov      | Macedonia  | am@gmail.com            |  26 | Python               |          1
+ 13 | Eles      | Ysakov           | Yemen      | ey@gmail.com            |  24 | Python               |          1
+ 14 | Sharip    | Khoshanlo        | Kazakhstan | sh@gmail.com            |  20 | Python               |          3
+ 15 | Shamil    | Kalmatov         | Kuwait     | sk@gmail.com            |  17 | Python               |          1
+ 16 | Insan     | Usupbaev         | Uganda     | is@gmail.com            |  21 | Python               |          1
+ 17 | Jannat    | Turdumbayeva     | Thailand   | jt@gmail.com            |  28 | Python               |          1
+ 18 | Aidar     | Jumakadyrov      | Jamaica    | aj@gmail.com            |  21 | Python               |          3
+ 19 | Aigerim   | Sultanalieva     | Spain      | as@gmail.com            |  22 | Python               |          5
+ 20 | Zalkar    | Omurzhanov       | Oman       | lovely@gmail.com        |  21 | Python               |         10
+ 21 | Cathrine  |                  | England    | cat@gmail.com           |     | Python               |          2
+(16 rows)
+
+mydb=# select name from info like 'A%';
+ERROR:  syntax error at or near "like"
+LINE 1: select name from info like 'A%';
+                              ^
+mydb=# select name like 'A%' from info;
+ ?column? 
+----------
+ f
+ t
+ t
+ t
+ f
+ f
+ t
+ f
+ f
+ f
+ f
+ f
+ t
+ t
+ f
+ f
+(16 rows)
+
+mydb=# select * from info where name 'A%';
+ERROR:  argument of WHERE must be type boolean, not type name
+LINE 1: select * from info where name 'A%';
+                                      ^
+mydb=# select * from info where name like 'A%';
+ id |   name    |     lastname     |  country   |          email          | age | programming_language | experience 
+----+-----------+------------------+------------+-------------------------+-----+----------------------+------------
+  7 | Anastasia | Tuzikova         | Kyrgyzstan | at@gmail.com            |  19 | Python               |          0
+  8 | Adilet    | Nasirov          | Kyrgyzstan | adiletnasirov@gmail.com |  20 | Python               |          2
+  9 | Aigerim   | Kubanychbek kyzy | Kyrgyzstan | aikamusiconly@gmail.com |  21 | Python               |          0
+ 12 | Azat      | Maksatbekov      | Macedonia  | am@gmail.com            |  26 | Python               |          1
+ 18 | Aidar     | Jumakadyrov      | Jamaica    | aj@gmail.com            |  21 | Python               |          3
+ 19 | Aigerim   | Sultanalieva     | Spain      | as@gmail.com            |  22 | Python               |          5
+(6 rows)
+
+mydb=# select name from info where name like 'A%';
+   name    
+-----------
+ Anastasia
+ Adilet
+ Aigerim
+ Azat
+ Aidar
+ Aigerim
+(6 rows)
+
+mydb=# select * from info where not lastname is null;
+ id |   name    |     lastname     |  country   |          email          | age | programming_language | experience 
+----+-----------+------------------+------------+-------------------------+-----+----------------------+------------
+  6 | Begimai   | Dosieva          | Kyrgyzstan | db@gmail.com            |  21 | Python               |          1
+  7 | Anastasia | Tuzikova         | Kyrgyzstan | at@gmail.com            |  19 | Python               |          0
+  8 | Adilet    | Nasirov          | Kyrgyzstan | adiletnasirov@gmail.com |  20 | Python               |          2
+  9 | Aigerim   | Kubanychbek kyzy | Kyrgyzstan | aikamusiconly@gmail.com |  21 | Python               |          0
+ 10 | Zalkar    | Omurzhanov       | Kyrgyzstan | zo@gmail.com            |  21 | Python               |          5
+ 11 | Marsel    | Ysakov           | Kyrgyzstan | my@gmail.com            |  23 | Python               |          2
+ 12 | Azat      | Maksatbekov      | Macedonia  | am@gmail.com            |  26 | Python               |          1
+ 13 | Eles      | Ysakov           | Yemen      | ey@gmail.com            |  24 | Python               |          1
+ 14 | Sharip    | Khoshanlo        | Kazakhstan | sh@gmail.com            |  20 | Python               |          3
+ 15 | Shamil    | Kalmatov         | Kuwait     | sk@gmail.com            |  17 | Python               |          1
+ 16 | Insan     | Usupbaev         | Uganda     | is@gmail.com            |  21 | Python               |          1
+ 17 | Jannat    | Turdumbayeva     | Thailand   | jt@gmail.com            |  28 | Python               |          1
+ 18 | Aidar     | Jumakadyrov      | Jamaica    | aj@gmail.com            |  21 | Python               |          3
+ 19 | Aigerim   | Sultanalieva     | Spain      | as@gmail.com            |  22 | Python               |          5
+ 20 | Zalkar    | Omurzhanov       | Oman       | lovely@gmail.com        |  21 | Python               |         10
+(15 rows)
+
+mydb=# select * from info limit 10;
+ id |   name    |     lastname     |  country   |          email          | age | programming_language | experience 
+----+-----------+------------------+------------+-------------------------+-----+----------------------+------------
+  6 | Begimai   | Dosieva          | Kyrgyzstan | db@gmail.com            |  21 | Python               |          1
+  7 | Anastasia | Tuzikova         | Kyrgyzstan | at@gmail.com            |  19 | Python               |          0
+  8 | Adilet    | Nasirov          | Kyrgyzstan | adiletnasirov@gmail.com |  20 | Python               |          2
+  9 | Aigerim   | Kubanychbek kyzy | Kyrgyzstan | aikamusiconly@gmail.com |  21 | Python               |          0
+ 10 | Zalkar    | Omurzhanov       | Kyrgyzstan | zo@gmail.com            |  21 | Python               |          5
+ 11 | Marsel    | Ysakov           | Kyrgyzstan | my@gmail.com            |  23 | Python               |          2
+ 12 | Azat      | Maksatbekov      | Macedonia  | am@gmail.com            |  26 | Python               |          1
+ 13 | Eles      | Ysakov           | Yemen      | ey@gmail.com            |  24 | Python               |          1
+ 14 | Sharip    | Khoshanlo        | Kazakhstan | sh@gmail.com            |  20 | Python               |          3
+ 15 | Shamil    | Kalmatov         | Kuwait     | sk@gmail.com            |  17 | Python               |          1
+(10 rows)
+
+mydb=# select * from info order by id limit 10;
+ id |   name    |     lastname     |  country   |          email          | age | programming_language | experience 
+----+-----------+------------------+------------+-------------------------+-----+----------------------+------------
+  6 | Begimai   | Dosieva          | Kyrgyzstan | db@gmail.com            |  21 | Python               |          1
+  7 | Anastasia | Tuzikova         | Kyrgyzstan | at@gmail.com            |  19 | Python               |          0
+  8 | Adilet    | Nasirov          | Kyrgyzstan | adiletnasirov@gmail.com |  20 | Python               |          2
+  9 | Aigerim   | Kubanychbek kyzy | Kyrgyzstan | aikamusiconly@gmail.com |  21 | Python               |          0
+ 10 | Zalkar    | Omurzhanov       | Kyrgyzstan | zo@gmail.com            |  21 | Python               |          5
+ 11 | Marsel    | Ysakov           | Kyrgyzstan | my@gmail.com            |  23 | Python               |          2
+ 12 | Azat      | Maksatbekov      | Macedonia  | am@gmail.com            |  26 | Python               |          1
+ 13 | Eles      | Ysakov           | Yemen      | ey@gmail.com            |  24 | Python               |          1
+ 14 | Sharip    | Khoshanlo        | Kazakhstan | sh@gmail.com            |  20 | Python               |          3
+ 15 | Shamil    | Kalmatov         | Kuwait     | sk@gmail.com            |  17 | Python               |          1
+(10 rows)
+
+...skipping...
+ id |   name    |     lastname     |  country   |          email          | age | programming_language | experience 
+----+-----------+------------------+------------+-------------------------+-----+----------------------+------------
+  6 | Begimai   | Dosieva          | Kyrgyzstan | db@gmail.com            |  21 | Python               |          1
+  7 | Anastasia | Tuzikova         | Kyrgyzstan | at@gmail.com            |  19 | Python               |          0
+  8 | Adilet    | Nasirov          | Kyrgyzstan | adiletnasirov@gmail.com |  20 | Python               |          2
+  9 | Aigerim   | Kubanychbek kyzy | Kyrgyzstan | aikamusiconly@gmail.com |  21 | Python               |          0
+ 10 | Zalkar    | Omurzhanov       | Kyrgyzstan | zo@gmail.com            |  21 | Python               |          5
+ 11 | Marsel    | Ysakov           | Kyrgyzstan | my@gmail.com            |  23 | Python               |          2
+ 12 | Azat      | Maksatbekov      | Macedonia  | am@gmail.com            |  26 | Python               |          1
+ 13 | Eles      | Ysakov           | Yemen      | ey@gmail.com            |  24 | Python               |          1
+ 14 | Sharip    | Khoshanlo        | Kazakhstan | sh@gmail.com            |  20 | Python               |          3
+ 15 | Shamil    | Kalmatov         | Kuwait     | sk@gmail.com            |  17 | Python               |          1
+(10 rows)
+
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+mydb=# select * from info order by experience desc limit 10;
+ id |   name   |   lastname   |  country   |          email          | age | programming_language | experience 
+----+----------+--------------+------------+-------------------------+-----+----------------------+------------
+ 20 | Zalkar   | Omurzhanov   | Oman       | lovely@gmail.com        |  21 | Python               |         10
+ 19 | Aigerim  | Sultanalieva | Spain      | as@gmail.com            |  22 | Python               |          5
+ 10 | Zalkar   | Omurzhanov   | Kyrgyzstan | zo@gmail.com            |  21 | Python               |          5
+ 18 | Aidar    | Jumakadyrov  | Jamaica    | aj@gmail.com            |  21 | Python               |          3
+ 14 | Sharip   | Khoshanlo    | Kazakhstan | sh@gmail.com            |  20 | Python               |          3
+ 21 | Cathrine |              | England    | cat@gmail.com           |     | Python               |          2
+  8 | Adilet   | Nasirov      | Kyrgyzstan | adiletnasirov@gmail.com |  20 | Python               |          2
+ 11 | Marsel   | Ysakov       | Kyrgyzstan | my@gmail.com            |  23 | Python               |          2
+  6 | Begimai  | Dosieva      | Kyrgyzstan | db@gmail.com            |  21 | Python               |          1
+ 15 | Shamil   | Kalmatov     | Kuwait     | sk@gmail.com            |  17 | Python               |          1
+(10 rows)
+
+mydb=# select * from info order by experience desc limit 10 offset 5;
+ id |   name    |   lastname   |  country   |          email          | age | programming_language | experience 
+----+-----------+--------------+------------+-------------------------+-----+----------------------+------------
+ 21 | Cathrine  |              | England    | cat@gmail.com           |     | Python               |          2
+  8 | Adilet    | Nasirov      | Kyrgyzstan | adiletnasirov@gmail.com |  20 | Python               |          2
+ 11 | Marsel    | Ysakov       | Kyrgyzstan | my@gmail.com            |  23 | Python               |          2
+  6 | Begimai   | Dosieva      | Kyrgyzstan | db@gmail.com            |  21 | Python               |          1
+ 15 | Shamil    | Kalmatov     | Kuwait     | sk@gmail.com            |  17 | Python               |          1
+ 16 | Insan     | Usupbaev     | Uganda     | is@gmail.com            |  21 | Python               |          1
+ 17 | Jannat    | Turdumbayeva | Thailand   | jt@gmail.com            |  28 | Python               |          1
+ 12 | Azat      | Maksatbekov  | Macedonia  | am@gmail.com            |  26 | Python               |          1
+ 13 | Eles      | Ysakov       | Yemen      | ey@gmail.com            |  24 | Python               |          1
+  7 | Anastasia | Tuzikova     | Kyrgyzstan | at@gmail.com            |  19 | Python               |          0
+(10 rows)
+
+mydb=# select * from info fetch first(5) row only;
+ id |   name    |     lastname     |  country   |          email          | age | programming_language | experience 
+----+-----------+------------------+------------+-------------------------+-----+----------------------+------------
+  6 | Begimai   | Dosieva          | Kyrgyzstan | db@gmail.com            |  21 | Python               |          1
+  7 | Anastasia | Tuzikova         | Kyrgyzstan | at@gmail.com            |  19 | Python               |          0
+  8 | Adilet    | Nasirov          | Kyrgyzstan | adiletnasirov@gmail.com |  20 | Python               |          2
+  9 | Aigerim   | Kubanychbek kyzy | Kyrgyzstan | aikamusiconly@gmail.com |  21 | Python               |          0
+ 10 | Zalkar    | Omurzhanov       | Kyrgyzstan | zo@gmail.com            |  21 | Python               |          5
+(5 rows)
+
+mydb=# select * from info oder by experience desc offset 5 fetch first(5) row only;
+ERROR:  syntax error at or near "by"
+LINE 1: select * from info oder by experience desc offset 5 fetch fi...
+                                ^
+mydb=# select * from info order by experience desc offset 5 fetch first(5) row only;
+ id |   name   | lastname |  country   |          email          | age | programming_language | experience 
+----+----------+----------+------------+-------------------------+-----+----------------------+------------
+ 21 | Cathrine |          | England    | cat@gmail.com           |     | Python               |          2
+  8 | Adilet   | Nasirov  | Kyrgyzstan | adiletnasirov@gmail.com |  20 | Python               |          2
+ 11 | Marsel   | Ysakov   | Kyrgyzstan | my@gmail.com            |  23 | Python               |          2
+  6 | Begimai  | Dosieva  | Kyrgyzstan | db@gmail.com            |  21 | Python               |          1
+ 15 | Shamil   | Kalmatov | Kuwait     | sk@gmail.com            |  17 | Python               |          1
+(5 rows)
+
+...skipping...
+ id |   name   | lastname |  country   |          email          | age | programming_language | experience 
+----+----------+----------+------------+-------------------------+-----+----------------------+------------
+ 21 | Cathrine |          | England    | cat@gmail.com           |     | Python               |          2
+  8 | Adilet   | Nasirov  | Kyrgyzstan | adiletnasirov@gmail.com |  20 | Python               |          2
+ 11 | Marsel   | Ysakov   | Kyrgyzstan | my@gmail.com            |  23 | Python               |          2
+  6 | Begimai  | Dosieva  | Kyrgyzstan | db@gmail.com            |  21 | Python               |          1
+ 15 | Shamil   | Kalmatov | Kuwait     | sk@gmail.com            |  17 | Python               |          1
+(5 rows)
+
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+mydb=# select sum(age) as age_sum from info where country = 'Kyrgyzstan';
+ age_sum 
+---------
+     125
+(1 row)
+
+mydb=# select count(id) from info where email like '%gmail.com';
+ count 
+-------
+    16
+(1 row)
+
+mydb=# select email from info where email like '%gmail.com';
+          email          
+-------------------------
+ db@gmail.com
+ at@gmail.com
+ adiletnasirov@gmail.com
+ aikamusiconly@gmail.com
+ zo@gmail.com
+ my@gmail.com
+ am@gmail.com
+ ey@gmail.com
+ sh@gmail.com
+ sk@gmail.com
+ is@gmail.com
+ jt@gmail.com
+ aj@gmail.com
+ as@gmail.com
+ lovely@gmail.com
+ cat@gmail.com
+(16 rows)
+
+mydb=# select count(id) from info;
+ count 
+-------
+    16
+(1 row)
+
+mydb=# select count(id) from info where country = 'Kyrgyzstan';
+ count 
+-------
+     6
+(1 row)
+
+mydb=# select avg(age) from info;
+         avg         
+---------------------
+ 21.6666666666666667
+(1 row)
+
+mydb=# select max(age) from info;
+ max 
+-----
+  28
+(1 row)
+
+mydb=# select country, count(id) from info group by country;
+  country   | count 
+------------+-------
+ Uganda     |     1
+ Macedonia  |     1
+ Kyrgyzstan |     6
+ Kuwait     |     1
+ Spain      |     1
+ Thailand   |     1
+ Oman       |     1
+ England    |     1
+ Kazakhstan |     1
+ Jamaica    |     1
+ Yemen      |     1
+(11 rows)
+
+mydb=# select name, count(id) from info group by age;
+ERROR:  column "info.name" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: select name, count(id) from info group by age;
+               ^
+mydb=# select name, age, count(id) from info group by age;
+ERROR:  column "info.name" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: select name, age, count(id) from info group by age;
+               ^
+mydb=# select age, name, count(id) from info group by age;
+ERROR:  column "info.name" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: select age, name, count(id) from info group by age;
+                    ^
+mydb=# select age, count(id) from info group by age;
+ age | count 
+-----+-------
+     |     1
+  22 |     1
+  26 |     1
+  19 |     1
+  21 |     6
+  17 |     1
+  28 |     1
+  24 |     1
+  20 |     2
+  23 |     1
+(10 rows)
+
+mydb=# select country, sum(experience) from info group by country;
+  country   | sum 
+------------+-----
+ Uganda     |   1
+ Macedonia  |   1
+ Kyrgyzstan |  10
+ Kuwait     |   1
+ Spain      |   5
+ Thailand   |   1
+ Oman       |  10
+ England    |   2
+ Kazakhstan |   3
+ Jamaica    |   3
+ Yemen      |   1
+(11 rows)
+
+mydb=# select country, avg(age) from info group by country;
+  country   |         avg         
+------------+---------------------
+ Uganda     | 21.0000000000000000
+ Macedonia  | 26.0000000000000000
+ Kyrgyzstan | 20.8333333333333333
+ Kuwait     | 17.0000000000000000
+ Spain      | 22.0000000000000000
+ Thailand   | 28.0000000000000000
+ Oman       | 21.0000000000000000
+ England    |                    
+ Kazakhstan | 20.0000000000000000
+ Jamaica    | 21.0000000000000000
+ Yemen      | 24.0000000000000000
+(11 rows)
+
+mydb=# delete from info where country = 'Oman';
+DELETE 1
+mydb=# select * from info;
+ id |   name    |     lastname     |  country   |          email          | age | programming_language | experience 
+----+-----------+------------------+------------+-------------------------+-----+----------------------+------------
+  6 | Begimai   | Dosieva          | Kyrgyzstan | db@gmail.com            |  21 | Python               |          1
+  7 | Anastasia | Tuzikova         | Kyrgyzstan | at@gmail.com            |  19 | Python               |          0
+  8 | Adilet    | Nasirov          | Kyrgyzstan | adiletnasirov@gmail.com |  20 | Python               |          2
+  9 | Aigerim   | Kubanychbek kyzy | Kyrgyzstan | aikamusiconly@gmail.com |  21 | Python               |          0
+ 10 | Zalkar    | Omurzhanov       | Kyrgyzstan | zo@gmail.com            |  21 | Python               |          5
+ 11 | Marsel    | Ysakov           | Kyrgyzstan | my@gmail.com            |  23 | Python               |          2
+ 12 | Azat      | Maksatbekov      | Macedonia  | am@gmail.com            |  26 | Python               |          1
+ 13 | Eles      | Ysakov           | Yemen      | ey@gmail.com            |  24 | Python               |          1
+ 14 | Sharip    | Khoshanlo        | Kazakhstan | sh@gmail.com            |  20 | Python               |          3
+ 15 | Shamil    | Kalmatov         | Kuwait     | sk@gmail.com            |  17 | Python               |          1
+ 16 | Insan     | Usupbaev         | Uganda     | is@gmail.com            |  21 | Python               |          1
+ 17 | Jannat    | Turdumbayeva     | Thailand   | jt@gmail.com            |  28 | Python               |          1
+ 18 | Aidar     | Jumakadyrov      | Jamaica    | aj@gmail.com            |  21 | Python               |          3
+ 19 | Aigerim   | Sultanalieva     | Spain      | as@gmail.com            |  22 | Python               |          5
+ 21 | Cathrine  |                  | England    | cat@gmail.com           |     | Python               |          2
+(15 rows)
+
+mydb=# alter table info alter column name type varchar(80);
+ALTER TABLE
+mydb=# \d info
+                                           Table "public.info"
+        Column        |          Type          | Collation | Nullable |             Default              
+----------------------+------------------------+-----------+----------+----------------------------------
+ id                   | integer                |           | not null | nextval('info_id_seq'::regclass)
+ name                 | character varying(80)  |           | not null | 
+ lastname             | character varying(100) |           |          | 
+ country              | character varying(60)  |           |          | 
+ email                | character varying(50)  |           |          | 
+ age                  | integer                |           |          | 
+ programming_language | language               |           | not null | 
+ experience           | integer                |           |          | 
+Indexes:
+    "info_pkey" PRIMARY KEY, btree (id)
+    "info_email_key" UNIQUE CONSTRAINT, btree (email)
+
+mydb=# alter table info alter column last_name set not null;
+ERROR:  column "last_name" of relation "info" does not exist
+mydb=# alter table info alter column lastname set not null;
+ERROR:  column "lastname" of relation "info" contains null values
+mydb=# alter table info alter column lastname set not null;
+ERROR:  column "lastname" of relation "info" contains null values
+mydb=# delete from info where name = 'Cathrine';
+DELETE 1
+mydb=# alter table info alter column lastname set not null;
+ALTER TABLE
+mydb=# \d info
+                                           Table "public.info"
+        Column        |          Type          | Collation | Nullable |             Default              
+----------------------+------------------------+-----------+----------+----------------------------------
+ id                   | integer                |           | not null | nextval('info_id_seq'::regclass)
+ name                 | character varying(80)  |           | not null | 
+ lastname             | character varying(100) |           | not null | 
+ country              | character varying(60)  |           |          | 
+ email                | character varying(50)  |           |          | 
+ age                  | integer                |           |          | 
+ programming_language | language               |           | not null | 
+ experience           | integer                |           |          | 
+Indexes:
+    "info_pkey" PRIMARY KEY, btree (id)
+    "info_email_key" UNIQUE CONSTRAINT, btree (email)
+
+mydb=# alter table info rename column lastname to 'Last Name';
+ERROR:  syntax error at or near "'Last Name'"
+LINE 1: alter table info rename column lastname to 'Last Name';
+                                                   ^
+mydb=# alter table info rename column lastname to "Last Name";
+ALTER TABLE
+mydb=# \d info
+                                           Table "public.info"
+        Column        |          Type          | Collation | Nullable |             Default              
+----------------------+------------------------+-----------+----------+----------------------------------
+ id                   | integer                |           | not null | nextval('info_id_seq'::regclass)
+ name                 | character varying(80)  |           | not null | 
+ Last Name            | character varying(100) |           | not null | 
+ country              | character varying(60)  |           |          | 
+ email                | character varying(50)  |           |          | 
+ age                  | integer                |           |          | 
+ programming_language | language               |           | not null | 
+ experience           | integer                |           |          | 
+Indexes:
+    "info_pkey" PRIMARY KEY, btree (id)
+    "info_email_key" UNIQUE CONSTRAINT, btree (email)
+
+mydb=# alter table info add constraint unique(name);
+ERROR:  syntax error at or near "unique"
+LINE 1: alter table info add constraint unique(name);
+                                        ^
+mydb=# alter table info add constraint name_of_constraint unique(name);
+ERROR:  could not create unique index "name_of_constraint"
+DETAIL:  Key (name)=(Aigerim) is duplicated.
+mydb=# select * from info;
+ id |   name    |    Last Name     |  country   |          email          | age | programming_language | experience 
+----+-----------+------------------+------------+-------------------------+-----+----------------------+------------
+  6 | Begimai   | Dosieva          | Kyrgyzstan | db@gmail.com            |  21 | Python               |          1
+  7 | Anastasia | Tuzikova         | Kyrgyzstan | at@gmail.com            |  19 | Python               |          0
+  8 | Adilet    | Nasirov          | Kyrgyzstan | adiletnasirov@gmail.com |  20 | Python               |          2
+  9 | Aigerim   | Kubanychbek kyzy | Kyrgyzstan | aikamusiconly@gmail.com |  21 | Python               |          0
+ 10 | Zalkar    | Omurzhanov       | Kyrgyzstan | zo@gmail.com            |  21 | Python               |          5
+ 11 | Marsel    | Ysakov           | Kyrgyzstan | my@gmail.com            |  23 | Python               |          2
+ 12 | Azat      | Maksatbekov      | Macedonia  | am@gmail.com            |  26 | Python               |          1
+ 13 | Eles      | Ysakov           | Yemen      | ey@gmail.com            |  24 | Python               |          1
+ 14 | Sharip    | Khoshanlo        | Kazakhstan | sh@gmail.com            |  20 | Python               |          3
+ 15 | Shamil    | Kalmatov         | Kuwait     | sk@gmail.com            |  17 | Python               |          1
+ 16 | Insan     | Usupbaev         | Uganda     | is@gmail.com            |  21 | Python               |          1
+ 17 | Jannat    | Turdumbayeva     | Thailand   | jt@gmail.com            |  28 | Python               |          1
+ 18 | Aidar     | Jumakadyrov      | Jamaica    | aj@gmail.com            |  21 | Python               |          3
+ 19 | Aigerim   | Sultanalieva     | Spain      | as@gmail.com            |  22 | Python               |          5
+(14 rows)
+
+mydb=# delete from info where email = 'aikamusiconly@gmail.com';
+DELETE 1
+mydb=# alter table info add constraint name_of_constraint unique(name);
+ALTER TABLE
+mydb=# \d info
+                                           Table "public.info"
+        Column        |          Type          | Collation | Nullable |             Default              
+----------------------+------------------------+-----------+----------+----------------------------------
+ id                   | integer                |           | not null | nextval('info_id_seq'::regclass)
+ name                 | character varying(80)  |           | not null | 
+ Last Name            | character varying(100) |           | not null | 
+ country              | character varying(60)  |           |          | 
+ email                | character varying(50)  |           |          | 
+ age                  | integer                |           |          | 
+ programming_language | language               |           | not null | 
+ experience           | integer                |           |          | 
+Indexes:
+    "info_pkey" PRIMARY KEY, btree (id)
+    "info_email_key" UNIQUE CONSTRAINT, btree (email)
+    "name_of_constraint" UNIQUE CONSTRAINT, btree (name)
+
+mydb=# alter table info drop experience;
+ALTER TABLE
+mydb=# select * from info;
+ id |   name    |  Last Name   |  country   |          email          | age | programming_language 
+----+-----------+--------------+------------+-------------------------+-----+----------------------
+  6 | Begimai   | Dosieva      | Kyrgyzstan | db@gmail.com            |  21 | Python
+  7 | Anastasia | Tuzikova     | Kyrgyzstan | at@gmail.com            |  19 | Python
+  8 | Adilet    | Nasirov      | Kyrgyzstan | adiletnasirov@gmail.com |  20 | Python
+ 10 | Zalkar    | Omurzhanov   | Kyrgyzstan | zo@gmail.com            |  21 | Python
+ 11 | Marsel    | Ysakov       | Kyrgyzstan | my@gmail.com            |  23 | Python
+ 12 | Azat      | Maksatbekov  | Macedonia  | am@gmail.com            |  26 | Python
+ 13 | Eles      | Ysakov       | Yemen      | ey@gmail.com            |  24 | Python
+ 14 | Sharip    | Khoshanlo    | Kazakhstan | sh@gmail.com            |  20 | Python
+ 15 | Shamil    | Kalmatov     | Kuwait     | sk@gmail.com            |  17 | Python
+ 16 | Insan     | Usupbaev     | Uganda     | is@gmail.com            |  21 | Python
+ 17 | Jannat    | Turdumbayeva | Thailand   | jt@gmail.com            |  28 | Python
+ 18 | Aidar     | Jumakadyrov  | Jamaica    | aj@gmail.com            |  21 | Python
+ 19 | Aigerim   | Sultanalieva | Spain      | as@gmail.com            |  22 | Python
+(13 rows)
+
+mydb=# \s sql2.txt
+Wrote history to file "sql2.txt".
+mydb=# 
+

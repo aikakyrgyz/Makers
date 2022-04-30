@@ -1,0 +1,10 @@
+INSERT INTO Dish (title, price, type, souce, is_vegeterian, comment) VALUES ('Nuggets', 12.40, 'food', 'BBQ', False, 'spicy'),
+('Fries', 5.20, 'food', 'ketchup', True, 'extra salt'), ('Longer', 4.89, 'food', 'ranch', False, 'extra pickles'), ('Cheeseburger', 10.79, 'food', 'BBQ', False, 'extra cheese'), ('Cheeseburger De Lux', 12.99, 'food', 'mustard', False, 'add cheese sauce'), ('Chefburger De Lux', 10.99, 'food', 'ketchup', False, 'add mustard'), ('Chefburger Junior', 5.99, 'food', 'mustard', False, 'add ketchup'), ('Basket s12', 12.99, 'food', 'ketchup', False, 'extra spicy'), ('Basket M20', 24.59, 'food', 'ketchup', False, 'not spicy');
+
+INSERT INTO Dish (title, price, type) VALUES ('Donut Apple-Cinnamon', 3.49, 'dessert'), ('Donut Strawberry', 3.49, 'dessert'), ('Cake Raspberry Blueberry', 5.00, 'dessert');
+
+INSERT INTO Dish (title, price, type, souce) VALUES ('Hashbrown', 3.50, 'food', 'mayo'), ('Fries po-derevensky', 4.69, 'food', 'ketchup'), ('Twister', 6.79, 'food', 'mustard');
+
+INSERT INTO Dish (title, price, type, is_vegeterian) VALUES ('Pepsi 0,3', 3.99, 'beverage', True), ('Pepsi 0,4', 4.99, 'beverage', True), ('Pepsi 0,5', 5.99, 'beverage', True), ('Pepsi in bottle 0,5', 5.00, 'beverage', True), ('Juice Apple', 3.59, 'beverage', True), ('Strawberry Milkshake', 12.89, 'beverage', True), ('Chocolate Milkshake', 12.89, 'beverage', True), ('Vanilla Milkshake', 12.99, 'beverage', True);
+
+INSERT INTO Dish (title, price, type, souce) VALUES ('Boxmaster', 23.99, 'food', 'ranch');

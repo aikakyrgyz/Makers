@@ -1,0 +1,952 @@
+\l
+create database test;
+\l
+\c test
+\d
+\dt
+\c postgres
+\dt
+\d
+\l
+drop database test;
+\l
+\du
+create user test_user with password '1';
+ \du
+alter role test_user with superuser
+\du
+;
+\du
+create database test_user;
+\l
+\du
+\l
+\c postgres
+\c postgres
+\c test_user
+\l
+grant all privilages on database test_user to test_user
+\l
+\du
+grant all privilages on database test_user to test_user;
+grant all privileges on database test_user to test_user;
+\l
+\du
+\q
+drop user test_user
+;
+drop user 
+drop user 'test_user';
+drop user test_user
+;
+\du
+revoke all privileges on test_user from test_user
+;
+alter role test_user NOSUPERUSER;
+\l
+\du
+drop test_user
+;
+drop user test_user;
+drop test_user
+;
+drop database test_user;
+drop user test_user;
+\du
+\du
+\l
+\l
+create database test with owner user_test
+;
+create user user_test;
+\l
+\du
+create database test with owner user_test
+;
+\l
+drop user test;
+drop user user_test;
+\c test
+alter role user_test with superuser;
+grant all privilages on test to user_test;
+grant all privileges on test to user_test;
+drop user user_test;
+drop database test;
+drop user user_test;
+\du
+create user test_user with password '1';
+create database db;
+\du
+\l
+\du
+alter role test_user with superuser;
+grant all privileges on db to test_user
+;
+\du
+\c db
+grant all privilages on db to test_user;
+grant all privileges on db to test_user;
+\c postgres
+create database test_user
+;
+\l
+grant all privileges on db to test_user;
+drop user test_user
+;
+drop db;
+drop database db;
+drop database test_user;
+\l
+create user aika with password '1';
+\du
+\l
+create database aika;
+\l
+alter role aika with superuser;
+grant all privileges on database aika to aika
+;
+\l
+\du
+\du
+\l
+\c aika
+\c aika
+\du
+\l
+\c postgres
+drop database aika
+;
+drop user aika
+;
+drop user aika
+;
+\k
+\l
+create user aika;
+alter role aika with superuser;
+create database db with owner aika;
+\l
+grant all privileges on db to aika
+;
+drop database db;
+drop user aika;
+\du
+\l
+create user aika with password '1'
+;
+alter role aika with superuser;
+grant all privileges on aika to aika
+;
+grant all privileges on database aika to aika
+;
+\l
+create database aika;
+grant all privileges on database aika to aika
+;
+\l
+create database kfc_menu
+;
+create type detail as enum('food', 'beverage', 'dessert');
+create type topping as enum('ketchup', 'ranch', 'bbq', 'mayo', 'mustard');
+\c kfc_menu
+create type detail as enum('food', 'beverage', 'dessert');
+create type topping as enum('ketchup', 'ranch', 'bbq', 'mayo', 'mustard');
+create table Dish(
+id serial primary key,
+title varchar(155) not null;
+price money,
+type detail,
+sauce topping,
+is_vegeterian bool default False;
+comment varchar(255));
+create table Dish(
+id serial primary key,
+title varchar(155) not null;
+price money,
+type detail,
+sauce topping,
+is_vegeterian bool default False,
+comment varchar(255));
+create table Dish(
+id serial primary key,
+title varchar(155) not null,
+price money,
+type detail,
+sauce topping,
+is_vegeterian bool default False,
+comment varchar(255));
+alter table dish alter price type decimal;
+\dt
+\d
+\d
+\d dish
+\i lesson2_inserts.txt
+\l
+\c postgres;
+\c aika
+create database db;
+\l
+create table Person{
+;
+create table Person(
+id serial primary key,
+name varchar(50) NOT NULL,
+last_name varchar(100),
+country varchar(50) NOT NULL);
+\dt
+\dt person
+\d person
+\du
+\l
+create database mydb;
+\d
+\l
+\c mydb
+create type language as enum('Python', 'JavaScript');
+create table info(
+id serial primary key,
+name varchar(50) NOT NULL,
+lastname varchar(100),
+country varchar(60),
+email varchar(50) unique,
+age int,
+programming_language language not null,
+experience int);
+\d
+\dt
+\d info
+insert into info (name, lastname, country, email, age, programming_language, experience) values ('Aigerim', "Kubanychbek kyzy", "Kyrgyzstan", "aikamusiconly@gmail.com", 21, "Python", 0), ('Zalkar', 'Omurzhanov', 'Kyrgyzstan', 'zo@gmail.com', 21, 'Python', 5);
+insert into info (name, lastname, country, email, age, programming_language, experience) values ('Aigerim', 'Kubanychbek kyzy', 'Kyrgyzstan', 'aikamusiconly@gmail.com', 21, 'Python', 0), ('Zalkar', 'Omurzhanov', 'Kyrgyzstan', 'zo@gmail.com', 21, 'Python', 5);
+insert into info (name, lastname, country, email, age, programming_language, experience) values ('Anastasia', 'Tuzikova', 'Kyrgyzstan', 'at@gmail.com', 19, 'Python', 0), ('Adilet', 'Nasirov', 'Kyrgyzstan', 'adiletnasirov@gmail.com', 20, 'Python', 2);
+\d info
+\dt info
+select * from info
+;
+\i info.txt
+\l
+create database mydb;
+\c mydb
+eixt
+exit
+\q
+\c mydb
+\q
+\l
+create database menu;
+create table client(
+id serial primary key,
+name varchar(50) DEFAULT 'Anonymous',
+ticket serial unique not null);
+\d menu
+\d client
+create type method as enum('cash', 'card');
+create table orders(
+id serial primary key,
+client_id int, 
+payment_method method,
+constraint fk_orders_client foreign key(cliend_id) references on client(id));
+create table orders(
+id serial primary key,
+client_id int, 
+payment_method method,
+constraint fk_orders_client foreign key(cliend_id) references client(id));
+create table orders(
+id serial primary key,
+client_id int, 
+payment_method method,
+constraint fk_orders_client foreign key(client_id) references client(id));
+create table order_dish(
+order_id int,
+dish_id int,
+constraint fk_order_dish_order foreign key(order_id) references orders(id);
+;
+)
+;
+create table order_dish(
+order_id int,
+dish_id int,
+constraint fk_order_dish_order foreign key(order_id) references orders(id));
+drop table order_dish;
+create table order_dish(
+order_id int,
+dish_id int,
+constraint fk_order_dish_order foreign key(order_id) references orders(id), constraint fk_order_dish_dish foreign key (dish_id) references dish (id));
+CREATE TABLE Dish(
+id serial PRIMARY KEY,
+title varchar(155) NOT NULL,
+price money,
+type detail,
+souce topping,
+is_vegetarian bool DEFAULT False,
+comment varchar(255));
+CREATE TYPE detail AS ENUM ('food', 'beverage', 'dessert');
+CREATE TYPE topping AS ENUM ('ketchup', 'ranch', 'BBQ', 'mayo', 'mustard');
+CREATE TABLE Dish(
+id serial PRIMARY KEY,
+title varchar(155) NOT NULL,
+price money,
+type detail,
+souce topping,
+is_vegetarian bool DEFAULT False,
+comment varchar(255));
+create table order_dish(
+order_id int,
+dish_id int,
+constraint fk_order_dish_order foreign key(order_id) references orders(id), constraint fk_order_dish_dish foreign key (dish_id) references dish (id));
+\l
+\d
+\d dish
+select * from dish
+;
+INSERT INTO Dish (title, price, type, souce, is_vegetarian, comment) VALUES ('Nuggets', 12.40, 'food', 'BBQ', False, 'spicy'),
+('Fries', 5.20, 'food', 'ketchup', True, 'extra salt'), ('Longer', 4.89, 'food', 'ranch', False, 'extra pickles'), ('Cheeseburger', 10.79, 'food', 'BBQ', False, 'extra cheese'), ('Cheeseburger De Lux', 12.99, 'food', 'mustard', False, 'add cheese souce'), ('Chefburger De Lux', 10.99, 'food', 'ketchup', False, 'add mustard'), ('Chefburger Junior', 5.99, 'food', 'mustard', False, 'add ketchup'), ('Basket s12', 12.99, 'food', 'ketchup', False, 'extra spicy'), ('Basket M20', 24.59, 'food', 'ketchup', False, 'not spicy');
+INSERT INTO Dish (title, price, type) VALUES ('Donut Apple-Cinnamon', 3.49, 'dessert'), ('Donut Strawberry', 3.49, 'dessert'), ('Cake Raspberry Blueberry', 5.00, 'dessert');
+INSERT INTO Dish (title, price, type, souce) VALUES ('Hashbrown', 3.50, 'food', 'mayo'), ('Fries po-derevensky', 4.69, 'food', 'ketchup'), ('Twister', 6.79, 'food', 'mustard');
+INSERT INTO Dish (title, price, type, is_vegetarian) VALUES ('Pepsi 0,3', 3.99, 'beverage', True), ('Pepsi 0,4', 4.99, 'beverage', True), ('Pepsi 0,5', 5.99, 'beverage', True), ('Pepsi in bottle 0,5', 5.00, 'beverage', True), ('Juice Apple', 3.59, 'beverage', True), ('Strawberry Milkshake', 12.89, 'beverage', True), ('Chocolate Milkshake', 12.89, 'beverage', True), ('Vanilla Milkshake', 12.99, 'beverage', True);
+INSERT INTO Dish (title, price, type, souce) VALUES ('Boxmaster', 23.99, 'food', 'ranch');
+\d dish
+select * from dish
+select * from dish;
+select * from dish;
+insert into client(name) values ('John'), ('Raychel');
+select * from client;
+alter sequence client_ticket_seq restart with 300;
+select * from client;
+alter sequence client_id_seq restart with 150;
+\d client
+\l
+\l aika
+\dt dish;
+insert into client(name) values ('John'), ('Raychel');
+select * from client;
+delete from client where id<10;
+select * from client;
+insert into client(name) values('Tom', 'Jerry', 
+);
+insert into client(name) values('Tom', 'Jerry', 'Bob', 'Patrick', 'Squid', 'Krabs');
+insert into client(name) values('Tom'),('Jerry'),('Bob'), ('Patrick'), ('Squid'), ('Krabs');
+select * from client;
+insert into myorder(client_id, payment_method) values (150, 'card'), (
+152, 'card');
+insert into orders(client_id, payment_method) values (150, 'card'), (152, 'card'), (153, 'cash'), (152, 'cash'), (154, 'card'), (155, 'cash'), (156, 'card'), (157, 'card);
+'
+)
+;
+insert into myorder(client_id, payment_method) values (150, 'card'), (
+152, 'card');
+insert into orders(client_id, payment_method) values (150, 'card'), (152, 'card'), (153, 'cash'), (152, 'cash'), (154, 'card'), (155, 'cash'), (156, 'card'), (157, 'card);
+insert into myorder(client_id, payment_method) values (150, 'card'), (
+152, 'card');
+'
+);
+insert into orders(client_id, payment_method) values (150, 'card'), (152, 'card'), (153, 'cash'), (152, 'cash'), (154, 'card'), (155, 'cash'), (156, 'card'), (157, 'card');
+select * from orders;
+\d order_dish
+insert into order_dish values (3, 12), (1, 23), (1, 20), (2, 7), (4, 13), (7, 18), (5, 5), (6, 20), (8, 11), (5, 3);
+select * from order_dish;
+select * from orders;
+select orders.id, orders.payment_method, client.name, client.ticket from orders inner join client on orders.client_id = client.id;
+select orders.payment_method, client.name, client.ticket from order_dish inner join myorder on orders.id = order_dish.order_id;
+select orders.payment_method, client.name, client.ticket from order_dish inner join orders on orders.id = order_dish.order_id inner join orders.client_id = client.id;
+select orders.payment_method, client.name, client.ticket from order_dish inner join orders on orders.id = order_dish.order_id inner join on orders.client_id = client.id;
+select orders.payment_method, client.name, client.ticket from order_dish inner join orders on orders.id = order_dish.order_id inner join client on orders.client_id = client.id;
+select orders.payment_method, client.name, client.ticket from order_dish inner join orders on orders.id = order_dish.order_id inner join client on orders.client_id = client.id inner join dish on dish.id = order_dish.dish_id;
+select orders.payment_method, client.name, client.ticket from order_dish inner join orders on orders.id = order_dish.order_id inner join client on orders.client_id = client.id inner join dish on dish.id = order_dish.dish_id;
+select * from order_dish;
+select orders.payment_method, client.name, client.ticket from order_dish inner join orders on orders.id = order_dish.order_id inner join client on orders.client_id = client.id inner join dish on dish.id = order_dish.dish_id;
+select orders.payment_method, client.name, client.ticket, dish.title from order_dish inner join orders on orders.id = order_dish.order_id inner join client on orders.client_id = client.id inner join dish on dish.id = order_dish.dish_id;
+select count(*) from order_dish inner join dish on dish.id = order_dish.dish_id where dish.title ilike '%pepsi%';
+select sum(dish.price), order_dish.order_di from dish inner join order_dish on order_dish.dish_id = dish.id group by order_dish.order_id;
+select sum(dish.price), order_dish.order_id, client.name, orders.payment_method from dish inner join order_dish on order_dish.dish_id = dish.id inner join orders on orders.id = order_dish.order_id inner join client on client.id = orders.client_id group by order_dish.order_id;
+select sum(dish.price), order_dish.order_id, client.name, orders.payment_method from dish inner join order_dish on order_dish.dish_id = dish.id inner join orders on orders.id = order_dish.order_id inner join client on client.id = orders.client_id group by order_dish.order_id, orders.payment_method, client.name;
+\s menu.txt
+
+
+
+Last login: Wed Mar 17 01:27:17 on ttys004
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ psql -U aika
+psql (13.2)
+Type "help" for help.
+
+aika=# \l
+                                                 List of databases
+    Name     |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-------------+-----------------------+----------+---------+-------+-------------------------------------------------
+ aika        | aigerimkubanychbekova | UTF8     | C       | C     | =Tc/aigerimkubanychbekova                      +
+             |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova+
+             |                       |          |         |       | aika=CTc/aigerimkubanychbekova
+ db          | aika                  | UTF8     | C       | C     | 
+ kfc_menu    | aigerimkubanychbekova | UTF8     | C       | C     | 
+ mydb        | aika                  | UTF8     | C       | C     | 
+ postgres    | aigerimkubanychbekova | UTF8     | C       | C     | 
+ shakespeare | aigerimkubanychbekova | UTF8     | C       | C     | 
+ shop        | aika                  | UTF8     | C       | C     | 
+ template0   | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+             |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1   | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+             |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(9 rows)
+
+aika=# create database menu;
+CREATE DATABASE
+aika=# create table client(
+aika(# id serial primary key,
+aika(# name varchar(50) DEFAULT 'Anonymous',
+aika(# ticket serial unique not null);
+CREATE TABLE
+aika=# \d menu
+Did not find any relation named "menu".
+aika=# \d client
+                                     Table "public.client"
+ Column |         Type          | Collation | Nullable |                Default                 
+--------+-----------------------+-----------+----------+----------------------------------------
+ id     | integer               |           | not null | nextval('client_id_seq'::regclass)
+ name   | character varying(50) |           |          | 'Anonymous'::character varying
+ ticket | integer               |           | not null | nextval('client_ticket_seq'::regclass)
+Indexes:
+    "client_pkey" PRIMARY KEY, btree (id)
+    "client_ticket_key" UNIQUE CONSTRAINT, btree (ticket)
+
+aika=# create type method as enum('cash', 'card');
+CREATE TYPE
+aika=# create table orders(
+aika(# id serial primary key,
+aika(# client_id int, 
+aika(# payment_method method,
+aika(# constraint fk_orders_client foreign key(cliend_id) references on client(id));
+ERROR:  syntax error at or near "on"
+LINE 5: ...k_orders_client foreign key(cliend_id) references on client(...
+                                                             ^
+aika=# create table orders(
+id serial primary key,
+client_id int, 
+payment_method method,
+constraint fk_orders_client foreign key(cliend_id) references client(id));
+ERROR:  column "cliend_id" referenced in foreign key constraint does not exist
+aika=# create table orders(
+id serial primary key,
+client_id int, 
+payment_method method,
+constraint fk_orders_client foreign key(client_id) references client(id));
+CREATE TABLE
+aika=# create table order_dish(
+aika(# order_id int,
+aika(# dish_id int,
+aika(# constraint fk_order_dish_order foreign key(order_id) references orders(id);
+aika(# ;
+aika(# )
+aika-# ;
+ERROR:  syntax error at or near ";"
+LINE 4: ...rder_dish_order foreign key(order_id) references orders(id);
+                                                                      ^
+aika=# create table order_dish(
+order_id int,
+dish_id int,
+constraint fk_order_dish_order foreign key(order_id) references orders(id));
+CREATE TABLE
+aika=# drop table order_dish;
+DROP TABLE
+aika=# create table order_dish(
+order_id int,
+dish_id int,
+constraint fk_order_dish_order foreign key(order_id) references orders(id), constraint fk_order_dish_dish foreign key (dish_id) references dish (id));
+ERROR:  relation "dish" does not exist
+aika=# CREATE TABLE Dish(
+id serial PRIMARY KEY,
+title varchar(155) NOT NULL,
+price money,
+type detail,
+souce topping,
+is_vegetarian bool DEFAULT False,
+comment varchar(255));
+ERROR:  type "detail" does not exist
+LINE 5: type detail,
+             ^
+aika=# CREATE TYPE detail AS ENUM ('food', 'beverage', 'dessert');
+CREATE TYPE
+aika=# CREATE TYPE topping AS ENUM ('ketchup', 'ranch', 'BBQ', 'mayo', 'mustard');
+CREATE TYPE
+aika=# CREATE TABLE Dish(
+id serial PRIMARY KEY,
+title varchar(155) NOT NULL,
+price money,
+type detail,
+souce topping,
+is_vegetarian bool DEFAULT False,
+comment varchar(255));
+CREATE TABLE
+aika=# create table order_dish(                                   
+order_id int,
+dish_id int,
+constraint fk_order_dish_order foreign key(order_id) references orders(id), constraint fk_order_dish_dish foreign key (dish_id) references dish (id));
+CREATE TABLE
+aika=# \l
+                                                 List of databases
+    Name     |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-------------+-----------------------+----------+---------+-------+-------------------------------------------------
+ aika        | aigerimkubanychbekova | UTF8     | C       | C     | =Tc/aigerimkubanychbekova                      +
+             |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova+
+             |                       |          |         |       | aika=CTc/aigerimkubanychbekova
+ db          | aika                  | UTF8     | C       | C     | 
+ kfc_menu    | aigerimkubanychbekova | UTF8     | C       | C     | 
+ menu        | aika                  | UTF8     | C       | C     | 
+ mydb        | aika                  | UTF8     | C       | C     | 
+ postgres    | aigerimkubanychbekova | UTF8     | C       | C     | 
+ shakespeare | aigerimkubanychbekova | UTF8     | C       | C     | 
+ shop        | aika                  | UTF8     | C       | C     | 
+ template0   | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+             |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1   | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+             |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(10 rows)
+
+aika=# \d
+               List of relations
+ Schema |       Name        |   Type   | Owner 
+--------+-------------------+----------+-------
+ public | client            | table    | aika
+ public | client_id_seq     | sequence | aika
+ public | client_ticket_seq | sequence | aika
+ public | dish              | table    | aika
+ public | dish_id_seq       | sequence | aika
+ public | order_dish        | table    | aika
+ public | orders            | table    | aika
+ public | orders_id_seq     | sequence | aika
+ public | person            | table    | aika
+ public | person_id_seq     | sequence | aika
+(10 rows)
+
+aika=# \d dish
+                                       Table "public.dish"
+    Column     |          Type          | Collation | Nullable |             Default              
+---------------+------------------------+-----------+----------+----------------------------------
+ id            | integer                |           | not null | nextval('dish_id_seq'::regclass)
+ title         | character varying(155) |           | not null | 
+ price         | money                  |           |          | 
+ type          | detail                 |           |          | 
+ souce         | topping                |           |          | 
+ is_vegetarian | boolean                |           |          | false
+ comment       | character varying(255) |           |          | 
+Indexes:
+    "dish_pkey" PRIMARY KEY, btree (id)
+Referenced by:
+    TABLE "order_dish" CONSTRAINT "fk_order_dish_dish" FOREIGN KEY (dish_id) REFERENCES dish(id)
+
+aika=# select * from dish
+aika-# ;
+ id | title | price | type | souce | is_vegetarian | comment 
+----+-------+-------+------+-------+---------------+---------
+(0 rows)
+
+aika=# INSERT INTO Dish (title, price, type, souce, is_vegetarian, comment) VALUES ('Nuggets', 12.40, 'food', 'BBQ', False, 'spicy'),
+('Fries', 5.20, 'food', 'ketchup', True, 'extra salt'), ('Longer', 4.89, 'food', 'ranch', False, 'extra pickles'), ('Cheeseburger', 10.79, 'food', 'BBQ', False, 'extra cheese'), ('Cheeseburger De Lux', 12.99, 'food', 'mustard', False, 'add cheese souce'), ('Chefburger De Lux', 10.99, 'food', 'ketchup', False, 'add mustard'), ('Chefburger Junior', 5.99, 'food', 'mustard', False, 'add ketchup'), ('Basket s12', 12.99, 'food', 'ketchup', False, 'extra spicy'), ('Basket M20', 24.59, 'food', 'ketchup', False, 'not spicy');
+INSERT 0 9
+aika=# INSERT INTO Dish (title, price, type) VALUES ('Donut Apple-Cinnamon', 3.49, 'dessert'), ('Donut Strawberry', 3.49, 'dessert'), ('Cake Raspberry Blueberry', 5.00, 'dessert');
+INSERT 0 3
+aika=# INSERT INTO Dish (title, price, type, souce) VALUES ('Hashbrown', 3.50, 'food', 'mayo'), ('Fries po-derevensky', 4.69, 'food', 'ketchup'), ('Twister', 6.79, 'food', 'mustard');
+INSERT 0 3
+aika=# INSERT INTO Dish (title, price, type, is_vegetarian) VALUES ('Pepsi 0,3', 3.99, 'beverage', True), ('Pepsi 0,4', 4.99, 'beverage', True), ('Pepsi 0,5', 5.99, 'beverage', True), ('Pepsi in bottle 0,5', 5.00, 'beverage', True), ('Juice Apple', 3.59, 'beverage', True), ('Strawberry Milkshake', 12.89, 'beverage', True), ('Chocolate Milkshake', 12.89, 'beverage', True), ('Vanilla Milkshake', 12.99, 'beverage', True);
+INSERT 0 8
+aika=# INSERT INTO Dish (title, price, type, souce) VALUES ('Boxmaster', 23.99, 'food', 'ranch');
+INSERT 0 1
+aika=# \d dish
+                                       Table "public.dish"
+    Column     |          Type          | Collation | Nullable |             Default              
+---------------+------------------------+-----------+----------+----------------------------------
+ id            | integer                |           | not null | nextval('dish_id_seq'::regclass)
+ title         | character varying(155) |           | not null | 
+ price         | money                  |           |          | 
+ type          | detail                 |           |          | 
+ souce         | topping                |           |          | 
+ is_vegetarian | boolean                |           |          | false
+ comment       | character varying(255) |           |          | 
+Indexes:
+    "dish_pkey" PRIMARY KEY, btree (id)
+Referenced by:
+    TABLE "order_dish" CONSTRAINT "fk_order_dish_dish" FOREIGN KEY (dish_id) REFERENCES dish(id)
+
+aika=# select * from dish
+aika-# select * from dish;
+ERROR:  syntax error at or near "select"
+LINE 2: select * from dish;
+        ^
+aika=# select * from dish;
+ id |          title           | price  |   type   |  souce  | is_vegetarian |     comment      
+----+--------------------------+--------+----------+---------+---------------+------------------
+  1 | Nuggets                  | $12.40 | food     | BBQ     | f             | spicy
+  2 | Fries                    |  $5.20 | food     | ketchup | t             | extra salt
+  3 | Longer                   |  $4.89 | food     | ranch   | f             | extra pickles
+  4 | Cheeseburger             | $10.79 | food     | BBQ     | f             | extra cheese
+  5 | Cheeseburger De Lux      | $12.99 | food     | mustard | f             | add cheese souce
+  6 | Chefburger De Lux        | $10.99 | food     | ketchup | f             | add mustard
+  7 | Chefburger Junior        |  $5.99 | food     | mustard | f             | add ketchup
+  8 | Basket s12               | $12.99 | food     | ketchup | f             | extra spicy
+  9 | Basket M20               | $24.59 | food     | ketchup | f             | not spicy
+ 10 | Donut Apple-Cinnamon     |  $3.49 | dessert  |         | f             | 
+ 11 | Donut Strawberry         |  $3.49 | dessert  |         | f             | 
+ 12 | Cake Raspberry Blueberry |  $5.00 | dessert  |         | f             | 
+ 13 | Hashbrown                |  $3.50 | food     | mayo    | f             | 
+ 14 | Fries po-derevensky      |  $4.69 | food     | ketchup | f             | 
+ 15 | Twister                  |  $6.79 | food     | mustard | f             | 
+ 16 | Pepsi 0,3                |  $3.99 | beverage |         | t             | 
+ 17 | Pepsi 0,4                |  $4.99 | beverage |         | t             | 
+ 18 | Pepsi 0,5                |  $5.99 | beverage |         | t             | 
+ 19 | Pepsi in bottle 0,5      |  $5.00 | beverage |         | t             | 
+ 20 | Juice Apple              |  $3.59 | beverage |         | t             | 
+ 21 | Strawberry Milkshake     | $12.89 | beverage |         | t             | 
+ 22 | Chocolate Milkshake      | $12.89 | beverage |         | t             | 
+ 23 | Vanilla Milkshake        | $12.99 | beverage |         | t             | 
+ 24 | Boxmaster                | $23.99 | food     | ranch   | f             | 
+(24 rows)
+
+aika=# insert into client(name) values ('John'), ('Raychel');
+INSERT 0 2
+aika=# select * from client;
+ id |  name   | ticket 
+----+---------+--------
+  1 | John    |      1
+  2 | Raychel |      2
+(2 rows)
+
+aika=# alter sequence client_ticket_seq restart with 300;
+ALTER SEQUENCE
+aika=# select * from client;
+ id |  name   | ticket 
+----+---------+--------
+  1 | John    |      1
+  2 | Raychel |      2
+(2 rows)
+
+aika=# alter sequence client_id_seq restart with 150;
+ALTER SEQUENCE
+aika=# \d client
+                                     Table "public.client"
+ Column |         Type          | Collation | Nullable |                Default                 
+--------+-----------------------+-----------+----------+----------------------------------------
+ id     | integer               |           | not null | nextval('client_id_seq'::regclass)
+ name   | character varying(50) |           |          | 'Anonymous'::character varying
+ ticket | integer               |           | not null | nextval('client_ticket_seq'::regclass)
+Indexes:
+    "client_pkey" PRIMARY KEY, btree (id)
+    "client_ticket_key" UNIQUE CONSTRAINT, btree (ticket)
+Referenced by:
+    TABLE "orders" CONSTRAINT "fk_orders_client" FOREIGN KEY (client_id) REFERENCES client(id)
+
+aika=# \l
+                                                 List of databases
+    Name     |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-------------+-----------------------+----------+---------+-------+-------------------------------------------------
+ aika        | aigerimkubanychbekova | UTF8     | C       | C     | =Tc/aigerimkubanychbekova                      +
+             |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova+
+             |                       |          |         |       | aika=CTc/aigerimkubanychbekova
+ db          | aika                  | UTF8     | C       | C     | 
+ kfc_menu    | aigerimkubanychbekova | UTF8     | C       | C     | 
+ menu        | aika                  | UTF8     | C       | C     | 
+ mydb        | aika                  | UTF8     | C       | C     | 
+ postgres    | aigerimkubanychbekova | UTF8     | C       | C     | 
+ shakespeare | aigerimkubanychbekova | UTF8     | C       | C     | 
+ shop        | aika                  | UTF8     | C       | C     | 
+ template0   | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+             |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1   | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+             |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(10 rows)
+
+aika=# \l aika
+                                              List of databases
+ Name |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+------+-----------------------+----------+---------+-------+-------------------------------------------------
+ aika | aigerimkubanychbekova | UTF8     | C       | C     | =Tc/aigerimkubanychbekova                      +
+      |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova+
+      |                       |          |         |       | aika=CTc/aigerimkubanychbekova
+(1 row)
+
+aika=# \dt dish;
+       List of relations
+ Schema | Name | Type  | Owner 
+--------+------+-------+-------
+ public | dish | table | aika
+(1 row)
+
+aika=# insert into client(name) values ('John'), ('Raychel');
+INSERT 0 2
+aika=# select * from client;
+ id  |  name   | ticket 
+-----+---------+--------
+   1 | John    |      1
+   2 | Raychel |      2
+ 150 | John    |    300
+ 151 | Raychel |    301
+(4 rows)
+
+aika=# delete from client where id<10;
+DELETE 2
+aika=# select * from client;
+ id  |  name   | ticket 
+-----+---------+--------
+ 150 | John    |    300
+ 151 | Raychel |    301
+(2 rows)
+
+aika=# insert into client(name) values('Tom', 'Jerry', 
+aika(# );
+ERROR:  syntax error at or near ")"
+LINE 2: );
+        ^
+aika=# insert into client(name) values('Tom', 'Jerry', 'Bob', 'Patrick', 'Squid', 'Krabs');
+ERROR:  INSERT has more expressions than target columns
+LINE 1: insert into client(name) values('Tom', 'Jerry', 'Bob', 'Patr...
+                                               ^
+aika=# insert into client(name) values('Tom'),('Jerry'),('Bob'), ('Patrick'), ('Squid'), ('Krabs');
+INSERT 0 6
+aika=# select * from client;                                    
+ id  |  name   | ticket 
+-----+---------+--------
+ 150 | John    |    300
+ 151 | Raychel |    301
+ 152 | Tom     |    302
+ 153 | Jerry   |    303
+ 154 | Bob     |    304
+ 155 | Patrick |    305
+ 156 | Squid   |    306
+ 157 | Krabs   |    307
+(8 rows)
+
+aika=# insert into myorder(client_id, payment_method) values (150, 'card'), (
+aika(# 152, 'card');
+ERROR:  relation "myorder" does not exist
+LINE 1: insert into myorder(client_id, payment_method) values (150, ...
+                    ^
+aika=# insert into orders(client_id, payment_method) values (150, 'card'), (152, 'card'), (153, 'cash'), (152, 'cash'), (154, 'card'), (155, 'cash'), (156, 'card'), (157, 'card);
+aika'# '
+aika(# )
+aika-# ;
+ERROR:  invalid input value for enum method: "card);
+"
+LINE 1: ..., (154, 'card'), (155, 'cash'), (156, 'card'), (157, 'card);
+                                                                ^
+aika=# insert into myorder(client_id, payment_method) values (150, 'card'), (
+152, 'card');
+ERROR:  relation "myorder" does not exist
+LINE 1: insert into myorder(client_id, payment_method) values (150, ...
+                    ^
+aika=# insert into orders(client_id, payment_method) values (150, 'card'), (152, 'card'), (153, 'cash'), (152, 'cash'), (154, 'card'), (155, 'cash'), (156, 'card'), (157, 'card);
+aika'# insert into myorder(client_id, payment_method) values (150, 'card'), (
+152, 'card');
+aika'# '
+aika(# );
+ERROR:  syntax error at or near "card"
+LINE 2: ...o myorder(client_id, payment_method) values (150, 'card'), (
+                                                              ^
+aika=# insert into orders(client_id, payment_method) values (150, 'card'), (152, 'card'), (153, 'cash'), (152, 'cash'), (154, 'card'), (155, 'cash'), (156, 'card'), (157, 'card');
+INSERT 0 8
+aika=# select * from orders;
+ id | client_id | payment_method 
+----+-----------+----------------
+  1 |       150 | card
+  2 |       152 | card
+  3 |       153 | cash
+  4 |       152 | cash
+  5 |       154 | card
+  6 |       155 | cash
+  7 |       156 | card
+  8 |       157 | card
+(8 rows)
+
+aika=# \d order_dish
+              Table "public.order_dish"
+  Column  |  Type   | Collation | Nullable | Default 
+----------+---------+-----------+----------+---------
+ order_id | integer |           |          | 
+ dish_id  | integer |           |          | 
+Foreign-key constraints:
+    "fk_order_dish_dish" FOREIGN KEY (dish_id) REFERENCES dish(id)
+    "fk_order_dish_order" FOREIGN KEY (order_id) REFERENCES orders(id)
+
+aika=# insert into order_dish values (3, 12), (1, 23), (1, 20), (2, 7), (4, 13), (7, 18), (5, 5), (6, 20), (8, 11), (5, 3);
+INSERT 0 10
+aika=# select * from order_dish;
+ order_id | dish_id 
+----------+---------
+        3 |      12
+        1 |      23
+        1 |      20
+        2 |       7
+        4 |      13
+        7 |      18
+        5 |       5
+        6 |      20
+        8 |      11
+        5 |       3
+(10 rows)
+
+aika=# select * from orders;
+ id | client_id | payment_method 
+----+-----------+----------------
+  1 |       150 | card
+  2 |       152 | card
+  3 |       153 | cash
+  4 |       152 | cash
+  5 |       154 | card
+  6 |       155 | cash
+  7 |       156 | card
+  8 |       157 | card
+(8 rows)
+
+aika=# select orders.id, orders.payment_method, client.name, client.ticket from orders inner join client on orders.client_id = client.id;
+ id | payment_method |  name   | ticket 
+----+----------------+---------+--------
+  1 | card           | John    |    300
+  2 | card           | Tom     |    302
+  3 | cash           | Jerry   |    303
+  4 | cash           | Tom     |    302
+  5 | card           | Bob     |    304
+  6 | cash           | Patrick |    305
+  7 | card           | Squid   |    306
+  8 | card           | Krabs   |    307
+(8 rows)
+
+aika=# select orders.payment_method, client.name, client.ticket from order_dish inner join myorder on orders.id = order_dish.order_id;
+ERROR:  relation "myorder" does not exist
+LINE 1: ...nt.name, client.ticket from order_dish inner join myorder on...
+                                                             ^
+aika=# select orders.payment_method, client.name, client.ticket from order_dish inner join orders on orders.id = order_dish.order_id inner join orders.client_id = client.id;
+ERROR:  syntax error at or near "="
+LINE 1: ...= order_dish.order_id inner join orders.client_id = client.i...
+                                                             ^
+aika=# select orders.payment_method, client.name, client.ticket from order_dish inner join orders on orders.id = order_dish.order_id inner join on orders.client_id = client.id;
+ERROR:  syntax error at or near "on"
+LINE 1: ...ers on orders.id = order_dish.order_id inner join on orders....
+                                                             ^
+aika=# select orders.payment_method, client.name, client.ticket from order_dish inner join orders on orders.id = order_dish.order_id inner join client on orders.client_id = client.id;
+ payment_method |  name   | ticket 
+----------------+---------+--------
+ cash           | Jerry   |    303
+ card           | John    |    300
+ card           | John    |    300
+ card           | Tom     |    302
+ cash           | Tom     |    302
+ card           | Squid   |    306
+ card           | Bob     |    304
+ cash           | Patrick |    305
+ card           | Krabs   |    307
+ card           | Bob     |    304
+(10 rows)
+
+aika=# select orders.payment_method, client.name, client.ticket from order_dish inner join orders on orders.id = order_dish.order_id inner join client on orders.client_id = client.id inner join dish on dish.id = order_dish.dish_id;
+ payment_method |  name   | ticket 
+----------------+---------+--------
+ cash           | Jerry   |    303
+ card           | John    |    300
+ card           | John    |    300
+ card           | Tom     |    302
+ cash           | Tom     |    302
+ card           | Squid   |    306
+ card           | Bob     |    304
+ cash           | Patrick |    305
+ card           | Krabs   |    307
+ card           | Bob     |    304
+(10 rows)
+
+aika=# select orders.payment_method, client.name, client.ticket from order_dish inner join orders on orders.id = order_dish.order_id inner join client on orders.client_id = client.id inner join dish on dish.id = order_dish.dish_id;
+ payment_method |  name   | ticket 
+----------------+---------+--------
+ cash           | Jerry   |    303
+ card           | John    |    300
+ card           | John    |    300
+ card           | Tom     |    302
+ cash           | Tom     |    302
+ card           | Squid   |    306
+ card           | Bob     |    304
+ cash           | Patrick |    305
+ card           | Krabs   |    307
+ card           | Bob     |    304
+(10 rows)
+
+aika=# select * from order_dish;
+ order_id | dish_id 
+----------+---------
+        3 |      12
+        1 |      23
+        1 |      20
+        2 |       7
+        4 |      13
+        7 |      18
+        5 |       5
+        6 |      20
+        8 |      11
+        5 |       3
+(10 rows)
+
+aika=# select orders.payment_method, client.name, client.ticket from order_dish inner join orders on orders.id = order_dish.order_id inner join client on orders.client_id = client.id inner join dish on dish.id = order_dish.dish_id;
+ payment_method |  name   | ticket 
+----------------+---------+--------
+ cash           | Jerry   |    303
+ card           | John    |    300
+ card           | John    |    300
+ card           | Tom     |    302
+ cash           | Tom     |    302
+ card           | Squid   |    306
+ card           | Bob     |    304
+ cash           | Patrick |    305
+ card           | Krabs   |    307
+ card           | Bob     |    304
+(10 rows)
+
+aika=# select orders.payment_method, client.name, client.ticket, dish.title from order_dish inner join orders on orders.id = order_dish.order_id inner join client on orders.client_id = client.id inner join dish on dish.id = order_dish.dish_id;
+ payment_method |  name   | ticket |          title           
+----------------+---------+--------+--------------------------
+ cash           | Jerry   |    303 | Cake Raspberry Blueberry
+ card           | John    |    300 | Vanilla Milkshake
+ card           | John    |    300 | Juice Apple
+ card           | Tom     |    302 | Chefburger Junior
+ cash           | Tom     |    302 | Hashbrown
+ card           | Squid   |    306 | Pepsi 0,5
+ card           | Bob     |    304 | Cheeseburger De Lux
+ cash           | Patrick |    305 | Juice Apple
+ card           | Krabs   |    307 | Donut Strawberry
+ card           | Bob     |    304 | Longer
+(10 rows)
+
+aika=# select count(*) from order_dish inner join dish on dish.id = order_dish.dish_id where dish.title ilike '%pepsi%';
+ count 
+-------
+     1
+(1 row)
+
+aika=# select sum(dish.price), order_dish.order_di from dish inner join order_dish on order_dish.dish_id = dish.id group by order_dish.order_id;
+ERROR:  column order_dish.order_di does not exist
+LINE 1: select sum(dish.price), order_dish.order_di from dish inner ...
+                                ^
+HINT:  Perhaps you meant to reference the column "order_dish.order_id".
+aika=# select sum(dish.price), order_dish.order_id, client.name, orders.payment_method from dish inner join order_dish on order_dish.dish_id = dish.id inner join orders on orders.id = order_dish.order_id inner join client on client.id = orders.client_id group by order_dish.order_id;
+ERROR:  column "client.name" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: select sum(dish.price), order_dish.order_id, client.name, or...
+                                                     ^
+aika=# select sum(dish.price), order_dish.order_id, client.name, orders.payment_method from dish inner join order_dish on order_dish.dish_id = dish.id inner join orders on orders.id = order_dish.order_id inner join client on client.id = orders.client_id group by order_dish.order_id, orders.payment_method, client.name;
+  sum   | order_id |  name   | payment_method 
+--------+----------+---------+----------------
+  $3.49 |        8 | Krabs   | card
+ $17.88 |        5 | Bob     | card
+  $5.99 |        2 | Tom     | card
+ $16.58 |        1 | John    | card
+  $5.00 |        3 | Jerry   | cash
+  $3.50 |        4 | Tom     | cash
+  $5.99 |        7 | Squid   | card
+  $3.59 |        6 | Patrick | cash
+(8 rows)
+
+aika=# select sum(dish.price), order_dish.order_id, client.name, orders.payment_method from dish inner join order_dish on order_dish.dish_id = dish.id inner join orders on orders.id = order_dish.order_id inner join client on client.id = orders.client_id where orders.payment_method = 'card' group by order_dish.order_id, orders.payment_method, client.name;
+  sum   | order_id | name  | payment_method 
+--------+----------+-------+----------------
+ $16.58 |        1 | John  | card
+  $5.99 |        2 | Tom   | card
+ $17.88 |        5 | Bob   | card
+  $5.99 |        7 | Squid | card
+  $3.49 |        8 | Krabs | card
+(5 rows)
+

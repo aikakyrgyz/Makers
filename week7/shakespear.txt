@@ -1,0 +1,373 @@
+\l
+create database test;
+\l
+\c test
+\d
+\dt
+\c postgres
+\dt
+\d
+\l
+drop database test;
+\l
+\du
+create user test_user with password '1';
+ \du
+alter role test_user with superuser
+\du
+;
+\du
+create database test_user;
+\l
+\du
+\l
+\c postgres
+\c postgres
+\c test_user
+\l
+grant all privilages on database test_user to test_user
+\l
+\du
+grant all privilages on database test_user to test_user;
+grant all privileges on database test_user to test_user;
+\l
+\du
+\q
+drop user test_user
+;
+drop user 
+drop user 'test_user';
+drop user test_user
+;
+\du
+revoke all privileges on test_user from test_user
+;
+alter role test_user NOSUPERUSER;
+\l
+\du
+drop test_user
+;
+drop user test_user;
+drop test_user
+;
+drop database test_user;
+drop user test_user;
+\du
+\du
+\l
+\l
+create database test with owner user_test
+;
+create user user_test;
+\l
+\du
+create database test with owner user_test
+;
+\l
+drop user test;
+drop user user_test;
+\c test
+alter role user_test with superuser;
+grant all privilages on test to user_test;
+grant all privileges on test to user_test;
+drop user user_test;
+drop database test;
+drop user user_test;
+\du
+create user test_user with password '1';
+create database db;
+\du
+\l
+\du
+alter role test_user with superuser;
+grant all privileges on db to test_user
+;
+\du
+\c db
+grant all privilages on db to test_user;
+grant all privileges on db to test_user;
+\c postgres
+create database test_user
+;
+\l
+grant all privileges on db to test_user;
+drop user test_user
+;
+drop db;
+drop database db;
+drop database test_user;
+\l
+create user aika with password '1';
+\du
+\l
+create database aika;
+\l
+alter role aika with superuser;
+grant all privileges on database aika to aika
+;
+\l
+\du
+\du
+\l
+\c aika
+\c aika
+\du
+\l
+\c postgres
+drop database aika
+;
+drop user aika
+;
+drop user aika
+;
+\k
+\l
+create user aika;
+alter role aika with superuser;
+create database db with owner aika;
+\l
+grant all privileges on db to aika
+;
+drop database db;
+drop user aika;
+\du
+\l
+create user aika with password '1'
+;
+alter role aika with superuser;
+grant all privileges on aika to aika
+;
+grant all privileges on database aika to aika
+;
+\l
+create database aika;
+grant all privileges on database aika to aika
+;
+\l
+create database kfc_menu
+;
+create type detail as enum('food', 'beverage', 'dessert');
+create type topping as enum('ketchup', 'ranch', 'bbq', 'mayo', 'mustard');
+\c kfc_menu
+create type detail as enum('food', 'beverage', 'dessert');
+create type topping as enum('ketchup', 'ranch', 'bbq', 'mayo', 'mustard');
+create table Dish(
+id serial primary key,
+title varchar(155) not null;
+price money,
+type detail,
+sauce topping,
+is_vegeterian bool default False;
+comment varchar(255));
+create table Dish(
+id serial primary key,
+title varchar(155) not null;
+price money,
+type detail,
+sauce topping,
+is_vegeterian bool default False,
+comment varchar(255));
+create table Dish(
+id serial primary key,
+title varchar(155) not null,
+price money,
+type detail,
+sauce topping,
+is_vegeterian bool default False,
+comment varchar(255));
+alter table dish alter price type decimal;
+\dt
+\d
+\d
+\d dish
+\i lesson2_inserts.txt
+\l
+\c postgres;
+\c aika
+create database db;
+\l
+create table Person{
+;
+create table Person(
+id serial primary key,
+name varchar(50) NOT NULL,
+last_name varchar(100),
+country varchar(50) NOT NULL);
+\dt
+\dt person
+\d person
+\du
+\l
+create database mydb;
+\d
+\l
+\c mydb
+create type language as enum('Python', 'JavaScript');
+create table info(
+id serial primary key,
+name varchar(50) NOT NULL,
+lastname varchar(100),
+country varchar(60),
+email varchar(50) unique,
+age int,
+programming_language language not null,
+experience int);
+\d
+\dt
+\d info
+insert into info (name, lastname, country, email, age, programming_language, experience) values ('Aigerim', "Kubanychbek kyzy", "Kyrgyzstan", "aikamusiconly@gmail.com", 21, "Python", 0), ('Zalkar', 'Omurzhanov', 'Kyrgyzstan', 'zo@gmail.com', 21, 'Python', 5);
+insert into info (name, lastname, country, email, age, programming_language, experience) values ('Aigerim', 'Kubanychbek kyzy', 'Kyrgyzstan', 'aikamusiconly@gmail.com', 21, 'Python', 0), ('Zalkar', 'Omurzhanov', 'Kyrgyzstan', 'zo@gmail.com', 21, 'Python', 5);
+insert into info (name, lastname, country, email, age, programming_language, experience) values ('Anastasia', 'Tuzikova', 'Kyrgyzstan', 'at@gmail.com', 19, 'Python', 0), ('Adilet', 'Nasirov', 'Kyrgyzstan', 'adiletnasirov@gmail.com', 20, 'Python', 2);
+\d info
+\dt info
+select * from info
+;
+\i info.txt
+\l
+create database mydb;
+\c mydb
+eixt
+exit
+\q
+\c mydb
+\q
+\l
+create database shakespear;
+\l
+\c shakespear
+drop database shakespear
+;
+\c aika
+drop database shakespear;
+create database shakespeare;
+\l
+\c shakespear
+\c shakespeare;
+\i shakespeare.sql
+\l
+\d
+\d chapter
+\d character
+\d character_work
+\d wordform
+\d work
+select plaintext, occurences from wordform fetch first(10) row only;
+select plaintext from wordform where plaintext ilike 'a%';
+select plaintext as word from wordform where ilike '%a';
+select plaintext as word from wordform where plaintext ilike '%a';
+select plaintext as word from wordform where plaintext ilike 'a%';
+\d work
+select genretype from work;
+select * from work;
+select title, genretype from work where genretype = 'p';
+select avg(totalparagraphs) where genretype = 't';
+select avg(totalparagraphs) from work where genretype = 't';
+select title where totalwords>avg(totalwords);
+select title from work where totalwords>avg(totalwords);
+select title, totalwords from work where totalwords > avg(totalwords);
+select title, totalwords from work where total words >(select avg(totalwords);
+);
+select title, totalwords from work where totalwords >(select avg(totalwords);
+);
+select title, totalwords from work where totalwords >(select avg(totalwords));;
+select title, totalwords from work where totalwords >(select avg(totalwords) from work);
+select avg(totalwords) from work;
+select character.charname, work.title, character.speechcount from character_work inner join character on character_work.charid = character.charid inner join work on work.workid = character_work.charid; 
+select character.charname, work.title, character.speechcount from character_work full join character on character_work.charid = character.charid full join work on work.workid = character_work.charid; 
+select character.charname, work.title, character.speechcount from character_work outerl join character on character_work.charid = character.charid outer join work on work.workid = character_work.charid; 
+select character.charname, work.title, character.speechcount from character_work outer join character on character_work.charid = character.charid outer join work on work.workid = character_work.charid; 
+select character.charname, work.title, character.speechcount from character_work full outer join character on character_work.charid = character.charid full outer join work on work.workid = character_work.charid; 
+select character.charname, work.title, character.speechcount from character_work inner join character on character_work.charid = character.charid inner join work on work.workid = character_work.charid; 
+select character.charname, work.title, character.speechcount from character_work inner join work on character_work.workid = work.workid inner join character on character.charid = character_work.charid;
+select avg(speechcount) from character_work inner join work on work.workid = character_work.workid inner join character on character.charid = character_work.charid where title = 'Romeo and Juliet';
+\d paragraph
+select * from paragraph
+;
+q
+select paragraph.section, work.totalwords from work group by paragraph.section;
+select work.totalwords from work
+;
+select paragraph.section, work.totalwords from work inner join paragraph on work.workid = paragraph.workid group by paragraph.section;
+select section, count(plaintext) from paragraph;
+;
+select paragraph.section, work.totalwords from work inner join paragraph on work.workid = paragraph.workid group by paragraph.section;
+select section, count(plaintext) from paragraph group by section;;
+select section, count(plaintext) from paragraph order by section  group by section;
+select section, count(plaintext) from paragraph order by section group by section;
+select section, count(plaintext) from paragraph group by section order by section;;
+select charname, speechcount where speechcount between 15 and 30 order by speechcount;
+select charname, speechcount where speechcount between 15 and 30 order by speechcount;
+select charname, speechcount where speechcount between 15 and 30;
+select charname, speechcount from character where speechcount between 15 and 30;
+select charname, speechcount from character where speechcount between 15 and 30 order by speechcount asc;;
+select title from work where year between 1600 and 1700 order by year;
+select title, year from work where year between 1600 and 1700 order by year;
+select title from work where (longtitle ilike '%the%') or (longtitle ilike '%the') or (longtitle ilike 'the%'); 
+select title from work where year between 1600 and 1700 order by year
+;
+select title from work where longtitle ilike 'the';
+select title from work where longtitle ilike 'the%';
+select longtitle from work where longtitle ilike 'the';
+select longtitle from work where longtitle ilike 'the%';
+select longtitle from work where longtitle ilike '%the';
+select longtitle from work where longtitle ilike '%the' or longtitle ilike 'the%';;
+select distinct section from paragraph;
+select section from paragraph;
+select distinct section from paragraph;
+select chapter.workid, chapter.description, work.title from work inner join chapter on chapter.workid = work.workid;
+select chapter.workid, chapter.description, work.title from chapter inner join work on chapter.workid = work.workid;
+select * from chapter
+;
+select chapter.chapterid, chapter.description, work.title from chapter inner join work on chapter.workid = work.workid;
+select paragraph.paragraphnum, work.title, work.year from paragraph inner join work on work.workid = paragraph.workid;
+select p.paragraphnum, c.charname, c.speechcount from paragraph as p inner join character as c on p.charid = c.charid group by c.charname;
+select paragraph.paragraphnum, c.charname, c.speechcount from paragraph inner join character on paragraph = character.charid;
+select paragraph.paragraphnum, c.charname, c.speechcount from paragraph inner join character on paragraph.charid = character.charid;
+select paragraph.paragraphnum, character.charname, character.speechcount from paragraph inner join character on paragraph.charid = character.charid;
+select paragraph.paragraphnum, character.charname, character.speechcount from paragraph inner join character on paragraph.charid = character.charid;
+select p.paragraphnum, c.charname, c.speechcount from paragraph as p inner join character as c on p.charid = c.charid;
+select paragraph.paragraphnum, character.charname, character.speechcount from paragraph inner join character on paragraph.charid = character.charid group by character.charname;
+select paragraph.paragraphnum, character.charname, character.speechcount from paragraph inner join character on paragraph.charid = character.charid group by character.charname, paragraph.paragraphnum, character.speechcount;
+select p.paragraphnum as 'Paragraph num',, c.charname, c.speechcount from paragraph as p inner join character as c on p.charid = c.charid 
+select p.paragraphnum as 'Paragraph Number', c.charname, c.speechcount from paragraph as p inner join character as c on p.charid = c.charid;
+select p.paragraphnum as "Paragraph Number", c.charname, c.speechcount from paragraph as p inner join character as c on p.charid = c.charid;
+select p.paragraphnum as 'Paragraph num',, c.charname, c.speechcount from paragraph as p inner join character as c on p.charid = c.charid 
+select p.paragraphnum as 'Paragraph Number', c.charname, c.speechcount from paragraph as p inner join ;character as c on p.charid = c.charid;
+select p.paragraphnum as "Paragraph Number", c.charname as "Character Name", c.speechcount as "Number of Speeches" from paragraph as p inner join character as c on p.charid = c.charid group by c.charname, c.speechcount, p.paragraph;
+select p.paragraphnum as "Paragraph Number", c.charname as "Character Name", c.speechcount as "Number of Speeches" from paragraph as p inner join character as c on p.charid = c.charid group by c.charname, c.speechcount, p.paragraphnum;
+shakespeare=# select plaintext, occurences from wordform fetch first(10) row only;
+select plaintext, occurences from wordform fetch first(10) row only;
+select plaintext as "Word", occurences from wordform fetch first(10) row only;
+select plaintext as "Word", occurences as "Number of Occurrences" from wordform fetch first(10) row only;
+select plaintext as word from wordform where plaintext ilike 'a%';
+select plaintext as Word from wordform where plaintext ilike 'a%';
+select title, genretype from work where genretype = 'p';
+select title, genretype from work where genretype = 'p';
+select title, totalwords from work where totalwords >(select avg(totalwords) from work);
+select title, totalwords from work where (totalwords)>(select avg(totalwords) from work);
+select character.charname, work.title, character.speechcount from character_work inner join characterk on character_work.workid = work.workid inner join work on character.charid = character_work.charid;
+select character.charname, work.title, character.speechcount from character_work inner join character on character_work.workid = work.workid inner join work on character.charid = character_work.charid;
+select c.charname, w.title, c.speechcount from characte_work inner join character as c on c.charid = character_work.charid inner join work as w on character_work.workid = w.workid; 
+select c.charname, w.title, c.speechcount from character_work inner join character as c on c.charid = character_work.charid inner join work as w on character_work.workid = w.workid; 
+select charname, speechcount from character where speechcount between 15 and 30 order by speechcount asc;
+select title, year from work where year between 1601 and 1700 order by year;
+select * section from paragraph
+;
+select section from paragraph;
+select chapter.chapterid, chapter.description, work.title from chapter inner join work on chapter.workid = work.workid;
+\s shakespear.txt
+
+
+select genretype, count(*) as number from work group by genretype;
+ genretype | number 
+-----------+--------
+ c         |     14
+ p         |      5
+ h         |     12
+ t         |     11
+ s         |      1
+(5 rows)
+
+
+
+

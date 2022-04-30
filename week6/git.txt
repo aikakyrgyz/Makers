@@ -1,0 +1,620 @@
+Last login: Sun Mar 14 03:48:20 on ttys000
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ cd Desktop
+MacBook-Air-Aigerim:Desktop aigerimkubanychbekova$ cd Makers
+MacBook-Air-Aigerim:Makers aigerimkubanychbekova$ cd week6
+MacBook-Air-Aigerim:week6 aigerimkubanychbekova$ cd gitpractice
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git init
+Initialized empty Git repository in /Users/aigerimkubanychbekova/Desktop/Makers/week6/gitpractice/.git/
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ ls -a
+.	..	.git
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git status
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git add git.py
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   git.py
+
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   git.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	test.py
+	test2.py
+	test4.py
+
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git add .
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   git.py
+	new file:   test.py
+	new file:   test2.py
+	new file:   test4.py
+
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git commit -m "first commit"
+[master (root-commit) f6ecdcb] first commit
+ 4 files changed, 15 insertions(+)
+ create mode 100644 git.py
+ create mode 100644 test.py
+ create mode 100644 test2.py
+ create mode 100644 test4.py
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git remote add origin git@github.com:aikakyrgyz/Git-Practice.git
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git branch
+* master
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git branch delete
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git branch
+  delete
+* master
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git checkout delete
+Switched to branch 'delete'
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git branch
+* delete
+  master
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git push
+fatal: The current branch delete has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin delete
+
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git push --set-upstream origin delete
+The authenticity of host 'github.com (140.82.121.3)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)? no
+Host key verification failed.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git push --set-upstream origin delete
+The authenticity of host 'github.com (140.82.121.4)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'github.com,140.82.121.4' (RSA) to the list of known hosts.
+Counting objects: 4, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 370 bytes | 370.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0)
+To github.com:aikakyrgyz/Git-Practice.git
+ * [new branch]      delete -> delete
+Branch 'delete' set up to track remote branch 'delete' from 'origin'.
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git checkout master
+Switched to branch 'master'
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git status
+On branch master
+nothing to commit, working tree clean
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git branch
+  delete
+* master
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ touch test4.py
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git status
+On branch master
+nothing to commit, working tree clean
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ ls
+git.py		test.py		test2.py	test4.py
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ touch test5.py
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	test5.py
+
+nothing added to commit but untracked files present (use "git add" to track)
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git add .
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	new file:   test5.py
+
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git commit -m "added file 5"
+[master fd3f840] added file 5
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test5.py
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git status
+On branch master
+nothing to commit, working tree clean
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git push
+fatal: The current branch master has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin master
+
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git push --set-upstream origin master
+Counting objects: 2, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 219 bytes | 219.00 KiB/s, done.
+Total 2 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+remote: 
+remote: Create a pull request for 'master' on GitHub by visiting:
+remote:      https://github.com/aikakyrgyz/Git-Practice/pull/new/master
+remote: 
+To github.com:aikakyrgyz/Git-Practice.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git clone git@github.com:kani0798/Alice-bot.git
+Cloning into 'Alice-bot'...
+Warning: Permanently added the RSA host key for IP address '140.82.121.3' to the list of known hosts.
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
+Receiving objects: 100% (3/3), done.
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ ls
+Alice-bot	test.py		test4.py
+git.py		test2.py	test5.py
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ cd Alice-bot
+MacBook-Air-Aigerim:Alice-bot aigerimkubanychbekova$ ls
+Alice-Parser.py
+MacBook-Air-Aigerim:Alice-bot aigerimkubanychbekova$ ls -a
+.		..		.git		Alice-Parser.py
+MacBook-Air-Aigerim:Alice-bot aigerimkubanychbekova$ cd ..
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ ls
+Alice-bot	test.py		test4.py
+git.py		test2.py	test5.py
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ ls -a
+.		.git		git.py		test2.py	test5.py
+..		Alice-bot	test.py		test4.py
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ cd Alice-bot
+MacBook-Air-Aigerim:Alice-bot aigerimkubanychbekova$ ls
+Alice-Parser.py
+MacBook-Air-Aigerim:Alice-bot aigerimkubanychbekova$ ls -a
+.		..		.git		Alice-Parser.py
+MacBook-Air-Aigerim:Alice-bot aigerimkubanychbekova$ cd Alice-Parser.py
+-bash: cd: Alice-Parser.py: Not a directory
+MacBook-Air-Aigerim:Alice-bot aigerimkubanychbekova$ ls
+Alice-Parser.py
+MacBook-Air-Aigerim:Alice-bot aigerimkubanychbekova$ touch .gitignore
+MacBook-Air-Aigerim:Alice-bot aigerimkubanychbekova$ ls 
+Alice-Parser.py
+MacBook-Air-Aigerim:Alice-bot aigerimkubanychbekova$ ls -a
+.		..		.git		.gitignore	Alice-Parser.py
+MacBook-Air-Aigerim:Alice-bot aigerimkubanychbekova$ git pull origin delete
+fatal: Couldn't find remote ref delete
+MacBook-Air-Aigerim:Alice-bot aigerimkubanychbekova$ git pull origin delete git@github.com:kani0798/Alice-bot.git
+fatal: Couldn't find remote ref delete
+MacBook-Air-Aigerim:Alice-bot aigerimkubanychbekova$ cd ..
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ ls
+Alice-bot	test.py		test4.py
+git.py		test2.py	test5.py
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git push origin delete git@github.com:kani0798/Alice-bot.git
+error: src refspec git@github.com does not match any.
+error: failed to push some refs to 'git@github.com:aikakyrgyz/Git-Practice.git'
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git push origin delete git@github.com:kani0798/Alice-bot.git
+error: src refspec git@github.com does not match any.
+error: failed to push some refs to 'git@github.com:aikakyrgyz/Git-Practice.git'
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git pull origin delete git@github.com:kani0798/Alice-bot.git
+fatal: Couldn't find remote ref git@github.com
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git clone git@github.com:kani0798/my-first-blog.git
+Cloning into 'my-first-blog'...
+remote: Enumerating objects: 66, done.
+remote: Counting objects: 100% (66/66), done.
+remote: Compressing objects: 100% (45/45), done.
+remote: Total 66 (delta 18), reused 56 (delta 11), pack-reused 0
+Receiving objects: 100% (66/66), 10.70 KiB | 1.19 MiB/s, done.
+Resolving deltas: 100% (18/18), done.
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ ls
+Alice-bot	my-first-blog	test2.py	test5.py
+git.py		test.py		test4.py
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ cd my-first-blog
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ ls
+README.md	blog		manage.py	mysite
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ ls -a
+.		.git		README.md	manage.py
+..		.gitignore	blog		mysite
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ git push origin delete
+error: src refspec delete does not match any.
+error: failed to push some refs to 'git@github.com:kani0798/my-first-blog.git'
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ git checkout delete
+error: pathspec 'delete' did not match any file(s) known to git.
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ gti checkout origin delete
+-bash: gti: command not found
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ git branch]
+git: 'branch]' is not a git command. See 'git --help'.
+
+The most similar command is
+	branch
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ git branch
+* master
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ cd ..
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ ls
+Alice-bot	my-first-blog	test2.py	test5.py
+git.py		test.py		test4.py
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git branch
+  delete
+* master
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git checkout delete
+Switched to branch 'delete'
+Your branch is up to date with 'origin/delete'.
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ cd my-first-blog
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ ls
+README.md	blog		manage.py	mysite
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ git push origin delete
+error: src refspec delete does not match any.
+error: failed to push some refs to 'git@github.com:kani0798/my-first-blog.git'
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ git push delte
+fatal: 'delte' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ git push delete
+fatal: 'delete' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ git push Git-Practice
+fatal: 'Git-Practice' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ git push git@github.com:kani0798/my-first-blog.git
+ERROR: Permission to kani0798/my-first-blog.git denied to aikakyrgyz.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ git push git@github.com:aikakyrgyz/Git-Practice.git
+To github.com:aikakyrgyz/Git-Practice.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'git@github.com:aikakyrgyz/Git-Practice.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ git pull git@github.com:aikakyrgyz/Git-Practice.gitsds
+ERROR: Repository not found.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ git pull git@github.com:kani0798/Alice-bot.git
+warning: no common commits
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (2/2), done.
+Unpacking objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
+From github.com:kani0798/Alice-bot
+ * branch            HEAD       -> FETCH_HEAD
+fatal: refusing to merge unrelated histories
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ ls
+README.md	blog		manage.py	mysite
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ git init
+Reinitialized existing Git repository in /Users/aigerimkubanychbekova/Desktop/Makers/week6/gitpractice/my-first-blog/.git/
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ git remote add .
+usage: git remote add [<options>] <name> <url>
+
+    -f, --fetch           fetch the remote branches
+    --tags                import all tags and associated objects when fetching
+                          or do not fetch any tag at all (--no-tags)
+    -t, --track <branch>  branch(es) to track
+    -m, --master <branch>
+                          master branch
+    --mirror[=<push|fetch>]
+                          set up remote as a mirror to push to or fetch from
+
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ ls
+README.md	blog		manage.py	mysite
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ ls -a
+.		.git		README.md	manage.py
+..		.gitignore	blog		mysite
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ git commit -m "kani's"
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ git init
+Reinitialized existing Git repository in /Users/aigerimkubanychbekova/Desktop/Makers/week6/gitpractice/my-first-blog/.git/
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ git remote add git@github.com:aikakyrgyz/kani-s.git
+usage: git remote add [<options>] <name> <url>
+
+    -f, --fetch           fetch the remote branches
+    --tags                import all tags and associated objects when fetching
+                          or do not fetch any tag at all (--no-tags)
+    -t, --track <branch>  branch(es) to track
+    -m, --master <branch>
+                          master branch
+    --mirror[=<push|fetch>]
+                          set up remote as a mirror to push to or fetch from
+
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ git commit -m "kani's"
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ git branch master
+fatal: A branch named 'master' already exists.
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ git branch kani
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ ls
+README.md	blog		manage.py	mysite
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ git push kani
+fatal: 'kani' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ git branch kani's
+> 
+> 
+MacBook-Air-Aigerim:my-first-blog aigerimkubanychbekova$ cd ..
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git staus
+git: 'staus' is not a git command. See 'git --help'.
+
+The most similar command is
+	status
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git status
+On branch delete
+Your branch is up to date with 'origin/delete'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	Alice-bot/
+	my-first-blog/
+
+nothing added to commit but untracked files present (use "git add" to track)
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git remote add git@github.com:aikakyrgyz/kani-s.git
+usage: git remote add [<options>] <name> <url>
+
+    -f, --fetch           fetch the remote branches
+    --tags                import all tags and associated objects when fetching
+                          or do not fetch any tag at all (--no-tags)
+    -t, --track <branch>  branch(es) to track
+    -m, --master <branch>
+                          master branch
+    --mirror[=<push|fetch>]
+                          set up remote as a mirror to push to or fetch from
+
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git status
+On branch delete
+Your branch is up to date with 'origin/delete'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	Alice-bot/
+	my-first-blog/
+
+nothing added to commit but untracked files present (use "git add" to track)
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git add .
+warning: adding embedded git repository: Alice-bot
+hint: You've added another git repository inside your current repository.
+hint: Clones of the outer repository will not contain the contents of
+hint: the embedded repository and will not know how to obtain it.
+hint: If you meant to add a submodule, use:
+hint: 
+hint: 	git submodule add <url> Alice-bot
+hint: 
+hint: If you added this path by mistake, you can remove it from the
+hint: index with:
+hint: 
+hint: 	git rm --cached Alice-bot
+hint: 
+hint: See "git help submodule" for more information.
+warning: adding embedded git repository: my-first-blog
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git statu
+git: 'statu' is not a git command. See 'git --help'.
+
+The most similar commands are
+	status
+	stage
+	stash
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git status
+On branch delete
+Your branch is up to date with 'origin/delete'.
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	new file:   Alice-bot
+	new file:   my-first-blog
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+  (commit or discard the untracked or modified content in submodules)
+
+	modified:   Alice-bot (untracked content)
+
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git commit -m "kani's"
+[delete 379fb7c] kani's
+ 2 files changed, 2 insertions(+)
+ create mode 160000 Alice-bot
+ create mode 160000 my-first-blog
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git status
+On branch delete
+Your branch is ahead of 'origin/delete' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+  (commit or discard the untracked or modified content in submodules)
+
+	modified:   Alice-bot (untracked content)
+
+no changes added to commit (use "git add" and/or "git commit -a")
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git add Alice-bot
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git status
+On branch delete
+Your branch is ahead of 'origin/delete' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+  (commit or discard the untracked or modified content in submodules)
+
+	modified:   Alice-bot (untracked content)
+
+no changes added to commit (use "git add" and/or "git commit -a")
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git add.
+git: 'add.' is not a git command. See 'git --help'.
+
+The most similar command is
+	add
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git add .
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git status
+On branch delete
+Your branch is ahead of 'origin/delete' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+  (commit or discard the untracked or modified content in submodules)
+
+	modified:   Alice-bot (untracked content)
+
+no changes added to commit (use "git add" and/or "git commit -a")
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git push Alice-bot
+Counting objects: 6, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (6/6), 609 bytes | 304.00 KiB/s, done.
+Total 6 (delta 1), reused 0 (delta 0)
+To Alice-bot
+ * [new branch]      delete -> delete
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ gits status
+-bash: gits: command not found
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ git status
+On branch delete
+Your branch is ahead of 'origin/delete' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+  (commit or discard the untracked or modified content in submodules)
+
+	modified:   Alice-bot (untracked content)
+
+no changes added to commit (use "git add" and/or "git commit -a")
+MacBook-Air-Aigerim:gitpractice aigerimkubanychbekova$ cd Alice-bot
+MacBook-Air-Aigerim:Alice-bot aigerimkubanychbekova$ git init
+Reinitialized existing Git repository in /Users/aigerimkubanychbekova/Desktop/Makers/week6/gitpractice/Alice-bot/.git/
+MacBook-Air-Aigerim:Alice-bot aigerimkubanychbekova$ git add remote add git@github.com:aikakyrgyz/kani-s.git
+fatal: pathspec 'remote' did not match any files
+MacBook-Air-Aigerim:Alice-bot aigerimkubanychbekova$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	.gitignore
+
+nothing added to commit but untracked files present (use "git add" to track)
+MacBook-Air-Aigerim:Alice-bot aigerimkubanychbekova$ git add .
+MacBook-Air-Aigerim:Alice-bot aigerimkubanychbekova$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	new file:   .gitignore
+
+MacBook-Air-Aigerim:Alice-bot aigerimkubanychbekova$ git push
+ERROR: Permission to kani0798/Alice-bot.git denied to aikakyrgyz.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+MacBook-Air-Aigerim:Alice-bot aigerimkubanychbekova$ git branch kani
+MacBook-Air-Aigerim:Alice-bot aigerimkubanychbekova$ git checkout branch
+error: pathspec 'branch' did not match any file(s) known to git.
+MacBook-Air-Aigerim:Alice-bot aigerimkubanychbekova$ git checkout kani
+A	.gitignore
+Switched to branch 'kani'
+MacBook-Air-Aigerim:Alice-bot aigerimkubanychbekova$ git push kani
+fatal: 'kani' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+MacBook-Air-Aigerim:Alice-bot aigerimkubanychbekova$ git push origin kani
+ERROR: Permission to kani0798/Alice-bot.git denied to aikakyrgyz.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+MacBook-Air-Aigerim:Alice-bot aigerimkubanychbekova$ git branch
+  delete
+* kani
+  master
+MacBook-Air-Aigerim:Alice-bot aigerimkubanychbekova$ git push
+fatal: The current branch kani has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin kani
+
+MacBook-Air-Aigerim:Alice-bot aigerimkubanychbekova$ git push --set-upstream origin kani
+ERROR: Permission to kani0798/Alice-bot.git denied to aikakyrgyz.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+MacBook-Air-Aigerim:Alice-bot aigerimkubanychbekova$ 

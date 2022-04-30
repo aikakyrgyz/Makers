@@ -1,0 +1,529 @@
+Last login: Tue Mar 16 02:22:42 on ttys001
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ cd Makers
+-bash: cd: Makers: No such file or directory
+MacBook-Air-Aigerim:~ aigerimkubanychbekova$ cd Desktop
+MacBook-Air-Aigerim:Desktop aigerimkubanychbekova$ cd Makers
+MacBook-Air-Aigerim:Makers aigerimkubanychbekova$ mkdir week7
+MacBook-Air-Aigerim:Makers aigerimkubanychbekova$ ls
+No.Starch.Python.Oct_.2015.ISBN_.1593276036.pdf	week3
+fish.py						week4
+kaktusBot					week5
+snake						week6
+week1						week7
+week2
+MacBook-Air-Aigerim:Makers aigerimkubanychbekova$ cd week7
+MacBook-Air-Aigerim:week7 aigerimkubanychbekova$ psql -U aika
+psql (13.2)
+Type "help" for help.
+
+aika=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ aika      | aigerimkubanychbekova | UTF8     | C       | C     | =Tc/aigerimkubanychbekova                      +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova+
+           |                       |          |         |       | aika=CTc/aigerimkubanychbekova
+ db        | aika                  | UTF8     | C       | C     | 
+ kfc_menu  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ mydb      | aika                  | UTF8     | C       | C     | 
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(7 rows)
+
+aika=# create database shop;
+CREATE DATABASE
+aika=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ aika      | aigerimkubanychbekova | UTF8     | C       | C     | =Tc/aigerimkubanychbekova                      +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova+
+           |                       |          |         |       | aika=CTc/aigerimkubanychbekova
+ db        | aika                  | UTF8     | C       | C     | 
+ kfc_menu  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ mydb      | aika                  | UTF8     | C       | C     | 
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ shop      | aika                  | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(8 rows)
+
+aika=# \c shop;
+You are now connected to database "shop" as user "aika".
+shop=# \dt
+Did not find any relations.
+shop=# create table user(
+shop(# id serial primary key,
+shop(# name varchar(50), 
+shop(# lastname varchar(100));
+ERROR:  syntax error at or near "user"
+LINE 1: create table user(
+                     ^
+shop=# create table users(
+id serial primary key,
+name varchar(50), 
+lastname varchar(100));
+CREATE TABLE
+shop=# create table email(
+shop(# user_id int, 
+shop(# email varchar(60),
+shop(# constraint email_unique unique (user_id));
+CREATE TABLE
+shop=# \d
+            List of relations
+ Schema |     Name     |   Type   | Owner 
+--------+--------------+----------+-------
+ public | email        | table    | aika
+ public | users        | table    | aika
+ public | users_id_seq | sequence | aika
+(3 rows)
+
+shop=# \d email
+                       Table "public.email"
+ Column  |         Type          | Collation | Nullable | Default 
+---------+-----------------------+-----------+----------+---------
+ user_id | integer               |           |          | 
+ email   | character varying(60) |           |          | 
+Indexes:
+    "email_unique" UNIQUE CONSTRAINT, btree (user_id)
+
+shop=# alter table email add constraint fk_email_users foreign key (user_id) references users(id);
+ALTER TABLE
+shop=# \d email;
+                       Table "public.email"
+ Column  |         Type          | Collation | Nullable | Default 
+---------+-----------------------+-----------+----------+---------
+ user_id | integer               |           |          | 
+ email   | character varying(60) |           |          | 
+Indexes:
+    "email_unique" UNIQUE CONSTRAINT, btree (user_id)
+Foreign-key constraints:
+    "fk_email_users" FOREIGN KEY (user_id) REFERENCES users(id)
+
+shop=# create table product(
+shop(# id serial primary key,
+shop(# title varchar(150),
+shop(# price int,
+shop(# quantity int default 1);
+CREATE TABLE
+shop=# \d product
+                                     Table "public.product"
+  Column  |          Type          | Collation | Nullable |               Default               
+----------+------------------------+-----------+----------+-------------------------------------
+ id       | integer                |           | not null | nextval('product_id_seq'::regclass)
+ title    | character varying(150) |           |          | 
+ price    | integer                |           |          | 
+ quantity | integer                |           |          | 1
+Indexes:
+    "product_pkey" PRIMARY KEY, btree (id)
+
+shop=# create table order(
+shop(# id serial primary key,
+shop(# user_id int,
+shop(# address varchar(255),
+shop(# constraint fk_order_users foreign key(user_id) references users(id);
+shop(# );
+ERROR:  syntax error at or near "order"
+LINE 1: create table order(
+                     ^
+shop=# create table orders(
+id serial primary key,
+user_id int,
+address varchar(255),
+constraint fk_order_users foreign key(user_id) references users(id);
+);
+ERROR:  syntax error at or near ";"
+LINE 5: ...nt fk_order_users foreign key(user_id) references users(id);
+                                                                      ^
+shop=# create table orders(
+id serial primary key,
+user_id int,
+address varchar(255),
+constraint fk_order_users foreign key(user_id) references users(id));
+);
+CREATE TABLE
+ERROR:  syntax error at or near ")"
+LINE 1: );
+        ^
+shop=# create table orders(
+id serial primary key,
+user_id int,
+address varchar(255),
+constraint fk_order_users foreign key(user_id) references users(id));
+ERROR:  relation "orders" already exists
+shop=# \d orders
+                                    Table "public.orders"
+ Column  |          Type          | Collation | Nullable |              Default               
+---------+------------------------+-----------+----------+------------------------------------
+ id      | integer                |           | not null | nextval('orders_id_seq'::regclass)
+ user_id | integer                |           |          | 
+ address | character varying(255) |           |          | 
+Indexes:
+    "orders_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "fk_order_users" FOREIGN KEY (user_id) REFERENCES users(id)
+
+shop=# create table order_product(
+shop(# product id int not null,
+shop(# order);
+ERROR:  syntax error at or near "int"
+LINE 2: product id int not null,
+                   ^
+shop=# create table order_product(
+shop(# product_id int not null,
+shop(# order_id int not null,
+shop(# constraint fk_order_product_product foreign key(product_id) references product(id),
+shop(# constraint fk_oder_product_orders foreign key(order_id) references orders(id));
+CREATE TABLE
+shop=# \d order_product
+             Table "public.order_product"
+   Column   |  Type   | Collation | Nullable | Default 
+------------+---------+-----------+----------+---------
+ product_id | integer |           | not null | 
+ order_id   | integer |           | not null | 
+Foreign-key constraints:
+    "fk_oder_product_orders" FOREIGN KEY (order_id) REFERENCES orders(id)
+    "fk_order_product_product" FOREIGN KEY (product_id) REFERENCES product(id)
+
+shop=# insert into users (name, lastname) values('John', 'Snow');
+INSERT 0 1
+shop=# insert into users (name, lastname) values('Emily', 'Brown');
+INSERT 0 1
+shop=# insert into users (name, lastname) values('Amanda', 'White');
+INSERT 0 1
+shop=# insert into users (name, lastname) values('Aika', 'Kub');
+INSERT 0 1
+shop=# \d users
+                                     Table "public.users"
+  Column  |          Type          | Collation | Nullable |              Default              
+----------+------------------------+-----------+----------+-----------------------------------
+ id       | integer                |           | not null | nextval('users_id_seq'::regclass)
+ name     | character varying(50)  |           |          | 
+ lastname | character varying(100) |           |          | 
+Indexes:
+    "users_pkey" PRIMARY KEY, btree (id)
+Referenced by:
+    TABLE "email" CONSTRAINT "fk_email_users" FOREIGN KEY (user_id) REFERENCES users(id)
+    TABLE "orders" CONSTRAINT "fk_order_users" FOREIGN KEY (user_id) REFERENCES users(id)
+
+shop=# select * from users;
+ id |  name  | lastname 
+----+--------+----------
+  1 | John   | Snow
+  2 | Emily  | Brown
+  3 | Amanda | White
+  4 | Aika   | Kub
+(4 rows)
+
+shop=# insert into email (user_id, email) values(1, 'john@gmail.com');
+INSERT 0 1
+shop=# insert into email (user_id, email) values(2, 'emily@yahoo.com');
+INSERT 0 1
+shop=# insert into email (user_id, email) values(4, 'bob@gmail.com');
+INSERT 0 1
+shop=# select * from email;
+ user_id |      email      
+---------+-----------------
+       1 | john@gmail.com
+       2 | emily@yahoo.com
+       4 | bob@gmail.com
+(3 rows)
+
+shop=# select users.id, users.name, users.lastname, email.email from users inner join email on users.id = email.user_id;
+ id | name  | lastname |      email      
+----+-------+----------+-----------------
+  1 | John  | Snow     | john@gmail.com
+  2 | Emily | Brown    | emily@yahoo.com
+  4 | Aika  | Kub      | bob@gmail.com
+(3 rows)
+
+shop=# select u.id, u.lastname, e.email from users as u inner join email as e on u.id = e.user_id;
+ id | lastname |      email      
+----+----------+-----------------
+  1 | Snow     | john@gmail.com
+  2 | Brown    | emily@yahoo.com
+  4 | Kub      | bob@gmail.com
+(3 rows)
+
+shop=# select * from users;
+ id |  name  | lastname 
+----+--------+----------
+  1 | John   | Snow
+  2 | Emily  | Brown
+  3 | Amanda | White
+  4 | Aika   | Kub
+(4 rows)
+
+shop=# select u.id, u.lastname, e.email from users as u left outer join email as e on u.id = e.user_id;
+ id | lastname |      email      
+----+----------+-----------------
+  1 | Snow     | john@gmail.com
+  2 | Brown    | emily@yahoo.com
+  4 | Kub      | bob@gmail.com
+  3 | White    | 
+(4 rows)
+
+shop=# select u.id, u.lastname, e.email from users as u right outer join email as e on u.id = e.user_id;
+ id | lastname |      email      
+----+----------+-----------------
+  1 | Snow     | john@gmail.com
+  2 | Brown    | emily@yahoo.com
+  4 | Kub      | bob@gmail.com
+(3 rows)
+
+shop=# select u.id, u.lastname, e.email from users as u full outer join email as e on u.id = e.user_id;
+ id | lastname |      email      
+----+----------+-----------------
+  1 | Snow     | john@gmail.com
+  2 | Brown    | emily@yahoo.com
+  4 | Kub      | bob@gmail.com
+  3 | White    | 
+(4 rows)
+
+shop=# insert into orders(user_id, address) values(1, 'London, Bakers st.);
+shop'# '
+shop(# )
+shop-# ;
+INSERT 0 1
+shop=# \d orders
+                                    Table "public.orders"
+ Column  |          Type          | Collation | Nullable |              Default               
+---------+------------------------+-----------+----------+------------------------------------
+ id      | integer                |           | not null | nextval('orders_id_seq'::regclass)
+ user_id | integer                |           |          | 
+ address | character varying(255) |           |          | 
+Indexes:
+    "orders_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "fk_order_users" FOREIGN KEY (user_id) REFERENCES users(id)
+Referenced by:
+    TABLE "order_product" CONSTRAINT "fk_oder_product_orders" FOREIGN KEY (order_id) REFERENCES orders(id)
+
+shop=# select * from orders
+shop-# ;
+ id | user_id |       address        
+----+---------+----------------------
+  1 |       1 | London, Bakers st.);+
+    |         | 
+(1 row)
+
+shop=# alter table orders rename address where id = 1 to 'London';
+ERROR:  syntax error at or near "where"
+LINE 1: alter table orders rename address where id = 1 to 'London';
+                                          ^
+shop=# update orders set address = "London, Bakers st."  where id =1;
+ERROR:  column "London, Bakers st." does not exist
+LINE 1: update orders set address = "London, Bakers st."  where id =...
+                                    ^
+shop=# update orders set address ='London, Bakers st.'  where id =1;
+UPDATE 1
+shop=# select * from orders;
+ id | user_id |      address       
+----+---------+--------------------
+  1 |       1 | London, Bakers st.
+(1 row)
+
+shop=# insert into orders(user_id, address) values (3, 'Venice st.');
+INSERT 0 1
+shop=# insert into orders(user_id, address) values (3, 'Venice st.');
+INSERT 0 1
+shop=# select * from orders;
+ id | user_id |      address       
+----+---------+--------------------
+  1 |       1 | London, Bakers st.
+  2 |       3 | Venice st.
+  3 |       3 | Venice st.
+(3 rows)
+
+shop=# insert into orders (user_id, address) values(4, '3rd st.');
+INSERT 0 1
+shop=# select * from orders;
+ id | user_id |      address       
+----+---------+--------------------
+  1 |       1 | London, Bakers st.
+  2 |       3 | Venice st.
+  3 |       3 | Venice st.
+  4 |       4 | 3rd st.
+(4 rows)
+
+shop=# select o.id, o.address, u.name, u.lastname from orders as o inner join users as u on o.user_id = u.id;
+ id |      address       |  name  | lastname 
+----+--------------------+--------+----------
+  1 | London, Bakers st. | John   | Snow
+  2 | Venice st.         | Amanda | White
+  3 | Venice st.         | Amanda | White
+  4 | 3rd st.            | Aika   | Kub
+(4 rows)
+
+shop=# select u.name, u.lastname, e.email, o.address from users as u inner join email as e on e.user_id = u.id inner join orders as o on o.user_id = u.id;
+ name | lastname |     email      |      address       
+------+----------+----------------+--------------------
+ John | Snow     | john@gmail.com | London, Bakers st.
+ Aika | Kub      | bob@gmail.com  | 3rd st.
+(2 rows)
+
+shop=# select u.name, u.lastname, e.email, o.address from users as u full join email as e on e.user_id = u.id inner join orders as o on o.user_id = u.id;
+  name  | lastname |     email      |      address       
+--------+----------+----------------+--------------------
+ John   | Snow     | john@gmail.com | London, Bakers st.
+ Aika   | Kub      | bob@gmail.com  | 3rd st.
+ Amanda | White    |                | Venice st.
+ Amanda | White    |                | Venice st.
+(4 rows)
+
+shop=# select u.name, u.lastname, e.email, o.address from users as u full join email as e on e.user_id = u.id full join orders as o on o.user_id = u.id;
+  name  | lastname |      email      |      address       
+--------+----------+-----------------+--------------------
+ John   | Snow     | john@gmail.com  | London, Bakers st.
+ Emily  | Brown    | emily@yahoo.com | 
+ Aika   | Kub      | bob@gmail.com   | 3rd st.
+ Amanda | White    |                 | Venice st.
+ Amanda | White    |                 | Venice st.
+(5 rows)
+
+shop=# insert into product (title, price, quantity) values ('Samsung', 4000, 15);
+INSERT 0 1
+shop=# insert into product (title, price, quantity) values ('Iphone11', 1000, 5);
+INSERT 0 1
+shop=# insert into product (title, price, quantity) values ('Asus', 55000,3);
+INSERT 0 1
+shop=# insert into product (title, price, quantity) values ('Macbook', 11000,10);
+INSERT 0 1
+shop=# select * from product;
+ id |  title   | price | quantity 
+----+----------+-------+----------
+  1 | Samsung  |  4000 |       15
+  2 | Iphone11 |  1000 |        5
+  3 | Asus     | 55000 |        3
+  4 | Macbook  | 11000 |       10
+(4 rows)
+
+shop=# select * from order_product;
+ product_id | order_id 
+------------+----------
+(0 rows)
+
+shop=# select * from orders;
+ id | user_id |      address       
+----+---------+--------------------
+  1 |       1 | London, Bakers st.
+  2 |       3 | Venice st.
+  3 |       3 | Venice st.
+  4 |       4 | 3rd st.
+(4 rows)
+
+shop=# insert into order_product(product_id, order_id) values(2, 1);
+INSERT 0 1
+shop=# insert into order_product(product_id, order_id) values(4, 1);
+INSERT 0 1
+shop=# insert into order_product(product_id, order_id) values(4, 2);
+INSERT 0 1
+shop=# insert into order_product(product_id, order_id) values(1, 4);
+INSERT 0 1
+shop=# insert into order_product(product_id, order_id) values(3, 4);
+INSERT 0 1
+shop=# select * from order_product;
+ product_id | order_id 
+------------+----------
+          2 |        1
+          4 |        1
+          4 |        2
+          1 |        4
+          3 |        4
+(5 rows)
+
+shop=# select p.title, o.address from order_product as op inner join product as p on op.product_id = p.id inner join orders as o on o.id = op.order_id;
+  title   |      address       
+----------+--------------------
+ Iphone11 | London, Bakers st.
+ Macbook  | London, Bakers st.
+ Macbook  | Venice st.
+ Samsung  | 3rd st.
+ Asus     | 3rd st.
+(5 rows)
+
+shop=# select u.name, u.lastname, p.title, o.address from order_product as op inner join product as p on op.product_id = p.id inner join orders as o on op.order_id = o.id inner join users as u on o.user_id  = u.id;
+  name  | lastname |  title   |      address       
+--------+----------+----------+--------------------
+ John   | Snow     | Iphone11 | London, Bakers st.
+ John   | Snow     | Macbook  | London, Bakers st.
+ Amanda | White    | Macbook  | Venice st.
+ Aika   | Kub      | Samsung  | 3rd st.
+ Aika   | Kub      | Asus     | 3rd st.
+(5 rows)
+
+shop=# select u.name, e.email, p.title, o.address, o.id, from order_product as op inner join product as p on p.id = op = product_id inner join orders as o on op.order_id = o.id inner join users as u on o.user_id = u.id inner join email as e on e.user_id = u.id;
+ERROR:  syntax error at or near "from"
+LINE 1: select u.name, e.email, p.title, o.address, o.id, from order...
+                                                          ^
+shop=# select u.name, e.email, p.title, o.address, o.id from order_product as op inner join product as p on p.id = op = product_id inner join orders as o on op.order_id = o.id inner join users as u on o.user_id = u.id inner join email as e on e.user_id = u.id;
+ERROR:  syntax error at or near "="
+LINE 1: ...roduct as op inner join product as p on p.id = op = product_...
+                                                             ^
+shop=# select u.name, e.email, p.title, o.address, o.id from order_product as op inner join product as p on p.id = op. product_id inner join orders as o on op.order_id = o.id inner join users as u on o.user_id = u.id inner join email as e on e.user_id = u.id;
+ name |     email      |  title   |      address       | id 
+------+----------------+----------+--------------------+----
+ John | john@gmail.com | Iphone11 | London, Bakers st. |  1
+ John | john@gmail.com | Macbook  | London, Bakers st. |  1
+ Aika | bob@gmail.com  | Samsung  | 3rd st.            |  4
+ Aika | bob@gmail.com  | Asus     | 3rd st.            |  4
+(4 rows)
+
+shop=# select u.name, e.email, p.title, o.address, o.id from order_product as op full join product as p on p.id = op. product_id full join orders as o on op.order_id = o.id full join users as u on o.user_id = u.id full join email as e on e.user_id = u.id;
+  name  |      email      |  title   |      address       | id 
+--------+-----------------+----------+--------------------+----
+ John   | john@gmail.com  | Iphone11 | London, Bakers st. |  1
+ John   | john@gmail.com  | Macbook  | London, Bakers st. |  1
+ Amanda |                 | Macbook  | Venice st.         |  2
+ Aika   | bob@gmail.com   | Samsung  | 3rd st.            |  4
+ Aika   | bob@gmail.com   | Asus     | 3rd st.            |  4
+ Amanda |                 |          | Venice st.         |  3
+ Emily  | emily@yahoo.com |          |                    |   
+(7 rows)
+
+shop=# select * from product;
+ id |  title   | price | quantity 
+----+----------+-------+----------
+  1 | Samsung  |  4000 |       15
+  2 | Iphone11 |  1000 |        5
+  3 | Asus     | 55000 |        3
+  4 | Macbook  | 11000 |       10
+(4 rows)
+
+shop=# select title, price, CASE WHEN price>11000 then 'too much' else 'ok' end from product;
+  title   | price |   case   
+----------+-------+----------
+ Samsung  |  4000 | ok
+ Iphone11 |  1000 | ok
+ Asus     | 55000 | too much
+ Macbook  | 11000 | ok
+(4 rows)
+
+shop=# select title, price, CASE WHEN price>11000 then 'too much' else 'ok' end affordability from product;
+  title   | price | affordability 
+----------+-------+---------------
+ Samsung  |  4000 | ok
+ Iphone11 |  1000 | ok
+ Asus     | 55000 | too much
+ Macbook  | 11000 | ok
+(4 rows)
+
+shop=# select title, price, quantity, case when quantity =0 then 'out of stock' when quantity between 0 and 10 then 'hurry up!' else 'in stock' end stock from product; 
+  title   | price | quantity |   stock   
+----------+-------+----------+-----------
+ Samsung  |  4000 |       15 | in stock
+ Iphone11 |  1000 |        5 | hurry up!
+ Asus     | 55000 |        3 | hurry up!
+ Macbook  | 11000 |       10 | hurry up!
+(4 rows)
+
+shop=#  

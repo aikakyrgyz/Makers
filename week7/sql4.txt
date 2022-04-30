@@ -1,0 +1,463 @@
+Last login: Tue Mar 16 23:42:50 on ttys003
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+MacBook-Air-Aigerim:week7 aigerimkubanychbekova$ psql aika
+psql (13.2)
+Type "help" for help.
+
+aika=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ aika      | aigerimkubanychbekova | UTF8     | C       | C     | =Tc/aigerimkubanychbekova                      +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova+
+           |                       |          |         |       | aika=CTc/aigerimkubanychbekova
+ db        | aika                  | UTF8     | C       | C     | 
+ kfc_menu  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ mydb      | aika                  | UTF8     | C       | C     | 
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ shop      | aika                  | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(8 rows)
+
+aika=# create database mydb;
+ERROR:  database "mydb" already exists
+aika=# \c mydb
+You are now connected to database "mydb" as user "aigerimkubanychbekova".
+mydb=# exit
+MacBook-Air-Aigerim:week7 aigerimkubanychbekova$ psql aika
+psql (13.2)
+Type "help" for help.
+
+aika=# eixt
+aika-# exit
+Use \q to quit.
+aika-# \q
+MacBook-Air-Aigerim:week7 aigerimkubanychbekova$ psql mydb
+psql (13.2)
+Type "help" for help.
+
+mydb=# \c mydb
+You are now connected to database "mydb" as user "aigerimkubanychbekova".
+mydb=# \q
+MacBook-Air-Aigerim:week7 aigerimkubanychbekova$ psql -U aika
+psql (13.2)
+Type "help" for help.
+
+aika=# \c mydb
+You are now connected to database "mydb" as user "aika".
+mydb=# create table makers(
+mydb(# mentor_id serial primary key,
+mydb(# name varchar(50),
+mydb(# position);
+ERROR:  syntax error at or near ")"
+LINE 4: position);
+                ^
+mydb=# \l
+                                                List of databases
+   Name    |         Owner         | Encoding | Collate | Ctype |                Access privileges                
+-----------+-----------------------+----------+---------+-------+-------------------------------------------------
+ aika      | aigerimkubanychbekova | UTF8     | C       | C     | =Tc/aigerimkubanychbekova                      +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova+
+           |                       |          |         |       | aika=CTc/aigerimkubanychbekova
+ db        | aika                  | UTF8     | C       | C     | 
+ kfc_menu  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ mydb      | aika                  | UTF8     | C       | C     | 
+ postgres  | aigerimkubanychbekova | UTF8     | C       | C     | 
+ shop      | aika                  | UTF8     | C       | C     | 
+ template0 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+ template1 | aigerimkubanychbekova | UTF8     | C       | C     | =c/aigerimkubanychbekova                       +
+           |                       |          |         |       | aigerimkubanychbekova=CTc/aigerimkubanychbekova
+(8 rows)
+
+mydb=# \d makers
+Did not find any relation named "makers".
+mydb=# create type position as enum('mentor', 'tracker', scrum');
+mydb'# '
+mydb(# )
+mydb-# ;
+ERROR:  syntax error at or near "scrum"
+LINE 1: create type position as enum('mentor', 'tracker', scrum');
+                                                          ^
+mydb=# create type position as enum('mentor', 'tracker', 'scrum');
+CREATE TYPE
+mydb=# create table makers(
+mydb(# mentor_id serial primary key,
+mydb(# name varchar(50),
+mydb(# Position position,
+mydb(# );
+ERROR:  syntax error at or near "position"
+LINE 4: Position position,
+                 ^
+mydb=# create table makers(
+mentor_id serial primary key,
+name varchar(50) not null,
+Position position not null,birthday date,salary decimal
+);
+ERROR:  syntax error at or near "position"
+LINE 4: Position position not null,birthday date,salary decimal
+                 ^
+mydb=# drop type position
+mydb-# ;
+ERROR:  syntax error at or near "position"
+LINE 1: drop type position
+                  ^
+mydb=# create type positions as enum('mentor', 'tracker', 'scrum');
+CREATE TYPE
+mydb=# create table makers(
+mydb(# mentor_id serial primary key,
+mydb(# name varchar(50) not null,
+mydb(# position positions not null,
+mydb(# birthday date,
+mydb(# salary int);
+CREATE TABLE
+mydb=# \d makers
+                                        Table "public.makers"
+  Column   |         Type          | Collation | Nullable |                  Default                  
+-----------+-----------------------+-----------+----------+-------------------------------------------
+ mentor_id | integer               |           | not null | nextval('makers_mentor_id_seq'::regclass)
+ name      | character varying(50) |           | not null | 
+ position  | positions             |           | not null | 
+ birthday  | date                  |           |          | 
+ salary    | integer               |           |          | 
+Indexes:
+    "makers_pkey" PRIMARY KEY, btree (mentor_id)
+
+mydb=# insert into makers(name, position, birthday, salary) values('Alice', 'mentor', '1996-04-29', 6000);
+INSERT 0 1
+mydb=# insert into makers(name, position, birthday, salmydb=# insert into makers(name, position, birthday, salary) values('Cathrine', 'scrum', '1999-04-21', 10000);
+INSERT 0 1
+mydb=# insert into makers(name, position, birthday, salary) values('Bailee', 'tracker', '2001-11-21', 5000);
+INSERT 0 1
+mydb=# insert into makers(name, position, birthday, salary) values('John', 'mentor', '1989-12-31', 3000);
+INSERT 0 1
+mydb=# insert into makers(name, position, birthday, salary) values('Bill', 'tracker', '1994-06-18', 8000);
+INSERT 0 1
+mydb=# insert into makers(name, position, birthday, salary) values('Candice', 'tracker', '1964-06-19', 9000);
+INSERT 0 1
+mydb=# insert into makers(name, position, birthday, salary) values('Martin', 'scrum', '1991-08-08', 4000);
+INSERT 0 1
+mydb=# insert into makers(name, position, birthday, salary) values('Jade', 'tracker', '1992-09-09', 6000);
+INSERT 0 1
+mydb=# insert into makers(name, position, birthday, salary) values('Antonio', 'scrum', '1977-12-12', 6000);
+INSERT 0 1
+mydb=# insert into makers(name, position, birthday, salary) values('Suzy', 'mentor', '1989-10-12', 6000);
+INSERT 0 1
+mydb=# insert into makers(name, position, birthday, salary) values('Macy', 'scrum', '1999-07-12', 6000);
+INSERT 0 1
+mydb=# insert into makers(name, position, birthday, salary) values('Bob', 'mentor', '1999-07-11', 15000);
+INSERT 0 1
+mydb=# insert into makers(name, position, birthday, salary) values('Peter', 'scrum', '1988-08-08', 9000);
+INSERT 0 1
+mydb=# select * from makers
+mydb-# ;
+ mentor_id |   name   | position |  birthday  | salary 
+-----------+----------+----------+------------+--------
+         1 | Alice    | mentor   | 1996-04-29 |   6000
+         2 | Cathrine | scrum    | 1999-04-21 |  10000
+         3 | Bailee   | tracker  | 2001-11-21 |   5000
+         4 | John     | mentor   | 1989-12-31 |   3000
+         5 | Bill     | tracker  | 1994-06-18 |   8000
+         6 | Candice  | tracker  | 1964-06-19 |   9000
+         7 | Martin   | scrum    | 1991-08-08 |   4000
+         8 | Jade     | tracker  | 1992-09-09 |   6000
+         9 | Antonio  | scrum    | 1977-12-12 |   6000
+        10 | Suzy     | mentor   | 1989-10-12 |   6000
+        11 | Macy     | scrum    | 1999-07-12 |   6000
+        12 | Bob      | mentor   | 1999-07-11 |  15000
+        13 | Peter    | scrum    | 1988-08-08 |   9000
+(13 rows)
+
+mydb=# select position || ' ' || name as mentors;
+ERROR:  column "position" does not exist
+LINE 1: select position || ' ' || name as mentors;
+               ^
+mydb=# select position || ' ' || name as mentors from makers;
+     mentors     
+-----------------
+ mentor Alice
+ scrum Cathrine
+ tracker Bailee
+ mentor John
+ tracker Bill
+ tracker Candice
+ scrum Martin
+ tracker Jade
+ scrum Antonio
+ mentor Suzy
+ scrum Macy
+ mentor Bob
+ scrum Peter
+(13 rows)
+
+mydb=# select * from makers order by birthdate desc;
+ERROR:  column "birthdate" does not exist
+LINE 1: select * from makers order by birthdate desc;
+                                      ^
+HINT:  Perhaps you meant to reference the column "makers.birthday".
+mydb=# select *from makers order by birthday desc;
+ mentor_id |   name   | position |  birthday  | salary 
+-----------+----------+----------+------------+--------
+         3 | Bailee   | tracker  | 2001-11-21 |   5000
+        11 | Macy     | scrum    | 1999-07-12 |   6000
+        12 | Bob      | mentor   | 1999-07-11 |  15000
+         2 | Cathrine | scrum    | 1999-04-21 |  10000
+         1 | Alice    | mentor   | 1996-04-29 |   6000
+         5 | Bill     | tracker  | 1994-06-18 |   8000
+         8 | Jade     | tracker  | 1992-09-09 |   6000
+         7 | Martin   | scrum    | 1991-08-08 |   4000
+         4 | John     | mentor   | 1989-12-31 |   3000
+        10 | Suzy     | mentor   | 1989-10-12 |   6000
+        13 | Peter    | scrum    | 1988-08-08 |   9000
+         9 | Antonio  | scrum    | 1977-12-12 |   6000
+         6 | Candice  | tracker  | 1964-06-19 |   9000
+(13 rows)
+
+mydb=# select *from makers order by birthday asc;
+ mentor_id |   name   | position |  birthday  | salary 
+-----------+----------+----------+------------+--------
+         6 | Candice  | tracker  | 1964-06-19 |   9000
+         9 | Antonio  | scrum    | 1977-12-12 |   6000
+        13 | Peter    | scrum    | 1988-08-08 |   9000
+        10 | Suzy     | mentor   | 1989-10-12 |   6000
+         4 | John     | mentor   | 1989-12-31 |   3000
+         7 | Martin   | scrum    | 1991-08-08 |   4000
+         8 | Jade     | tracker  | 1992-09-09 |   6000
+         5 | Bill     | tracker  | 1994-06-18 |   8000
+         1 | Alice    | mentor   | 1996-04-29 |   6000
+         2 | Cathrine | scrum    | 1999-04-21 |  10000
+        12 | Bob      | mentor   | 1999-07-11 |  15000
+        11 | Macy     | scrum    | 1999-07-12 |   6000
+         3 | Bailee   | tracker  | 2001-11-21 |   5000
+(13 rows)
+
+mydb=# select * from makers where (position = 'tracker' or position = 'mentor') and (name like 'A%' or 'S%');
+ERROR:  invalid input syntax for type boolean: "S%"
+LINE 1: ...acker' or position = 'mentor') and (name like 'A%' or 'S%');
+                                                                 ^
+mydb=# select * from makers where position = 'mentor' order by birthday asc;
+ mentor_id | name  | position |  birthday  | salary 
+-----------+-------+----------+------------+--------
+        10 | Suzy  | mentor   | 1989-10-12 |   6000
+         4 | John  | mentor   | 1989-12-31 |   3000
+         1 | Alice | mentor   | 1996-04-29 |   6000
+        12 | Bob   | mentor   | 1999-07-11 |  15000
+(4 rows)
+
+mydb=# select * from makers (where position = 'mentor' or position = 'tracker') and (name like 'A%' or name like 'S%');
+ERROR:  syntax error at or near "where"
+LINE 1: select * from makers (where position = 'mentor' or position ...
+                              ^
+mydb=# select * from makers where (position = 'mentor' or position = 'tracker') and (name like 'A%' or name like 'S%');
+ mentor_id | name  | position |  birthday  | salary 
+-----------+-------+----------+------------+--------
+         1 | Alice | mentor   | 1996-04-29 |   6000
+        10 | Suzy  | mentor   | 1989-10-12 |   6000
+(2 rows)
+
+mydb=# select * from mentors where salary between 5000 and 8000;
+ERROR:  relation "mentors" does not exist
+LINE 1: select * from mentors where salary between 5000 and 8000;
+                      ^
+mydb=# select * from makers where salary between 5000 and 8000;
+ mentor_id |  name   | position |  birthday  | salary 
+-----------+---------+----------+------------+--------
+         1 | Alice   | mentor   | 1996-04-29 |   6000
+         3 | Bailee  | tracker  | 2001-11-21 |   5000
+         5 | Bill    | tracker  | 1994-06-18 |   8000
+         8 | Jade    | tracker  | 1992-09-09 |   6000
+         9 | Antonio | scrum    | 1977-12-12 |   6000
+        10 | Suzy    | mentor   | 1989-10-12 |   6000
+        11 | Macy    | scrum    | 1999-07-12 |   6000
+(7 rows)
+
+mydb=# select * from makers order by salary desc fetch first(3) row only;
+ mentor_id |   name   | position |  birthday  | salary 
+-----------+----------+----------+------------+--------
+        12 | Bob      | mentor   | 1999-07-11 |  15000
+         2 | Cathrine | scrum    | 1999-04-21 |  10000
+         6 | Candice  | tracker  | 1964-06-19 |   9000
+(3 rows)
+
+mydb=# select position, count(mentor_id) from makers group by position;
+ position | count 
+----------+-------
+ tracker  |     4
+ mentor   |     4
+ scrum    |     5
+(3 rows)
+
+mydb=# select position,avg(salary) from makers; 
+ERROR:  column "makers.position" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: select position,avg(salary) from makers;
+               ^
+mydb=# select avg(salary) from makers where position = 'scrum';
+          avg          
+-----------------------
+ 7000.0000000000000000
+(1 row)
+
+mydb=# select name, length(name) from makers order by len;
+ERROR:  column "len" does not exist
+LINE 1: select name, length(name) from makers order by len;
+                                                       ^
+mydb=# select name, length(name)as len from makers order by len;
+   name   | len 
+----------+-----
+ Bob      |   3
+ Jade     |   4
+ Macy     |   4
+ John     |   4
+ Bill     |   4
+ Suzy     |   4
+ Alice    |   5
+ Peter    |   5
+ Bailee   |   6
+ Martin   |   6
+ Antonio  |   7
+ Candice  |   7
+ Cathrine |   8
+(13 rows)
+
+mydb=# update makers set name = 'Name';
+UPDATE 13
+mydb=# select * from makers
+mydb-# ;
+ mentor_id | name | position |  birthday  | salary 
+-----------+------+----------+------------+--------
+         1 | Name | mentor   | 1996-04-29 |   6000
+         2 | Name | scrum    | 1999-04-21 |  10000
+         3 | Name | tracker  | 2001-11-21 |   5000
+         4 | Name | mentor   | 1989-12-31 |   3000
+         5 | Name | tracker  | 1994-06-18 |   8000
+         6 | Name | tracker  | 1964-06-19 |   9000
+         7 | Name | scrum    | 1991-08-08 |   4000
+         8 | Name | tracker  | 1992-09-09 |   6000
+         9 | Name | scrum    | 1977-12-12 |   6000
+        10 | Name | mentor   | 1989-10-12 |   6000
+        11 | Name | scrum    | 1999-07-12 |   6000
+        12 | Name | mentor   | 1999-07-11 |  15000
+        13 | Name | scrum    | 1988-08-08 |   9000
+(13 rows)
+
+mydb=# update makers set salary = 3000 where mentor_id = 13;
+UPDATE 1
+mydb=# select * from makers
+mydb-# ;
+ mentor_id | name | position |  birthday  | salary 
+-----------+------+----------+------------+--------
+         1 | Name | mentor   | 1996-04-29 |   6000
+         2 | Name | scrum    | 1999-04-21 |  10000
+         3 | Name | tracker  | 2001-11-21 |   5000
+         4 | Name | mentor   | 1989-12-31 |   3000
+         5 | Name | tracker  | 1994-06-18 |   8000
+         6 | Name | tracker  | 1964-06-19 |   9000
+         7 | Name | scrum    | 1991-08-08 |   4000
+         8 | Name | tracker  | 1992-09-09 |   6000
+         9 | Name | scrum    | 1977-12-12 |   6000
+        10 | Name | mentor   | 1989-10-12 |   6000
+        11 | Name | scrum    | 1999-07-12 |   6000
+        12 | Name | mentor   | 1999-07-11 |  15000
+        13 | Name | scrum    | 1988-08-08 |   3000
+(13 rows)
+
+mydb=# alter table makers rename name Name;
+ERROR:  syntax error at or near "Name"
+LINE 1: alter table makers rename name Name;
+                                       ^
+mydb=# alter table makers rename name to Name;
+ERROR:  column "name" of relation "makers" already exists
+mydb=# alter table makers rename column name to Name;
+ERROR:  column "name" of relation "makers" already exists
+mydb=# alter table makers rename column name to Name;
+ERROR:  column "name" of relation "makers" already exists
+mydb=# alter table makers rename column name to "first name";
+ALTER TABLE
+mydb=# select * from makers;
+ mentor_id | first name | position |  birthday  | salary 
+-----------+------------+----------+------------+--------
+         1 | Name       | mentor   | 1996-04-29 |   6000
+         2 | Name       | scrum    | 1999-04-21 |  10000
+         3 | Name       | tracker  | 2001-11-21 |   5000
+         4 | Name       | mentor   | 1989-12-31 |   3000
+         5 | Name       | tracker  | 1994-06-18 |   8000
+         6 | Name       | tracker  | 1964-06-19 |   9000
+         7 | Name       | scrum    | 1991-08-08 |   4000
+         8 | Name       | tracker  | 1992-09-09 |   6000
+         9 | Name       | scrum    | 1977-12-12 |   6000
+        10 | Name       | mentor   | 1989-10-12 |   6000
+        11 | Name       | scrum    | 1999-07-12 |   6000
+        12 | Name       | mentor   | 1999-07-11 |  15000
+        13 | Name       | scrum    | 1988-08-08 |   3000
+(13 rows)
+
+mydb=# delete from makers where id = 13;
+ERROR:  column "id" does not exist
+LINE 1: delete from makers where id = 13;
+                                 ^
+mydb=# delete from makers where mentor_id = 13;
+DELETE 1
+mydb=# select * from makers;
+ mentor_id | first name | position |  birthday  | salary 
+-----------+------------+----------+------------+--------
+         1 | Name       | mentor   | 1996-04-29 |   6000
+         2 | Name       | scrum    | 1999-04-21 |  10000
+         3 | Name       | tracker  | 2001-11-21 |   5000
+         4 | Name       | mentor   | 1989-12-31 |   3000
+         5 | Name       | tracker  | 1994-06-18 |   8000
+         6 | Name       | tracker  | 1964-06-19 |   9000
+         7 | Name       | scrum    | 1991-08-08 |   4000
+         8 | Name       | tracker  | 1992-09-09 |   6000
+         9 | Name       | scrum    | 1977-12-12 |   6000
+        10 | Name       | mentor   | 1989-10-12 |   6000
+        11 | Name       | scrum    | 1999-07-12 |   6000
+        12 | Name       | mentor   | 1999-07-11 |  15000
+(12 rows)
+
+mydb=# alter table makrees drop salary;
+ERROR:  relation "makrees" does not exist
+mydb=# alter table makers drop salary;
+ALTER TABLE
+mydb=# select * from makers;
+ mentor_id | first name | position |  birthday  
+-----------+------------+----------+------------
+         1 | Name       | mentor   | 1996-04-29
+         2 | Name       | scrum    | 1999-04-21
+         3 | Name       | tracker  | 2001-11-21
+         4 | Name       | mentor   | 1989-12-31
+         5 | Name       | tracker  | 1994-06-18
+         6 | Name       | tracker  | 1964-06-19
+         7 | Name       | scrum    | 1991-08-08
+         8 | Name       | tracker  | 1992-09-09
+         9 | Name       | scrum    | 1977-12-12
+        10 | Name       | mentor   | 1989-10-12
+        11 | Name       | scrum    | 1999-07-12
+        12 | Name       | mentor   | 1999-07-11
+(12 rows)
+
+mydb=# alter table makers rename mentor_id to employee_id;
+ALTER TABLE
+mydb=# select * from makers;
+ employee_id | first name | position |  birthday  
+-------------+------------+----------+------------
+           1 | Name       | mentor   | 1996-04-29
+           2 | Name       | scrum    | 1999-04-21
+           3 | Name       | tracker  | 2001-11-21
+           4 | Name       | mentor   | 1989-12-31
+           5 | Name       | tracker  | 1994-06-18
+           6 | Name       | tracker  | 1964-06-19
+           7 | Name       | scrum    | 1991-08-08
+           8 | Name       | tracker  | 1992-09-09
+           9 | Name       | scrum    | 1977-12-12
+          10 | Name       | mentor   | 1989-10-12
+          11 | Name       | scrum    | 1999-07-12
+          12 | Name       | mentor   | 1999-07-11
+(12 rows)
+
+mydb=# 

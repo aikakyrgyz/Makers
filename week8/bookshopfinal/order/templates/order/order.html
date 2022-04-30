@@ -1,0 +1,52 @@
+{% extends 'base_html.html' %}
+{% block title %} Order {% endblock %}
+{% block content %}
+<div class="container">
+<form method="post" class="row g-3" enctype="multipart/form-data">
+    {% csrf_token %}
+  <div class="col-md-6">
+    <label for="inputEmail4" class="form-label">{{form.email.label_tag}}</label>
+    <input name="email" type="email" class="form-control" id="inputEmail4">
+  </div>
+  <div class="col-md-6">
+    <label for="inputPhone" class="form-label">{{form.phone.label_tag}}</label>
+    <input name="phone" type="text" class="form-control" id="inputPhone">
+  </div>
+  <div class="col-12">
+    <label for="inputAddress" class="form-label">{{form.address.label_tag}}</label>
+    <input name="address" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+  </div>
+  <div class="col-md-6">
+    <label for="inputCity" class="form-label">{{form.city.label_tag}}</label>
+    <input name="city" type="text" class="form-control" id="inputCity">
+  </div>
+  <div class="col-md-4">
+    <label for="inputState" class="form-label">State</label>
+    <select name="state" id="inputState" class="form-select">
+      <option selected>Choose region</option>
+        <option value="1">Bishkek</option>
+        <option value="2">Batken</option>
+        <option value="3">Osh</option>
+        <option value="4">Naryn</option>
+        <option value="5">Chuy</option>
+        <option value="6">Talas</option>
+        <option value="7">Issyk-Kul</option>
+    </select>
+  </div>
+<!--  <div class="col-md-2">-->
+<!--    <label for="inputZip" class="form-label">Zip</label>-->
+<!--    <input name = "zip" type="text" class="form-control" id="inputZip">-->
+<!--  </div>-->
+  <div class="col-md-4">
+    <label for="inputBook" class="form-label">{{ form.book.label_tag }}</label>
+    <select name="book" id="inputBook" class="form-select">
+      <option selected>Choose the book</option>
+        <option value="{{book.id}}" selected> {{ book }}</option>
+    </select>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Submit Order</button>
+  </div>
+</form>
+</div>
+{% endblock %}

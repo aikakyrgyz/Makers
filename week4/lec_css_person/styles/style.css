@@ -1,0 +1,35 @@
+h1
+{
+    color: red;
+    font-weight: normal;
+    font-style:italic;
+    text-align: center  ;
+}
+.html
+{
+    color:blue;
+    font-weight: bold
+}
+
+#html
+{
+    color:blueviolet
+
+}
+.groceries
+{
+list-style: square;
+}
+
+.groceries li
+{
+    font-size:18px;
+    text-decoration: underline;
+    
+}
+.groceries p
+{
+    text-decoration:wavy;
+    color: green
+}
+
